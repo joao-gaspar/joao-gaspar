@@ -15,11 +15,14 @@ const experiences: ExperienceItem[] = [
   {
     period: "Mar 2022 — Mar 2026",
     title: "Doutorando em BIM",
-    company: "USP - Universidade de São Paulo (LAMPA)",
-    companyUrl: "https://www.usp.br",
+    company: "FAU USP - Faculdade de Arquitetura e Urbanismo e de Design da Universidade de São Paulo",
+    companyUrl: "https://www.fau.usp.br/",
     description:
-      "Pesquisa sobre contratação de Habitação de Interesse Social (HIS) em BIM no Laboratório de Arquitetura, Metodologia de Projeto e Automação (LAMPA). Campo de estudo: Building Information Modeling e Processo de Projeto Arquitetônico.",
-    skills: ["Pesquisa Acadêmica", "BIM", "HIS", "ISO 19650"],
+      "Projeto de pesquisa intitulado Proposição de ferramenta para comparar o desempenho de entregas de 
+projetos de HIS baseadas em desenhos ou em BIM em contratações públicas no Brasil.",
+    skills: ["Building information modeling (BIM)", " Entrega Centrada em 
+Desenhos (ECD)", "Indicadores de desempenho", "Contratações Públicas", " Habitação de 
+Interesse Social (HIS)"],
   },
   {
     period: "Jan 2026 — Presente",
