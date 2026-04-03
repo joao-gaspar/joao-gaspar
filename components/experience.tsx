@@ -45,7 +45,7 @@ const experiences: ExperienceItem[] = [
     company: "ABNT - Associação Brasileira de Normas Técnicas",
     companyUrl: "https://www.abnt.org.br",
     description:
-      "Coordena a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM para o Brasil, incluindo a ABNT NBR 15965 - Norma ABNT de Classificação da Construção, a ABNT NBR 19650", entre outras.",
+      "Coordena a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM para o Brasil, incluindo a ABNT NBR 15965 - Norma ABNT de Classificação da Construção, a ABNT NBR 19650, entre outras.",
     skills: ["Normalização", "ABNT NBR 15965", "ABNT NBR ISO 19650", "Governança BIM", "Políticas Públicas"],
   },
   {
