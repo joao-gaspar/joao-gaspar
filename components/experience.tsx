@@ -19,8 +19,7 @@ const experiences: ExperienceItem[] = [
     companyUrl: "https://www.fau.usp.br/",
     description:
       "Projeto",
-    skills: ["Building information modeling (BIM)", " Entrega Centrada em 
-Desenhos (ECD)", "Indicadores de desempenho", "Contratações Públicas", " Habitação de 
+    skills: ["Building information modeling (BIM)", " Entrega Centrada em Desenhos (ECD)", "Indicadores de desempenho", "Contratações Públicas", " Habitação de 
 Interesse Social (HIS)"],
   },
   {
