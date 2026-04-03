@@ -18,9 +18,8 @@ const experiences: ExperienceItem[] = [
     company: "FAU USP - Faculdade de Arquitetura e Urbanismo e de Design da Universidade de São Paulo",
     companyUrl: "https://www.fau.usp.br/",
     description:
-      "Projeto",
-    skills: ["Building information modeling (BIM)", " Entrega Centrada em Desenhos (ECD)", "Indicadores de desempenho", "Contratações Públicas", " Habitação de 
-Interesse Social (HIS)"],
+      "Projeto de pesquisa: Proposição de ferramenta para comparar o desempenho de entregas de projetos de HIS baseadas em desenhos ou em BIM em contratações públicas no Brasil",
+    skills: ["Building information modeling (BIM)", " Entrega Centrada em Desenhos (ECD)", "Indicadores de desempenho", "Contratações Públicas", " Habitação de Interesse Social (HIS)"],
   },
   {
     period: "Jan 2026 — Presente",
