@@ -269,7 +269,7 @@ export function Publications() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
           >
-            Ver todas no ResearchGate
+            Ver as publicações acadêmicas no ResearchGate
             <ExternalLink className="h-4 w-4" />
           </Link>
           <Link
