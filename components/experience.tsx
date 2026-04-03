@@ -33,11 +33,11 @@ const experiences: ExperienceItem[] = [
   {
     period: "Abr 2000 — Presente",
     title: "Diretor de Operações",
-    company: "EBBIM - Escola Brasileira de BIM",
+    company: "EBBIM - Empresa Brasileira de BIM",
     companyUrl: "https://loja.ebbim.com.br",
     description:
-      "Fundou e dirige a principal escola de BIM do Brasil, formando milhares de profissionais. A escola oferece cursos de História do BIM, IFC, Coordenação de Projetos, SketchUp Pro e consultoria especializada. Parceria com a ProBooks Editora para publicação de livros técnicos.",
-    skills: ["BIM", "Educação", "Revit", "ArchiCAD", "SketchUp", "IFC"],
+      "Fundou e dirige a principal empresa de BIM do Brasil, fundada em 2000 como escola, que já formou milhares de profissionais. A escola oferece cursos de análise e aprovação de modelos BIM, IFC, Trimble Connect, SketchUp Pro para BIM, Revit, entre outros. Atualmente, além dos cursos, a Empresa Brasileira de BIM (EBBIM) oferece serviços de consultoria especializada, implementação em empresas públicas e privadas, certificação de profissionais e desenvolvimento de aplicações (softwares) BIM.",
+    skills: ["BIM", "Educação", "Desenvolvimento de Softwares", "Revit", "ArchiCAD", "SketchUp", "IFC"],
   },
   {
     period: "Presente",
@@ -45,8 +45,8 @@ const experiences: ExperienceItem[] = [
     company: "ABNT - Associação Brasileira de Normas Técnicas",
     companyUrl: "https://www.abnt.org.br",
     description:
-      "Coordena a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM para o Brasil, incluindo a NBR 15965 - Norma ABNT de Classificação da Construção.",
-    skills: ["Normalização", "NBR 15965", "Governança BIM", "Políticas Públicas"],
+      "Coordena a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM para o Brasil, incluindo a ABNT NBR 15965 - Norma ABNT de Classificação da Construção, a ABNT NBR 19650", entre outras.",
+    skills: ["Normalização", "ABNT NBR 15965", "ABNT NBR ISO 19650", "Governança BIM", "Políticas Públicas"],
   },
   {
     period: "2023 — Presente",
