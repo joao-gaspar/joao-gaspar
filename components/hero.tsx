@@ -111,22 +111,22 @@ export function Hero() {
               João Gaspar atua como <span className="text-foreground font-medium">Coordenador da ABNT CEE-134</span>, 
               a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM no Brasil. 
               Atualmente, está concluindo seu doutorado na{" "}
-              <span className="text-foreground font-medium">USP</span> (Universidade de São Paulo), 
+              <span className="text-foreground font-medium">FAU USP</span> , Faculdade de Arquitetura e Urbanismo e de Design da Universidade de São Paulo, 
               pesquisando contratação de projetos em BIM para Habitação de Interesse Social.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Como <span className="text-foreground font-medium">Diretor de Inovação (CINO)</span> na{" "}
+              Como <span className="text-foreground font-medium">Diretor de Inovação </span> na{" "}
               <span className="text-foreground font-medium">totalCAD</span> e{" "}
               <span className="text-foreground font-medium">Diretor de Operações da EBBIM</span>, 
               lidera iniciativas de transformação digital no setor AECO. É professor de pós-graduação em BIM 
-              na <span className="text-foreground font-medium">Mackenzie</span>,{" "}
+              na <span className="text-foreground font-medium">Universidade Presbiteriana Mackenzie</span>,{" "}
               <span className="text-foreground font-medium">SENAI/ISEP</span> e{" "}
               <span className="text-foreground font-medium">FIA Business School</span>.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Com mais de <span className="text-foreground font-medium">33 publicações acadêmicas</span>,{" "}
               <span className="text-foreground font-medium">6.200+ leituras</span> no ResearchGate e 
-              autor de diversos livros técnicos sobre Revit, ArchiCAD e SketchUp pela{" "}
+              autor de diversos livros técnicos sobre SketchUp Pro, Revit, ArchiCAD, entre outros, pela{" "}
               <span className="text-foreground font-medium">ProBooks Editora</span>, dedica sua carreira 
               à educação e disseminação do BIM há mais de 26 anos.
             </p>
