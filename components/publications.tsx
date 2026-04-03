@@ -83,19 +83,19 @@ const publications: Publication[] = [
 
 const books: Publication[] = [
   {
-    year: "2018",
-    title: "Gerenciamento e Coordenação de Projetos BIM",
+    year: "2013",
+    title: "SketchUp Pro 2013 passo a passo",
     type: "book",
     description:
-      "Guia completo sobre gestão e coordenação de projetos utilizando metodologia BIM, abordando fluxos de trabalho, colaboração e entregáveis.",
+      "Guia de SketchUp com procedimentos ilustrados. Publicado também em espanhol (2014) e inglês (2011).",
     url: "https://loja.ebbim.com.br",
   },
   {
-    year: "2018",
-    title: "BIM e Inovação em Gestão de Projetos",
+    year: "2011",
+    title: "SketchUp Pro Avançado",
     type: "book",
     description:
-      "Livro sobre aplicação de BIM para inovação nos processos de gestão de projetos de construção civil.",
+      "Guia de SketchUp Pro com dicas e exercícios para quem quer se tornar um usuário avançado",
     url: "https://loja.ebbim.com.br",
   },
   {
@@ -107,7 +107,7 @@ const books: Publication[] = [
     url: "https://loja.ebbim.com.br",
   },
   {
-    year: "2014",
+    year: "2016",
     title: "ArchiCAD passo a passo - Volume I e II",
     type: "book",
     description:
@@ -116,10 +116,10 @@ const books: Publication[] = [
   },
   {
     year: "2013",
-    title: "SketchUp Pro 2013 passo a passo",
+    title: "SketchUp LayOut passo a passo",
     type: "book",
     description:
-      "Guia de SketchUp com procedimentos ilustrados. Publicado também em espanhol (2014) e inglês (2011).",
+      "Guia do SketchUp LayOut, para quem deseja aprender a montar pranchas com desenhos técnicos a partir de modelos do SketchUp Pro",
     url: "https://loja.ebbim.com.br",
     language: "PT/EN/ES",
   },
