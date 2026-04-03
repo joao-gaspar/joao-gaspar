@@ -19,7 +19,7 @@ export function Contact() {
             <p className="mt-4 text-muted-foreground leading-relaxed">
               João Gaspar está sempre disponível para discutir novos projetos, oportunidades de 
               colaboração, pesquisa acadêmica ou consultoria em BIM e tecnologia 
-              para construção civil.
+              para construção civil e infraestrutura.
             </p>
 
             {/* Consultoria Card */}
@@ -30,7 +30,7 @@ export function Contact() {
                   Agende uma sessão de consultoria sobre processos, gestão e coordenação BIM.
                 </p>
                 <Link
-                  href="https://loja.ebbim.com.br"
+                  href="https://loja.ebbim.com.br/produto/consultoria-joao-gaspar/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
