@@ -51,7 +51,7 @@ const experiences: ExperienceItem[] = [
   {
     period: "2023 — Presente",
     title: "Professor de Pós-graduação em BIM",
-    company: "Universidade Mackenzie, FIA Business School, SENAI-ISEP",
+    company: "Universidade Presbiteriana Mackenzie, FIA Business School, SENAI-ISEP",
     description:
       "Ministra disciplinas de BIM em cursos de pós-graduação, incluindo Metodologias BIM, Gestão de Dados e Gestão Profissional na Era Digital.",
     skills: ["Metodologias BIM", "Gestão de Dados", "Docência", "Pesquisa"],
