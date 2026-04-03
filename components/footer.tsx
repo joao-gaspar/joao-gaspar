@@ -39,7 +39,7 @@ export function Footer() {
           </div>
 
           <p className="text-sm text-muted-foreground">
-            {currentYear} João Gaspar. Coordenador ABNT CEE-134 | CINO totalCAD | Diretor EBBIM
+            {currentYear} João Gaspar. Coordenador ABNT CEE-134 | Diretor de Inovação da totalCAD | Diretor de Operações da EBBIM
           </p>
         </div>
       </div>
