@@ -111,7 +111,7 @@ export function Hero() {
               João Gaspar atua como <span className="text-foreground font-medium">Coordenador da ABNT CEE-134</span>, 
               a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM no Brasil. 
               Atualmente, está concluindo seu doutorado na{" "}
-              <span className="text-foreground font-medium">FAU USP</span> , Faculdade de Arquitetura e Urbanismo e de Design da Universidade de São Paulo, 
+              <span className="text-foreground font-medium">FAU USP</span>, Faculdade de Arquitetura e Urbanismo e de Design da Universidade de São Paulo, 
               pesquisando contratação de projetos em BIM para Habitação de Interesse Social.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
