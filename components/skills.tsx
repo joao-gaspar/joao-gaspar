@@ -3,15 +3,15 @@ import { Badge } from "@/components/ui/badge"
 const skillCategories = [
   {
     title: "Tecnologias BIM",
-    skills: ["Revit Architecture", "ArchiCAD", "SketchUp Pro", "Navisworks", "BIM 360", "Vectorworks", "IFC"],
+    skills: ["IFC 4.3", "SketchUp Pro", "Trimble Connect", "ARCHICAD", "Blender/Bonsai", "Vectorworks", "Revit"],
   },
   {
     title: "Metodologias e Normas",
-    skills: ["BIM Management", "ISO 19650", "NBR 15965", "LOD/LOI", "Clash Detection", "IFC Coordination"],
+    skills: ["Auditoria de modelos BIM", "ABNT NBR ISO 19650", "ABNT NBR 15965", "Gestão de projetos com modelos BIM"],
   },
   {
     title: "Áreas de Especialização",
-    skills: ["Building Information Modelling", "Construction Technology", "Cost Estimation", "Project Cycle Management", "Architecture Science"],
+    skills: ["Building Information Modeling", "Tecnologia para a Construção", "Gestão de Projetos"],
   },
   {
     title: "Competências Acadêmicas",
