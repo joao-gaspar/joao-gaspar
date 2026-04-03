@@ -92,7 +92,7 @@ export function Contact() {
                 <BookOpen className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">EBBIM / Cursos e Livros</p>
+                <p className="text-sm text-muted-foreground">EBBIM / Comprar cursos</p>
                 <Link
                   href="https://loja.ebbim.com.br"
                   target="_blank"
