@@ -1,8 +1,11 @@
 import Link from "next/link"
 import { Linkedin, BookOpen, GraduationCap } from "lucide-react"
 
+import { useTranslations } from "next-intl"
+
 export function Footer() {
   const currentYear = new Date().getFullYear()
+  const t = useTranslations('Footer')
 
   return (
     <footer className="py-12 border-t border-border">
@@ -39,7 +42,7 @@ export function Footer() {
           </div>
 
           <p className="text-sm text-muted-foreground">
-            {currentYear} João Gaspar. Coordenador ABNT CEE-134 | Diretor de Inovação da totalCAD | Diretor de Operações da EBBIM
+            {currentYear} {t('copyright')}
           </p>
         </div>
       </div>

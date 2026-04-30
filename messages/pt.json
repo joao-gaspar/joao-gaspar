@@ -1,0 +1,343 @@
+{
+  "Metadata": {
+    "title": "João Gaspar | Diretor de Inovação & Especialista em BIM",
+    "description": "Diretor de Inovação na totalCAD, Professor de BIM e autor de livros técnicos. Mais de 26 anos de experiência em arquitetura, engenharia e tecnologia."
+  },
+  "Home": {
+    "sobre": "Sobre"
+  },
+  "Header": {
+    "nav_sobre": "Sobre",
+    "nav_experiencia": "Experiência",
+    "nav_publicacoes": "Publicações",
+    "nav_contato": "Contato"
+  },
+  "Hero": {
+    "name": "João Gaspar",
+    "subtitle": "Arquiteto e Urbanista",
+    "role1": "Professor, pesquisador e desenvolvedor de aplicações relacionadas a BIM",
+    "role2": "Diretor de Inovação na totalCAD",
+    "role3": "Diretor da Empresa Brasileira de BIM - EBBIM",
+    "about1_1": "João Gaspar atua como ",
+    "about1_2": "Coordenador da ABNT CEE-134",
+    "about1_3": ", a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM no Brasil. Atualmente, está concluindo seu doutorado na ",
+    "about1_4": "FAU USP",
+    "about1_5": ", Faculdade de Arquitetura e Urbanismo e de Design da Universidade de São Paulo, pesquisando contratação de projetos em BIM para Habitação de Interesse Social.",
+    "about2_1": "Como ",
+    "about2_2": "Diretor de Inovação ",
+    "about2_3": " na ",
+    "about2_4": "totalCAD",
+    "about2_5": " e ",
+    "about2_6": "Diretor de Operações da EBBIM",
+    "about2_7": ", lidera iniciativas de transformação digital no setor AECO. É professor de pós-graduação em BIM na ",
+    "about2_8": "Universidade Presbiteriana Mackenzie",
+    "about2_9": ", ",
+    "about2_10": "SENAI/ISEP",
+    "about2_11": " e ",
+    "about2_12": "FIA Business School",
+    "about3_1": "Com mais de ",
+    "about3_2": "33 publicações acadêmicas",
+    "about3_3": ", ",
+    "about3_4": "6.200+ leituras",
+    "about3_5": " no ResearchGate e autor de diversos livros técnicos sobre SketchUp Pro, Revit, ArchiCAD, entre outros, pela ",
+    "about3_6": "ProBooks Editora",
+    "about3_7": ", dedica sua carreira à educação e disseminação do BIM há mais de 26 anos."
+  },
+  "Contact": {
+    "title": "Contato",
+    "subtitle": "Entre em contato sobre inovação e BIM",
+    "description": "João Gaspar está sempre disponível para discutir novos projetos, oportunidades de colaboração, pesquisa acadêmica ou consultoria em BIM e tecnologia para construção civil e infraestrutura.",
+    "card_title": "Consultoria Especializada",
+    "card_desc": "Agende uma sessão de consultoria sobre processos, gestão e coordenação BIM.",
+    "card_button": "Agendar consultoria",
+    "loc_title": "Localização",
+    "loc_desc": "São Paulo, Brasil",
+    "linkedin": "LinkedIn",
+    "researchgate": "ResearchGate",
+    "ebbim": "EBBIM / Comprar cursos",
+    "lattes": "Lattes CNPq",
+    "curriculo_lattes": "Currículo Lattes",
+    "connect_linkedin": "Conectar no LinkedIn"
+  },
+  "Footer": {
+    "copyright": "João Gaspar. Todos os direitos reservados."
+  },
+  "Skills": {
+    "title": "Competências",
+    "categories": [
+      {
+        "title": "Tecnologias BIM",
+        "skills": [
+          "IFC 4.3",
+          "SketchUp Pro",
+          "Trimble Connect",
+          "ARCHICAD",
+          "Blender/Bonsai",
+          "Vectorworks",
+          "Revit"
+        ]
+      },
+      {
+        "title": "Metodologias e Normas",
+        "skills": [
+          "Auditoria de modelos BIM",
+          "ABNT NBR ISO 19650",
+          "ABNT NBR 15965",
+          "Gestão de projetos com modelos BIM"
+        ]
+      },
+      {
+        "title": "Áreas de Especialização",
+        "skills": [
+          "Building Information Modeling",
+          "Tecnologia para a Construção",
+          "Gestão de Projetos"
+        ]
+      },
+      {
+        "title": "Competências Acadêmicas",
+        "skills": [
+          "Pesquisa Científica",
+          "Revisão Sistemática",
+          "Análise Cienciométrica",
+          "Docência Superior"
+        ]
+      },
+      {
+        "title": "Idiomas",
+        "skills": [
+          "Português (Nativo)",
+          "Inglês (Profissional)",
+          "Espanhol (Profissional)"
+        ]
+      }
+    ]
+  },
+  "Experience": {
+    "title": "Experiência",
+    "items": [
+      {
+        "period": "Mar 2022 — Mar 2026",
+        "title": "Doutorando em BIM",
+        "company": "FAU USP - Faculdade de Arquitetura e Urbanismo e de Design da Universidade de São Paulo",
+        "companyUrl": "https://www.fau.usp.br/",
+        "description": "Projeto de pesquisa: Proposição de ferramenta para comparar o desempenho de entregas de projetos de HIS baseadas em desenhos ou em BIM em contratações públicas no Brasil",
+        "skills": [
+          "Building information modeling (BIM)",
+          " Entrega Centrada em Desenhos (ECD)",
+          "Indicadores de desempenho",
+          "Contratações Públicas",
+          " Habitação de Interesse Social (HIS)"
+        ]
+      },
+      {
+        "period": "Jan 2026 — Presente",
+        "title": "Diretor de Inovação (CINO)",
+        "company": "totalCAD Softwares Técnicos",
+        "companyUrl": "https://totalcad.com.br",
+        "description": "Lidera a estratégia de inovação e transformação digital da empresa, desenvolvendo soluções tecnológicas para o setor AECO (Arquitetura, Engenharia, Construção e Operação).",
+        "skills": [
+          "Inovação",
+          "BIM",
+          "Estratégia Digital",
+          "Liderança"
+        ]
+      },
+      {
+        "period": "Abr 2000 — Presente",
+        "title": "Diretor de Operações",
+        "company": "EBBIM - Empresa Brasileira de BIM",
+        "companyUrl": "https://loja.ebbim.com.br",
+        "description": "Fundou e dirige a principal empresa de BIM do Brasil, fundada em 2000 como escola, que já formou milhares de profissionais. A escola oferece cursos de análise e aprovação de modelos BIM, IFC, Trimble Connect, SketchUp Pro para BIM, Revit, entre outros. Atualmente, além dos cursos, a Empresa Brasileira de BIM (EBBIM) oferece serviços de consultoria especializada, implementação em empresas públicas e privadas, certificação de profissionais e desenvolvimento de aplicações (softwares) BIM.",
+        "skills": [
+          "BIM",
+          "Educação",
+          "Desenvolvimento de Softwares",
+          "Revit",
+          "ArchiCAD",
+          "SketchUp",
+          "IFC"
+        ]
+      },
+      {
+        "period": "Presente",
+        "title": "Coordenador ABNT CEE-134",
+        "company": "ABNT - Associação Brasileira de Normas Técnicas",
+        "companyUrl": "https://www.abnt.org.br",
+        "description": "Coordena a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM para o Brasil, incluindo a ABNT NBR 15965 - Norma ABNT de Classificação da Construção, a ABNT NBR 19650, entre outras.",
+        "skills": [
+          "Normalização",
+          "ABNT NBR 15965",
+          "ABNT NBR ISO 19650",
+          "Governança BIM",
+          "Políticas Públicas"
+        ]
+      },
+      {
+        "period": "2023 — Presente",
+        "title": "Professor de Pós-graduação em BIM",
+        "company": "Universidade Presbiteriana Mackenzie, FIA Business School, SENAI-ISEP",
+        "description": "Ministra disciplinas de BIM em cursos de pós-graduação, incluindo Metodologias BIM, Gestão de Dados e Gestão Profissional na Era Digital.",
+        "skills": [
+          "Metodologias BIM",
+          "Gestão de Dados",
+          "Docência",
+          "Pesquisa"
+        ]
+      }
+    ]
+  },
+  "Publications": {
+    "title": "Publicações Acadêmicas",
+    "stats_pub": "33 publicações",
+    "stats_read": "6.200+ leituras",
+    "title_books": "Livros Publicados (ProBooks Editora)",
+    "coauthors": "Co-autores",
+    "link_researchgate": "Ver as publicações acadêmicas no ResearchGate",
+    "link_ebbim": "Comprar cursos na Loja da EBBIM",
+    "type_book": "Livro",
+    "type_article": "Artigo",
+    "type_thesis": "Dissertação",
+    "type_chapter": "Capítulo",
+    "items": [
+      {
+        "year": "2025",
+        "title": "Efficiency and Accuracy in BIM Quantity Takeoff Application to Flashings and Gutters through IFC-Based Computational Methods",
+        "type": "article",
+        "description": "Análise da aplicação de BIM na extração de quantitativos de rufos e calhas, com foco na confiabilidade dos dados orçamentários através de métodos computacionais baseados em IFC.",
+        "coAuthors": [
+          "Alan Soares De Franca",
+          "Gotthard Blum",
+          "Matheus Lopes",
+          "Stefania Dimitrov"
+        ],
+        "url": "https://www.researchgate.net/publication/395669818_Efficiency_and_Accuracy_in_BIM_Quantity_Takeoff_Application_to_Flashings_and_Gutters_through_IFC-Based_Computational_Methods"
+      },
+      {
+        "year": "2025",
+        "title": "BIM Element Coding for Budgeting in Housing Projects",
+        "type": "article",
+        "description": "Metodologia para automatizar a extração de quantitativos em projetos de Habitação de Interesse Social (HIS) no contexto de contratações públicas.",
+        "coAuthors": [
+          "Gláucia De Assis",
+          "Moura Alexandre",
+          "Alan Soares De Franca",
+          "Stefania Dimitrov"
+        ],
+        "url": "https://www.researchgate.net/search/publication?q=BIM+Element+Coding+for+Budgeting+in+Housing+Projects"
+      },
+      {
+        "year": "2025",
+        "title": "Prioritization Method for Mapping Classification Systems for Cost Estimates",
+        "type": "article",
+        "description": "Mapeamento entre sistemas de classificação IFC e secundária para elaboração de estudos orçamentários mais rápidos e confiáveis em BIM.",
+        "coAuthors": [
+          "Felipe Barradas",
+          "Stefania Dimitrov"
+        ],
+        "url": "https://www.researchgate.net/publication/395642838_Prioritization_Method_for_Mapping_Classification_Systems_for_Cost_Estimates"
+      },
+      {
+        "year": "2024",
+        "title": "BIM na gestão pública: Tópicos para a contratação de projetos",
+        "type": "chapter",
+        "description": "Capítulo do livro de atas do Congresso ptBIM 2024, sobre implementação BIM na Administração Pública brasileira.",
+        "coAuthors": [
+          "Eduardo Nardelli",
+          "Carlos Mingione",
+          "João Pires",
+          "Rodrigo Garcia Alvarado"
+        ],
+        "url": "https://www.researchgate.net/publication/384735281_Seminario_BIM_na_Gestao_Publica_Topicos_para_a_Contratacao_de_Projetos"
+      },
+      {
+        "year": "2024",
+        "title": "Aplicativo de análise automatizada de IFC para estudos orçamentários",
+        "type": "article",
+        "description": "Desenvolvimento de aplicativo para auditoria de modelos IFC na Operação Urbana Consorciada Água Espraiada (OUCAE) para a SEHAB de São Paulo.",
+        "coAuthors": [
+          "Lucas Melchiori Pereira",
+          "Stefania Dimitrov",
+          "Alcione Dolavale"
+        ],
+        "url": "https://www.researchgate.net/publication/384784742_Aplicativo_de_analise_automatizada_de_IFC_para_estudos_orcamentarios"
+      },
+      {
+        "year": "2024",
+        "title": "Algoritmo para cálculo de áreas de geometrias complexas em modelos IFC",
+        "type": "article",
+        "description": "Pesquisa sobre processos de extração e verificação de quantitativos a partir de modelos BIM, com foco em geometrias de menor recorrência.",
+        "coAuthors": [
+          "Rodrigo Costa Loureiro",
+          "Alcione Dolavale",
+          "Thaís Bernardo dos Santos"
+        ],
+        "url": "https://www.researchgate.net/publication/386629986_Algoritmo_para_calculo_de_areas_de_geometrias_complexas_e_de_menor_recorrencia_em_modelos_IFC"
+      },
+      {
+        "year": "2019",
+        "title": "O significado atribuído a BIM ao longo do tempo",
+        "type": "thesis",
+        "description": "Dissertação de mestrado na UNICAMP. Pesquisa sobre a evolução do significado de Building Information Modeling através de Revisão Sistemática da Literatura e Análise Cienciométrica.",
+        "url": "https://www.researchgate.net/publication/335364254"
+      },
+      {
+        "year": "2019",
+        "title": "Integrated and Collaborative Architectural Design: 10 Years of Experience Teaching BIM",
+        "type": "chapter",
+        "description": "Proceedings of the 35th CIB W78 2018 Conference. Avaliação do processo colaborativo mediado por BIM ao longo de dez anos de ensino.",
+        "language": "Inglês",
+        "coAuthors": [
+          "Regina Ruschel",
+          "Evandro Ziggiatti Monteiro"
+        ],
+        "url": "https://www.researchgate.net/publication/330541743_Integrated_and_Collaborative_Architectural_Design_10_Years_of_Experience_Teaching_BIM"
+      }
+    ],
+    "books": [
+      {
+        "year": "2013",
+        "title": "SketchUp Pro 2013 passo a passo",
+        "type": "book",
+        "description": "Guia de SketchUp com procedimentos ilustrados. Publicado também em espanhol (2014) e inglês (2011).",
+        "url": "https://loja.ebbim.com.br"
+      },
+      {
+        "year": "2011",
+        "title": "SketchUp Pro Avançado",
+        "type": "book",
+        "description": "Guia de SketchUp Pro com dicas e exercícios para quem quer se tornar um usuário avançado",
+        "url": "https://loja.ebbim.com.br"
+      },
+      {
+        "year": "2015",
+        "title": "Revit passo a passo - Volume I",
+        "type": "book",
+        "description": "Guia completo para aprender a usar o Revit, software BIM da Autodesk, com foco em criação de projetos completos em 3D para arquitetura.",
+        "url": "https://loja.ebbim.com.br"
+      },
+      {
+        "year": "2016",
+        "title": "ArchiCAD passo a passo - Volume I e II",
+        "type": "book",
+        "description": "Única publicação em português sobre o ArchiCAD, ensinando como desenvolver um projeto completo em 2D e 3D com plantas, perspectivas, cortes e tabelas integradas.",
+        "url": "https://loja.ebbim.com.br"
+      },
+      {
+        "year": "2013",
+        "title": "SketchUp LayOut passo a passo",
+        "type": "book",
+        "description": "Guia do SketchUp LayOut, para quem deseja aprender a montar pranchas com desenhos técnicos a partir de modelos do SketchUp Pro",
+        "url": "https://loja.ebbim.com.br",
+        "language": "PT/EN/ES"
+      },
+      {
+        "year": "2010",
+        "title": "Vectorworks passo a passo",
+        "type": "book",
+        "description": "Livro sobre o software Vectorworks para projetos de arquitetura, design de interiores e paisagismo.",
+        "url": "https://loja.ebbim.com.br"
+      }
+    ]
+  }
+}

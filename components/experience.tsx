@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
+import { useTranslations } from "next-intl"
 
 interface ExperienceItem {
   period: string
@@ -11,59 +12,15 @@ interface ExperienceItem {
   skills: string[]
 }
 
-const experiences: ExperienceItem[] = [
-  {
-    period: "Mar 2022 — Mar 2026",
-    title: "Doutorando em BIM",
-    company: "FAU USP - Faculdade de Arquitetura e Urbanismo e de Design da Universidade de São Paulo",
-    companyUrl: "https://www.fau.usp.br/",
-    description:
-      "Projeto de pesquisa: Proposição de ferramenta para comparar o desempenho de entregas de projetos de HIS baseadas em desenhos ou em BIM em contratações públicas no Brasil",
-    skills: ["Building information modeling (BIM)", " Entrega Centrada em Desenhos (ECD)", "Indicadores de desempenho", "Contratações Públicas", " Habitação de Interesse Social (HIS)"],
-  },
-  {
-    period: "Jan 2026 — Presente",
-    title: "Diretor de Inovação (CINO)",
-    company: "totalCAD Softwares Técnicos",
-    companyUrl: "https://totalcad.com.br",
-    description:
-      "Lidera a estratégia de inovação e transformação digital da empresa, desenvolvendo soluções tecnológicas para o setor AECO (Arquitetura, Engenharia, Construção e Operação).",
-    skills: ["Inovação", "BIM", "Estratégia Digital", "Liderança"],
-  },
-  {
-    period: "Abr 2000 — Presente",
-    title: "Diretor de Operações",
-    company: "EBBIM - Empresa Brasileira de BIM",
-    companyUrl: "https://loja.ebbim.com.br",
-    description:
-      "Fundou e dirige a principal empresa de BIM do Brasil, fundada em 2000 como escola, que já formou milhares de profissionais. A escola oferece cursos de análise e aprovação de modelos BIM, IFC, Trimble Connect, SketchUp Pro para BIM, Revit, entre outros. Atualmente, além dos cursos, a Empresa Brasileira de BIM (EBBIM) oferece serviços de consultoria especializada, implementação em empresas públicas e privadas, certificação de profissionais e desenvolvimento de aplicações (softwares) BIM.",
-    skills: ["BIM", "Educação", "Desenvolvimento de Softwares", "Revit", "ArchiCAD", "SketchUp", "IFC"],
-  },
-  {
-    period: "Presente",
-    title: "Coordenador ABNT CEE-134",
-    company: "ABNT - Associação Brasileira de Normas Técnicas",
-    companyUrl: "https://www.abnt.org.br",
-    description:
-      "Coordena a Comissão Brasileira responsável pelo desenvolvimento e adoção das normas BIM para o Brasil, incluindo a ABNT NBR 15965 - Norma ABNT de Classificação da Construção, a ABNT NBR 19650, entre outras.",
-    skills: ["Normalização", "ABNT NBR 15965", "ABNT NBR ISO 19650", "Governança BIM", "Políticas Públicas"],
-  },
-  {
-    period: "2023 — Presente",
-    title: "Professor de Pós-graduação em BIM",
-    company: "Universidade Presbiteriana Mackenzie, FIA Business School, SENAI-ISEP",
-    description:
-      "Ministra disciplinas de BIM em cursos de pós-graduação, incluindo Metodologias BIM, Gestão de Dados e Gestão Profissional na Era Digital.",
-    skills: ["Metodologias BIM", "Gestão de Dados", "Docência", "Pesquisa"],
-  },
-]
-
 export function Experience() {
+  const t = useTranslations('Experience')
+  const experiences = t.raw('items') as ExperienceItem[]
+
   return (
     <section id="experiencia" className="py-20">
       <div className="mx-auto max-w-6xl px-6">
         <h2 className="text-sm uppercase tracking-widest text-primary mb-12">
-          Experiência
+          {t('title')}
         </h2>
         <div className="space-y-12">
           {experiences.map((exp, index) => (

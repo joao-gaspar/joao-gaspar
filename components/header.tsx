@@ -5,15 +5,18 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const navItems = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#experiencia", label: "Experiência" },
-  { href: "#publicacoes", label: "Publicações" },
-  { href: "#contato", label: "Contato" },
-]
+import { useTranslations } from "next-intl"
 
 export function Header() {
+  const t = useTranslations('Header')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const navItems = [
+    { href: "#sobre", label: t('nav_sobre') },
+    { href: "#experiencia", label: t('nav_experiencia') },
+    { href: "#publicacoes", label: t('nav_publicacoes') },
+    { href: "#contato", label: t('nav_contato') },
+  ]
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">

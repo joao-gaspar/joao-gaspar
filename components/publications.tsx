@@ -2,6 +2,7 @@ import { ExternalLink, BookOpen, FileText, GraduationCap } from "lucide-react"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { useTranslations } from "next-intl"
 
 interface Publication {
   year: string
@@ -12,126 +13,6 @@ interface Publication {
   coAuthors?: string[]
   url?: string
 }
-
-const publications: Publication[] = [
-  {
-    year: "2025",
-    title: "Efficiency and Accuracy in BIM Quantity Takeoff Application to Flashings and Gutters through IFC-Based Computational Methods",
-    type: "article",
-    description:
-      "Análise da aplicação de BIM na extração de quantitativos de rufos e calhas, com foco na confiabilidade dos dados orçamentários através de métodos computacionais baseados em IFC.",
-    coAuthors: ["Alan Soares De Franca", "Gotthard Blum", "Matheus Lopes", "Stefania Dimitrov"],
-  },
-  {
-    year: "2025",
-    title: "BIM Element Coding for Budgeting in Housing Projects",
-    type: "article",
-    description:
-      "Metodologia para automatizar a extração de quantitativos em projetos de Habitação de Interesse Social (HIS) no contexto de contratações públicas.",
-    coAuthors: ["Gláucia De Assis", "Moura Alexandre", "Alan Soares De Franca", "Stefania Dimitrov"],
-  },
-  {
-    year: "2025",
-    title: "Prioritization Method for Mapping Classification Systems for Cost Estimates",
-    type: "article",
-    description:
-      "Mapeamento entre sistemas de classificação IFC e secundária para elaboração de estudos orçamentários mais rápidos e confiáveis em BIM.",
-    coAuthors: ["Felipe Barradas", "Stefania Dimitrov"],
-  },
-  {
-    year: "2024",
-    title: "BIM na gestão pública: Tópicos para a contratação de projetos",
-    type: "chapter",
-    description:
-      "Capítulo do livro de atas do Congresso ptBIM 2024, sobre implementação BIM na Administração Pública brasileira.",
-    coAuthors: ["Eduardo Nardelli", "Carlos Mingione", "João Pires", "Rodrigo Garcia Alvarado"],
-  },
-  {
-    year: "2024",
-    title: "Aplicativo de análise automatizada de IFC para estudos orçamentários",
-    type: "article",
-    description:
-      "Desenvolvimento de aplicativo para auditoria de modelos IFC na Operação Urbana Consorciada Água Espraiada (OUCAE) para a SEHAB de São Paulo.",
-    coAuthors: ["Lucas Melchiori Pereira", "Stefania Dimitrov", "Alcione Dolavale"],
-  },
-  {
-    year: "2024",
-    title: "Algoritmo para cálculo de áreas de geometrias complexas em modelos IFC",
-    type: "article",
-    description:
-      "Pesquisa sobre processos de extração e verificação de quantitativos a partir de modelos BIM, com foco em geometrias de menor recorrência.",
-    coAuthors: ["Rodrigo Costa Loureiro", "Alcione Dolavale", "Thaís Bernardo dos Santos"],
-  },
-  {
-    year: "2019",
-    title: "O significado atribuído a BIM ao longo do tempo",
-    type: "thesis",
-    description:
-      "Dissertação de mestrado na UNICAMP. Pesquisa sobre a evolução do significado de Building Information Modeling através de Revisão Sistemática da Literatura e Análise Cienciométrica.",
-    url: "https://www.researchgate.net/publication/335364254",
-  },
-  {
-    year: "2019",
-    title: "Integrated and Collaborative Architectural Design: 10 Years of Experience Teaching BIM",
-    type: "chapter",
-    description:
-      "Proceedings of the 35th CIB W78 2018 Conference. Avaliação do processo colaborativo mediado por BIM ao longo de dez anos de ensino.",
-    language: "Inglês",
-    coAuthors: ["Regina Ruschel", "Evandro Ziggiatti Monteiro"],
-  },
-]
-
-const books: Publication[] = [
-  {
-    year: "2013",
-    title: "SketchUp Pro 2013 passo a passo",
-    type: "book",
-    description:
-      "Guia de SketchUp com procedimentos ilustrados. Publicado também em espanhol (2014) e inglês (2011).",
-    url: "https://loja.ebbim.com.br",
-  },
-  {
-    year: "2011",
-    title: "SketchUp Pro Avançado",
-    type: "book",
-    description:
-      "Guia de SketchUp Pro com dicas e exercícios para quem quer se tornar um usuário avançado",
-    url: "https://loja.ebbim.com.br",
-  },
-  {
-    year: "2015",
-    title: "Revit passo a passo - Volume I",
-    type: "book",
-    description:
-      "Guia completo para aprender a usar o Revit, software BIM da Autodesk, com foco em criação de projetos completos em 3D para arquitetura.",
-    url: "https://loja.ebbim.com.br",
-  },
-  {
-    year: "2016",
-    title: "ArchiCAD passo a passo - Volume I e II",
-    type: "book",
-    description:
-      "Única publicação em português sobre o ArchiCAD, ensinando como desenvolver um projeto completo em 2D e 3D com plantas, perspectivas, cortes e tabelas integradas.",
-    url: "https://loja.ebbim.com.br",
-  },
-  {
-    year: "2013",
-    title: "SketchUp LayOut passo a passo",
-    type: "book",
-    description:
-      "Guia do SketchUp LayOut, para quem deseja aprender a montar pranchas com desenhos técnicos a partir de modelos do SketchUp Pro",
-    url: "https://loja.ebbim.com.br",
-    language: "PT/EN/ES",
-  },
-  {
-    year: "2010",
-    title: "Vectorworks passo a passo",
-    type: "book",
-    description:
-      "Livro sobre o software Vectorworks para projetos de arquitetura, design de interiores e paisagismo.",
-    url: "https://loja.ebbim.com.br",
-  },
-]
 
 function getTypeIcon(type: Publication["type"]) {
   switch (type) {
@@ -144,37 +25,41 @@ function getTypeIcon(type: Publication["type"]) {
   }
 }
 
-function getTypeLabel(type: Publication["type"]) {
-  switch (type) {
-    case "book":
-      return "Livro"
-    case "article":
-      return "Artigo"
-    case "thesis":
-      return "Dissertação"
-    case "chapter":
-      return "Capítulo"
-    default:
-      return type
-  }
-}
-
 export function Publications() {
+  const t = useTranslations('Publications')
+  const publications = t.raw('items') as Publication[]
+  const books = t.raw('books') as Publication[]
+
+  function getTypeLabel(type: Publication["type"]) {
+    switch (type) {
+      case "book":
+        return t('type_book')
+      case "article":
+        return t('type_article')
+      case "thesis":
+        return t('type_thesis')
+      case "chapter":
+        return t('type_chapter')
+      default:
+        return type
+    }
+  }
+
   return (
     <section id="publicacoes" className="py-20 bg-card/50">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-sm uppercase tracking-widest text-primary">
-            Publicações Acadêmicas
+            {t('title')}
           </h2>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1">
               <FileText className="h-4 w-4" />
-              33 publicações
+              {t('stats_pub')}
             </span>
             <span className="flex items-center gap-1">
               <BookOpen className="h-4 w-4" />
-              6.200+ leituras
+              {t('stats_read')}
             </span>
           </div>
         </div>
@@ -204,15 +89,24 @@ export function Publications() {
                         </Badge>
                       )}
                     </div>
-                    <h3 className="text-foreground font-medium group-hover:text-primary transition-colors line-clamp-2">
-                      {pub.title}
-                    </h3>
+                    {pub.url ? (
+                      <Link href={pub.url} target="_blank" rel="noopener noreferrer" className="inline-block">
+                        <h3 className="text-foreground font-medium group-hover:text-primary transition-colors line-clamp-2 inline-flex items-center">
+                          {pub.title}
+                          <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                        </h3>
+                      </Link>
+                    ) : (
+                      <h3 className="text-foreground font-medium transition-colors line-clamp-2">
+                        {pub.title}
+                      </h3>
+                    )}
                     <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
                       {pub.description}
                     </p>
                     {pub.coAuthors && (
                       <p className="mt-2 text-xs text-muted-foreground">
-                        Co-autores: {pub.coAuthors.slice(0, 2).join(", ")}
+                        {t('coauthors')}: {pub.coAuthors.slice(0, 2).join(", ")}
                         {pub.coAuthors.length > 2 && ` +${pub.coAuthors.length - 2}`}
                       </p>
                     )}
@@ -224,7 +118,7 @@ export function Publications() {
         </div>
 
         <h2 className="text-sm uppercase tracking-widest text-primary mb-8">
-          Livros Publicados (ProBooks Editora)
+          {t('title_books')}
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -249,9 +143,18 @@ export function Publications() {
                         </Badge>
                       )}
                     </div>
-                    <h3 className="text-foreground font-medium group-hover:text-primary transition-colors text-sm line-clamp-2">
-                      {book.title}
-                    </h3>
+                    {book.url ? (
+                      <Link href={book.url} target="_blank" rel="noopener noreferrer" className="inline-block">
+                        <h3 className="text-foreground font-medium group-hover:text-primary transition-colors text-sm line-clamp-2 inline-flex items-center">
+                          {book.title}
+                          <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                        </h3>
+                      </Link>
+                    ) : (
+                      <h3 className="text-foreground font-medium transition-colors text-sm line-clamp-2">
+                        {book.title}
+                      </h3>
+                    )}
                     <p className="mt-2 text-xs text-muted-foreground line-clamp-2">
                       {book.description}
                     </p>
@@ -269,7 +172,7 @@ export function Publications() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
           >
-            Ver as publicações acadêmicas no ResearchGate
+            {t('link_researchgate')}
             <ExternalLink className="h-4 w-4" />
           </Link>
           <Link
@@ -278,7 +181,7 @@ export function Publications() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
           >
-            Comprar cursos na Loja da EBBIM
+            {t('link_ebbim')}
             <ExternalLink className="h-4 w-4" />
           </Link>
         </div>
