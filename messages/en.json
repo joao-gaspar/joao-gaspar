@@ -329,12 +329,30 @@
       },
       {
         "year": "2016",
-        "title": "ArchiCAD step by step",
+        "title": "ArchiCAD step by step - Volume I",
         "type": "book",
-        "description": "The only Portuguese publication on ArchiCAD, teaching how to develop a complete 2D and 3D project with integrated floor plans, perspectives, sections, and schedules.",
+        "description": "First part of the only Portuguese publication on ArchiCAD, teaching how to develop a complete 2D and 3D project with integrated floor plans, perspectives, sections, and schedules.",
         "url": "https://loja.ebbim.com.br",
-        "amazonUrl": "https://www.amazon.com/dp/B075FFSQV4",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FFSQV4.01.LZZZZZZZ.jpg"
+        "amazonUrl": "https://www.amazon.com/dp/B075FCBBF3",
+        "coverImage": "https://m.media-amazon.com/images/P/B075FCBBF3.01.LZZZZZZZ.jpg"
+      },
+      {
+        "year": "2016",
+        "title": "ArchiCAD step by step - Volume II",
+        "type": "book",
+        "description": "Second part of the ArchiCAD publication, covering advanced topics in modeling, documentation, and BIM project management.",
+        "url": "https://loja.ebbim.com.br",
+        "amazonUrl": "https://www.amazon.com/dp/B075FH5M43",
+        "coverImage": "https://m.media-amazon.com/images/P/B075FH5M43.01.LZZZZZZZ.jpg"
+      },
+      {
+        "year": "2015",
+        "title": "SketchUp for furniture design",
+        "type": "book",
+        "description": "Practical SketchUp guide focused on furniture design, with exercises and 3D modeling techniques applied to furniture.",
+        "url": "https://loja.ebbim.com.br",
+        "amazonUrl": "https://www.amazon.com/dp/B075FGQM9S",
+        "coverImage": "https://m.media-amazon.com/images/P/B075FGQM9S.01.LZZZZZZZ.jpg"
       },
       {
         "year": "2013",
