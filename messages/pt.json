@@ -303,6 +303,7 @@
       {
         "year": "2013",
         "title": "SketchUp Pro 2013 passo a passo",
+        "language": "PT",
         "type": "book",
         "description": "Guia de SketchUp com procedimentos ilustrados. Publicado também em espanhol (2014) e inglês (2011).",
         "url": "https://www.probooks.com.br",
@@ -315,6 +316,7 @@
       {
         "year": "2011",
         "title": "SketchUp Pro Avançado",
+        "language": "PT",
         "type": "book",
         "description": "Guia de SketchUp Pro com dicas e exercícios para quem quer se tornar um usuário avançado",
         "url": "https://www.probooks.com.br",
@@ -326,6 +328,7 @@
       {
         "year": "2015",
         "title": "Revit passo a passo - Volume I",
+        "language": "PT",
         "type": "book",
         "description": "Guia completo para aprender a usar o Revit, software BIM da Autodesk, com foco em criação de projetos completos em 3D para arquitetura.",
         "url": "https://www.probooks.com.br",
@@ -336,6 +339,7 @@
       {
         "year": "2016",
         "title": "ArchiCAD passo a passo - Volume I",
+        "language": "PT",
         "type": "book",
         "description": "Primeira parte da única publicação em português sobre o ArchiCAD, ensinando como desenvolver um projeto completo em 2D e 3D com plantas, perspectivas, cortes e tabelas integradas.",
         "url": "https://www.probooks.com.br",
@@ -347,6 +351,7 @@
       {
         "year": "2016",
         "title": "ArchiCAD passo a passo - Volume II",
+        "language": "PT",
         "type": "book",
         "description": "Segunda parte da publicação sobre o ArchiCAD, com tópicos avançados de modelagem, documentação e gerenciamento de projetos em BIM.",
         "url": "https://www.probooks.com.br",
@@ -358,6 +363,7 @@
       {
         "year": "2015",
         "title": "SketchUp para design de móveis",
+        "language": "PT",
         "type": "book",
         "description": "Guia prático de SketchUp voltado para o design de móveis, com exercícios e técnicas de modelagem 3D aplicadas ao mobiliário.",
         "url": "https://www.probooks.com.br",
@@ -379,6 +385,7 @@
       {
         "year": "2010",
         "title": "Vectorworks passo a passo",
+        "language": "PT",
         "type": "book",
         "description": "Livro sobre o software Vectorworks para projetos de arquitetura, design de interiores e paisagismo.",
         "url": "https://www.probooks.com.br",

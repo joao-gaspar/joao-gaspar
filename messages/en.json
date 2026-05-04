@@ -302,7 +302,8 @@
     "books": [
       {
         "year": "2013",
-        "title": "SketchUp Pro 2013 step by step",
+        "title": "SketchUp Pro 2013 passo a passo",
+        "language": "PT",
         "type": "book",
         "description": "SketchUp guide with illustrated procedures. Also published in Spanish (2014) and English (2011).",
         "url": "https://www.probooks.com.br",
@@ -314,7 +315,8 @@
       },
       {
         "year": "2011",
-        "title": "Advanced SketchUp Pro",
+        "title": "SketchUp Pro Avançado",
+        "language": "PT",
         "type": "book",
         "description": "SketchUp Pro guide with tips and exercises for those who want to become advanced users.",
         "url": "https://www.probooks.com.br",
@@ -325,7 +327,8 @@
       },
       {
         "year": "2015",
-        "title": "Revit step by step - Volume I",
+        "title": "Revit passo a passo - Volume I",
+        "language": "PT",
         "type": "book",
         "description": "Complete guide to learn how to use Revit, Autodesk's BIM software, focusing on creating complete 3D projects for architecture.",
         "url": "https://www.probooks.com.br",
@@ -335,7 +338,8 @@
       },
       {
         "year": "2016",
-        "title": "ArchiCAD step by step - Volume I",
+        "title": "ArchiCAD passo a passo - Volume I",
+        "language": "PT",
         "type": "book",
         "description": "First part of the only Portuguese publication on ArchiCAD, teaching how to develop a complete 2D and 3D project with integrated floor plans, perspectives, sections, and schedules.",
         "url": "https://www.probooks.com.br",
@@ -346,7 +350,8 @@
       },
       {
         "year": "2016",
-        "title": "ArchiCAD step by step - Volume II",
+        "title": "ArchiCAD passo a passo - Volume II",
+        "language": "PT",
         "type": "book",
         "description": "Second part of the ArchiCAD publication, covering advanced topics in modeling, documentation, and BIM project management.",
         "url": "https://www.probooks.com.br",
@@ -357,7 +362,8 @@
       },
       {
         "year": "2015",
-        "title": "SketchUp for furniture design",
+        "title": "SketchUp para design de móveis",
+        "language": "PT",
         "type": "book",
         "description": "Practical SketchUp guide focused on furniture design, with exercises and 3D modeling techniques applied to furniture.",
         "url": "https://www.probooks.com.br",
@@ -368,7 +374,7 @@
       },
       {
         "year": "2013",
-        "title": "SketchUp LayOut step by step",
+        "title": "SketchUp LayOut passo a passo",
         "type": "book",
         "description": "SketchUp LayOut guide, for those who want to learn how to create technical drawing sheets from SketchUp Pro models.",
         "url": "https://www.probooks.com.br",
@@ -378,7 +384,8 @@
       },
       {
         "year": "2010",
-        "title": "Vectorworks step by step",
+        "title": "Vectorworks passo a passo",
+        "language": "PT",
         "type": "book",
         "description": "Book on the Vectorworks software for architecture, interior design, and landscaping projects.",
         "url": "https://www.probooks.com.br",
