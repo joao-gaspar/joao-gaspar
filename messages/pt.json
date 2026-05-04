@@ -197,6 +197,7 @@
     "link_ebbim": "Comprar cursos na Loja da EBBIM",
     "link_amazon": "Ver todos os livros na Amazon",
     "buy_amazon": "Compre na Amazon",
+    "buy_used": "Compre usado na Estante Virtual",
     "type_book": "Livro",
     "type_article": "Artigo",
     "type_thesis": "Dissertação",
@@ -304,7 +305,8 @@
         "description": "Guia de SketchUp com procedimentos ilustrados. Publicado também em espanhol (2014) e inglês (2011).",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FFG4YR",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FFG4YR.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FFG4YR.01.LZZZZZZZ.jpg",
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-2013-passo-a-passo-FYR-8098-000-BK"
       },
       {
         "year": "2011",
@@ -313,7 +315,8 @@
         "description": "Guia de SketchUp Pro com dicas e exercícios para quem quer se tornar um usuário avançado",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FCNBJH",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FCNBJH.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FCNBJH.01.LZZZZZZZ.jpg",
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-avancado-grp-GP6-8281-000"
       },
       {
         "year": "2015",
@@ -350,7 +353,8 @@
         "description": "Livro sobre o software Vectorworks para projetos de arquitetura, design de interiores e paisagismo.",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FHC6T5",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FHC6T5.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FHC6T5.01.LZZZZZZZ.jpg",
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/vectorworks-passo-a-passo-grp-1DQ-8516-000"
       }
     ]
   }

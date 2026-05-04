@@ -197,6 +197,7 @@
     "link_ebbim": "Comprar cursos en la Tienda EBBIM",
     "link_amazon": "Ver todos los libros en Amazon",
     "buy_amazon": "Compra en Amazon",
+    "buy_used": "Compra usado en Estante Virtual",
     "type_book": "Libro",
     "type_article": "Artículo",
     "type_thesis": "Disertación",
@@ -304,7 +305,8 @@
         "description": "Guía de SketchUp con procedimientos ilustrados. Publicado también en español (2014) e inglés (2011).",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FFG4YR",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FFG4YR.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FFG4YR.01.LZZZZZZZ.jpg",
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-2013-passo-a-passo-FYR-8098-000-BK"
       },
       {
         "year": "2011",
@@ -313,7 +315,8 @@
         "description": "Guía de SketchUp Pro con consejos y ejercicios para quienes quieren convertirse en usuarios avanzados.",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FCNBJH",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FCNBJH.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FCNBJH.01.LZZZZZZZ.jpg",
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-avancado-grp-GP6-8281-000"
       },
       {
         "year": "2015",
@@ -350,7 +353,8 @@
         "description": "Libro sobre el software Vectorworks para proyectos de arquitectura, diseño de interiores y paisajismo.",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FHC6T5",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FHC6T5.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FHC6T5.01.LZZZZZZZ.jpg",
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/vectorworks-passo-a-passo-grp-1DQ-8516-000"
       }
     ]
   }

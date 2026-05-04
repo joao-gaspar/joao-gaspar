@@ -15,6 +15,7 @@ interface Publication {
   url?: string
   amazonUrl?: string
   coverImage?: string
+  estanteVirtualUrl?: string
 }
 
 function getTypeIcon(type: Publication["type"]) {
@@ -178,6 +179,17 @@ export function Publications() {
                     >
                       <ShoppingCart className="h-3.5 w-3.5" />
                       {t('buy_amazon')}
+                    </Link>
+                  )}
+                  {book.estanteVirtualUrl && (
+                    <Link
+                      href={book.estanteVirtualUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-md border border-primary/30 bg-background text-foreground hover:bg-primary/10 transition-colors w-full justify-center"
+                    >
+                      <ShoppingCart className="h-3.5 w-3.5" />
+                      {t('buy_used')}
                     </Link>
                   )}
                 </div>
