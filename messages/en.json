@@ -198,6 +198,7 @@
     "link_amazon": "View all books on Amazon",
     "buy_amazon": "Buy on Amazon",
     "buy_used": "Buy used on Estante Virtual",
+    "buy_lulu": "Outside Brazil? Buy physical books at Lulu.com",
     "type_book": "Book",
     "type_article": "Article",
     "type_thesis": "Thesis",
@@ -306,7 +307,8 @@
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FFG4YR",
         "coverImage": "https://m.media-amazon.com/images/P/B075FFG4YR.01.LZZZZZZZ.jpg",
-        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-2013-passo-a-passo-FYR-8098-000-BK"
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-2013-passo-a-passo-FYR-8098-000-BK",
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-pro-2013-step-by-step/paperback/product-1jnjrkr8.html"
       },
       {
         "year": "2011",
@@ -325,7 +327,8 @@
         "description": "Complete guide to learn how to use Revit, Autodesk's BIM software, focusing on creating complete 3D projects for architecture.",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FH8VMH",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FH8VMH.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FH8VMH.01.LZZZZZZZ.jpg",
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar-and-nat%C3%A1lia-turri-lorenzo/revit-passo-a-passo-volume-i/paperback/product-1g8jrvy5.html"
       },
       {
         "year": "2016",
@@ -334,7 +337,8 @@
         "description": "First part of the only Portuguese publication on ArchiCAD, teaching how to develop a complete 2D and 3D project with integrated floor plans, perspectives, sections, and schedules.",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FCBBF3",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FCBBF3.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FCBBF3.01.LZZZZZZZ.jpg",
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar-and-nat%C3%A1lia-turri/archicad-passo-a-passo/paperback/product-1e8qgyjq.html"
       },
       {
         "year": "2016",
@@ -343,7 +347,8 @@
         "description": "Second part of the ArchiCAD publication, covering advanced topics in modeling, documentation, and BIM project management.",
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FH5M43",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FH5M43.01.LZZZZZZZ.jpg"
+        "coverImage": "https://m.media-amazon.com/images/P/B075FH5M43.01.LZZZZZZZ.jpg",
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar-and-nat%C3%A1lia-turri/archicad-passo-a-passo/paperback/product-1e8qgyjq.html"
       },
       {
         "year": "2015",
@@ -372,7 +377,8 @@
         "url": "https://loja.ebbim.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FHC6T5",
         "coverImage": "https://m.media-amazon.com/images/P/B075FHC6T5.01.LZZZZZZZ.jpg",
-        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/vectorworks-passo-a-passo-grp-1DQ-8516-000"
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/vectorworks-passo-a-passo-grp-1DQ-8516-000",
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/vectorworks-passo-a-passo/paperback/product-15gggwgz.html"
       }
     ]
   }
