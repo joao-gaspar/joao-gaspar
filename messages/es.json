@@ -199,6 +199,7 @@
     "buy_amazon": "Compra en Amazon",
     "buy_used": "Compra usado en Estante Virtual",
     "buy_lulu": "¿Fuera de Brasil? Compra los libros físicos en Lulu.com",
+    "buy_apple": "Compra las versiones digitales para leer en tu Apple",
     "type_book": "Libro",
     "type_article": "Artículo",
     "type_thesis": "Disertación",
@@ -308,7 +309,8 @@
         "amazonUrl": "https://www.amazon.com/dp/B075FFG4YR",
         "coverImage": "https://m.media-amazon.com/images/P/B075FFG4YR.01.LZZZZZZZ.jpg",
         "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-2013-passo-a-passo-FYR-8098-000-BK",
-        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-pro-2013-step-by-step/paperback/product-1jnjrkr8.html"
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-pro-2013-step-by-step/paperback/product-1jnjrkr8.html",
+        "appleUrl": "https://books.apple.com/us/book/sketchup-pro-2013-passo-a-passo/id1280057413"
       },
       {
         "year": "2011",
@@ -318,7 +320,8 @@
         "url": "https://www.probooks.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FCNBJH",
         "coverImage": "https://m.media-amazon.com/images/P/B075FCNBJH.01.LZZZZZZZ.jpg",
-        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-avancado-grp-GP6-8281-000"
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-avancado-grp-GP6-8281-000",
+        "appleUrl": "https://books.apple.com/us/book/sketchup-pro-avan%C3%A7ado/id1280047330"
       },
       {
         "year": "2015",
@@ -338,7 +341,8 @@
         "url": "https://www.probooks.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FCBBF3",
         "coverImage": "https://m.media-amazon.com/images/P/B075FCBBF3.01.LZZZZZZZ.jpg",
-        "luluUrl": "https://www.lulu.com/shop/joao-gaspar-and-nat%C3%A1lia-turri/archicad-passo-a-passo/paperback/product-1e8qgyjq.html"
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar-and-nat%C3%A1lia-turri/archicad-passo-a-passo/paperback/product-1e8qgyjq.html",
+        "appleUrl": "https://books.apple.com/us/book/archicad-passo-a-passo-volume-i/id1280046917"
       },
       {
         "year": "2016",
@@ -348,7 +352,8 @@
         "url": "https://www.probooks.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FH5M43",
         "coverImage": "https://m.media-amazon.com/images/P/B075FH5M43.01.LZZZZZZZ.jpg",
-        "luluUrl": "https://www.lulu.com/shop/joao-gaspar-and-nat%C3%A1lia-turri/archicad-passo-a-passo/paperback/product-1e8qgyjq.html"
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar-and-nat%C3%A1lia-turri/archicad-passo-a-passo/paperback/product-1e8qgyjq.html",
+        "appleUrl": "https://books.apple.com/us/book/archicad-passo-a-passo/id1280046251"
       },
       {
         "year": "2015",
@@ -358,7 +363,8 @@
         "url": "https://www.probooks.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FGQM9S",
         "coverImage": "https://m.media-amazon.com/images/P/B075FGQM9S.01.LZZZZZZZ.jpg",
-        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-para-design-de-m%C3%B3veis/ebook/product-1qnjremd.html"
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-para-design-de-m%C3%B3veis/ebook/product-1qnjremd.html",
+        "appleUrl": "https://books.apple.com/us/book/sketchup-para-design-de-m%C3%B3veis/id1280038692"
       },
       {
         "year": "2013",
@@ -379,7 +385,8 @@
         "amazonUrl": "https://www.amazon.com/dp/B075FHC6T5",
         "coverImage": "https://m.media-amazon.com/images/P/B075FHC6T5.01.LZZZZZZZ.jpg",
         "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/vectorworks-passo-a-passo-grp-1DQ-8516-000",
-        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/vectorworks-passo-a-passo/paperback/product-15gggwgz.html"
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/vectorworks-passo-a-passo/paperback/product-15gggwgz.html",
+        "appleUrl": "https://books.apple.com/us/book/vectorworks-passo-a-passo/id1280051518"
       }
     ]
   }

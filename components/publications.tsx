@@ -17,6 +17,7 @@ interface Publication {
   coverImage?: string
   estanteVirtualUrl?: string
   luluUrl?: string
+  appleUrl?: string
 }
 
 function getTypeIcon(type: Publication["type"]) {
@@ -199,6 +200,17 @@ export function Publications() {
                     >
                       <ExternalLink className="h-3.5 w-3.5" />
                       {t('buy_lulu')}
+                    </Link>
+                  )}
+                  {book.appleUrl && (
+                    <Link
+                      href={book.appleUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-md border border-muted-foreground/30 bg-background text-muted-foreground hover:text-foreground hover:border-primary/30 transition-colors w-full justify-center"
+                    >
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      {t('buy_apple')}
                     </Link>
                   )}
                 </div>
