@@ -145,16 +145,13 @@ export function Publications() {
                   </div>
                 )}
                 <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs text-muted-foreground">
-                      {book.year}
-                    </span>
-                    {book.language && (
+                  {book.language && (
+                    <div className="flex items-center gap-2 mb-2">
                       <Badge variant="outline" className="text-xs border-primary/30 text-primary">
                         {book.language}
                       </Badge>
-                    )}
-                  </div>
+                    </div>
+                  )}
                   {book.url ? (
                     <Link href={book.url} target="_blank" rel="noopener noreferrer" className="inline-block">
                       <h3 className="text-foreground font-medium group-hover:text-primary transition-colors text-sm line-clamp-2 inline-flex items-center">
