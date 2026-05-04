@@ -302,16 +302,15 @@
     "books": [
       {
         "year": "2013",
-        "title": "SketchUp Pro 2013 passo a passo",
-        "language": "PT",
+        "title": "SketchUp Pro Step by Step",
+        "language": "EN",
         "type": "book",
         "description": "SketchUp guide with illustrated procedures. Also published in Spanish (2014) and English (2011).",
         "url": "https://www.probooks.com.br",
-        "amazonUrl": "https://www.amazon.com/dp/B075FFG4YR",
-        "coverImage": "https://m.media-amazon.com/images/P/B075FFG4YR.01.LZZZZZZZ.jpg",
-        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-2013-passo-a-passo-FYR-8098-000-BK",
+        "amazonUrl": "https://www.amazon.com/dp/B075FGN812",
+        "coverImage": "https://m.media-amazon.com/images/P/B075FGN812.01.LZZZZZZZ.jpg",
         "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-pro-2013-step-by-step/paperback/product-1jnjrkr8.html",
-        "appleUrl": "https://books.apple.com/us/book/sketchup-pro-2013-passo-a-passo/id1280057413"
+        "appleUrl": "https://books.apple.com/us/book/google-sketchup-pro-8-step-by-step/id514447489"
       },
       {
         "year": "2011",
