@@ -397,19 +397,44 @@
     "title_youtube": "João Gaspar en YouTube",
     "youtube_videos": [
       {
-        "title": "BIM y Transformación Digital en la Construcción",
-        "url": "https://www.youtube.com/results?search_query=%22Jo%C3%A3o+Gaspar%22+BIM",
-        "thumbnail": ""
+        "title": "Towards a BIM Coordination Model — Joao Gaspar [bS-USA Webinar 2026-03-11 ]",
+        "url": "https://youtu.be/92zl7R8J2JY?si=jZ_74pGEhRGS4jXw",
+        "thumbnail": "https://img.youtube.com/vi/92zl7R8J2JY/hqdefault.jpg"
       },
       {
-        "title": "IFC e Interoperabilidad en la Práctica",
-        "url": "https://www.youtube.com/results?search_query=%22Jo%C3%A3o+Gaspar%22+BIM",
-        "thumbnail": ""
+        "title": "Do CAD ao BIM: evolua seus projetos com mais controle e eficiência",
+        "url": "https://www.youtube.com/live/FhB3ULzbv_0?si=SFxFWhTosvzgt9gM",
+        "thumbnail": "https://img.youtube.com/vi/FhB3ULzbv_0/hqdefault.jpg"
       },
       {
-        "title": "Nuevas Normas BIM en Brasil",
-        "url": "https://www.youtube.com/results?search_query=%22Jo%C3%A3o+Gaspar%22+BIM",
-        "thumbnail": ""
+        "title": "Tudo o que você sempre quis saber sobre BIM, mas não tinha para quem perguntar - parte 1",
+        "url": "https://www.youtube.com/watch?v=USO_rCnY8oE",
+        "thumbnail": "https://img.youtube.com/vi/USO_rCnY8oE/hqdefault.jpg"
+      },
+      {
+        "title": "Como usar o SketchUp Pro para BIM - Apresentação inicial (01/08)",
+        "url": "https://youtu.be/Q1jLhyGngsU?si=-9gPNWWXF2FqcdtL",
+        "thumbnail": "https://img.youtube.com/vi/Q1jLhyGngsU/hqdefault.jpg"
+      },
+      {
+        "title": "Diálogos sobre BIM - BIM, os cód. de ética e os conflitos de interesse - Atribuições do CAU/BR",
+        "url": "https://youtu.be/qQ4Y2SOOih8?si=_o0FvsXciOuMQ2fm",
+        "thumbnail": "https://img.youtube.com/vi/qQ4Y2SOOih8/hqdefault.jpg"
+      },
+      {
+        "title": "Diálogos sobre BIM - BIM e o CDC - O que é um serviço e de que forma é possível entregar",
+        "url": "https://youtu.be/xtr9zf0gdxE?si=f_4KqkDn6ViklZLx",
+        "thumbnail": "https://img.youtube.com/vi/xtr9zf0gdxE/hqdefault.jpg"
+      },
+      {
+        "title": "[TI Lab] Qual é o mejor software para projetos de arquitetura?",
+        "url": "https://youtu.be/D2aEgys3G_E?si=pMKo1WAtOg_xLMJM",
+        "thumbnail": "https://img.youtube.com/vi/D2aEgys3G_E/hqdefault.jpg"
+      },
+      {
+        "title": "[TI Lab] Afinal de contas, dá pra projetar no SketchUp com precisão?",
+        "url": "https://youtu.be/nbH3Uu666Ds?si=TSUXBBggKW-NQlUl",
+        "thumbnail": "https://img.youtube.com/vi/nbH3Uu666Ds/hqdefault.jpg"
       }
     ]
   }
