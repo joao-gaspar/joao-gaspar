@@ -5,10 +5,11 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 
 export function Header() {
   const t = useTranslations('Header')
+  const locale = useLocale()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
@@ -27,17 +28,24 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="hidden md:flex items-center gap-8">
+            <nav className="flex items-center gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex items-center gap-3 border-l border-border pl-8">
+              <Link href="/pt" className={`text-xs font-bold transition-colors ${locale === 'pt' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>PT</Link>
+              <Link href="/en" className={`text-xs font-bold transition-colors ${locale === 'en' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>EN</Link>
+              <Link href="/es" className={`text-xs font-bold transition-colors ${locale === 'es' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>ES</Link>
+            </div>
+          </div>
 
           {/* Mobile Menu Button */}
           <Button
@@ -64,6 +72,11 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
+              <div className="flex items-center gap-6 mt-2 pt-4 border-t border-border">
+                <Link href="/pt" className={`text-sm font-bold transition-colors ${locale === 'pt' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>PT</Link>
+                <Link href="/en" className={`text-sm font-bold transition-colors ${locale === 'en' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>EN</Link>
+                <Link href="/es" className={`text-sm font-bold transition-colors ${locale === 'es' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>ES</Link>
+              </div>
             </div>
           </nav>
         )}
