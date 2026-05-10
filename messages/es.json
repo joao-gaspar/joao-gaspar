@@ -393,6 +393,24 @@
         "luluUrl": "https://www.lulu.com/shop/joao-gaspar/vectorworks-passo-a-passo/paperback/product-15gggwgz.html",
         "appleUrl": "https://books.apple.com/us/book/vectorworks-passo-a-passo/id1280051518"
       }
+    ],
+    "title_youtube": "João Gaspar en YouTube",
+    "youtube_videos": [
+      {
+        "title": "BIM y Transformación Digital en la Construcción",
+        "url": "https://www.youtube.com/results?search_query=%22Jo%C3%A3o+Gaspar%22+BIM",
+        "thumbnail": ""
+      },
+      {
+        "title": "IFC e Interoperabilidad en la Práctica",
+        "url": "https://www.youtube.com/results?search_query=%22Jo%C3%A3o+Gaspar%22+BIM",
+        "thumbnail": ""
+      },
+      {
+        "title": "Nuevas Normas BIM en Brasil",
+        "url": "https://www.youtube.com/results?search_query=%22Jo%C3%A3o+Gaspar%22+BIM",
+        "thumbnail": ""
+      }
     ]
   }
 }

@@ -1,4 +1,4 @@
-import { ExternalLink, BookOpen, FileText, GraduationCap, ShoppingCart } from "lucide-react"
+import { ExternalLink, BookOpen, FileText, GraduationCap, ShoppingCart, Youtube, PlayCircle } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
@@ -35,6 +35,7 @@ export function Publications() {
   const t = useTranslations('Publications')
   const publications = t.raw('items') as Publication[]
   const books = t.raw('books') as Publication[]
+  const youtubeVideos = t.raw('youtube_videos') as { title: string; url: string; thumbnail: string }[]
 
   function getTypeLabel(type: Publication["type"]) {
     switch (type) {
@@ -219,7 +220,48 @@ export function Publications() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-wrap justify-center gap-6">
+        <h2 className="text-sm uppercase tracking-widest text-primary mb-8 mt-16 flex items-center gap-2">
+          <Youtube className="h-5 w-5 text-[#FF0000]" />
+          {t('title_youtube')}
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {youtubeVideos.map((video, index) => (
+            <Card
+              key={index}
+              className="bg-card border-border hover:border-[#FF0000]/50 transition-all group overflow-hidden"
+            >
+              <Link href={video.url} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                <CardContent className="p-0 relative">
+                  <div className="relative w-full aspect-video bg-muted/30 overflow-hidden flex items-center justify-center group-hover:bg-muted/50 transition-colors">
+                    {video.thumbnail ? (
+                      <Image
+                        src={video.thumbnail}
+                        alt={video.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        unoptimized
+                      />
+                    ) : (
+                      <Youtube className="h-12 w-12 text-muted-foreground/30 group-hover:text-[#FF0000]/50 transition-colors" />
+                    )}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <PlayCircle className="h-12 w-12 text-white drop-shadow-md" />
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-foreground font-medium group-hover:text-[#FF0000] transition-colors text-sm line-clamp-2">
+                      {video.title}
+                    </h3>
+                  </div>
+                </CardContent>
+              </Link>
+            </Card>
+          ))}
+        </div>
+
+        <div className="mt-16 flex flex-wrap justify-center gap-6">
           <Link
             href="https://www.researchgate.net/profile/Joao-Alberto-Gaspar"
             target="_blank"
