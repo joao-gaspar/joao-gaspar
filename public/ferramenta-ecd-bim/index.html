@@ -40,7 +40,8 @@ main{flex:1;overflow-y:auto;padding:28px 32px}
 .card .hint{font-size:12px;color:#64748B;margin-bottom:16px;line-height:1.5}
 
 /* ─── SECTION HEADER ─────────────────────────────────────────────────── */
-.sec-header{margin-bottom:24px}
+.sticky-top{position:sticky;top:0;background:#F1F5F9;z-index:10;padding:16px 0;margin-bottom:20px;border-bottom:1px solid #E2E8F0}
+.sec-header{margin-bottom:16px}
 .sec-header h2{font-size:22px;color:#0F172A}
 .sec-header p{font-size:13px;color:#64748B;margin-top:6px;max-width:700px;line-height:1.6}
 .sec-badge{display:inline-flex;align-items:center;gap:6px;background:#EFF6FF;color:#1D4ED8;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:10px;letter-spacing:.3px}
@@ -106,9 +107,9 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 .badge-neutral{background:#F1F5F9;color:#64748B;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px}
 
 /* ─── INFO BOX ─────────────────────────────────────────────────────────── */
-.info-box{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:14px 16px;font-size:12.5px;color:#1E40AF;line-height:1.6;margin-bottom:16px}
+.info-box{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:14px 16px;font-size:12.5px;color:#1E40AF;line-height:1.6;margin-bottom:0}
 .info-box strong{color:#1E3A8A}
-.warn-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;font-size:12.5px;color:#92400E;line-height:1.6;margin-bottom:16px}
+.warn-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;font-size:12.5px;color:#92400E;line-height:1.6;margin-bottom:0}
 
 /* ─── TAG/CHIP ─────────────────────────────────────────────────────────── */
 .tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
@@ -266,10 +267,12 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ CADASTRAR PROJETOS ═══════════════════════════════════════════ -->
 <div class="page" id="page-p1-projects">
-  <div class="sec-header">
-    <div class="sec-badge">PARTE 1 — PREPARAÇÃO</div>
-    <h2>Cadastrar Projetos ECD e BIM</h2>
-    <p>Defina os projetos ECD e BIM a serem analisados. Eles formarão os cruzamentos avaliados nas seções 1.1 a 1.5.</p>
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">PARTE 1 — PREPARAÇÃO</div>
+      <h2>Cadastrar Projetos ECD e BIM</h2>
+      <p>Defina os projetos ECD e BIM a serem analisados. Eles formarão os cruzamentos avaliados nas seções 1.1 a 1.5.</p>
+    </div>
   </div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
@@ -303,13 +306,15 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ 1.1 CONTEMPORANEIDADE ══════════════════════════════════════ -->
 <div class="page" id="page-p1-sec11">
-  <div class="sec-header">
-    <div class="sec-badge">SEÇÃO 1.1</div>
-    <h2>Contemporaneidade das Contratações</h2>
-    <p>Encontre os pares ECD/BIM com menor intervalo de tempo entre as contratações. Menor diferença = par mais adequado para comparação.</p>
-  </div>
-  <div class="info-box">
-    <strong>Interpretação:</strong> Células em <strong>verde escuro</strong> indicam os cruzamentos com menor diferença de anos — os pares mais contemporâneos e, portanto, mais adequados para comparação.
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">SEÇÃO 1.1</div>
+      <h2>Contemporaneidade das Contratações</h2>
+      <p>Encontre os pares ECD/BIM com menor intervalo de tempo entre as contratações. Menor diferença = par mais adequado para comparação.</p>
+    </div>
+    <div class="info-box">
+      <strong>Interpretação:</strong> Células em <strong>verde escuro</strong> indicam os cruzamentos com menor diferença de anos — os pares mais contemporâneos e, portanto, mais adequados para comparação.
+    </div>
   </div>
   <div class="card">
     <div class="tbl-wrap" id="table-11"></div>
@@ -322,19 +327,21 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ 1.2 CARACTERÍSTICAS DAS CONTRATAÇÕES ══════════════════════ -->
 <div class="page" id="page-p1-sec12">
-  <div class="sec-header">
-    <div class="sec-badge">SEÇÃO 1.2</div>
-    <h2>Características das Contratações</h2>
-    <p>Avalie a semelhança de legislação aplicável e dos objetos de cada par ECD/BIM. Pontue cada cruzamento de 1 a 6.</p>
-  </div>
-  <div class="info-box">
-    <strong>Escala de pontuação (1–6):</strong><br>
-    1 = Legislação diferente, Objetos diferentes (sem sobreposição) &nbsp;·&nbsp;
-    2 = Legislação diferente, Objetos semelhantes &nbsp;·&nbsp;
-    3 = Legislação diferente, mesmo objeto &nbsp;·&nbsp;
-    4 = Mesma legislação, Objetos diferentes &nbsp;·&nbsp;
-    5 = Mesma legislação, Objetos semelhantes &nbsp;·&nbsp;
-    <strong>6 = Mesma legislação, mesmo objeto (máxima semelhança)</strong>
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">SEÇÃO 1.2</div>
+      <h2>Características das Contratações</h2>
+      <p>Avalie a semelhança de legislação aplicável e dos objetos de cada par ECD/BIM. Pontue cada cruzamento de 1 a 6.</p>
+    </div>
+    <div class="info-box">
+      <strong>Escala de pontuação (1–6):</strong><br>
+      1 = Legislação diferente, Objetos diferentes (sem sobreposição) &nbsp;·&nbsp;
+      2 = Legislação diferente, Objetos semelhantes &nbsp;·&nbsp;
+      3 = Legislação diferente, mesmo objeto &nbsp;·&nbsp;
+      4 = Mesma legislação, Objetos diferentes &nbsp;·&nbsp;
+      5 = Mesma legislação, Objetos semelhantes &nbsp;·&nbsp;
+      <strong>6 = Mesma legislação, mesmo objeto (máxima semelhança)</strong>
+    </div>
   </div>
   <div class="card">
     <div id="matrix-12"></div>
@@ -347,19 +354,21 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ 1.3 CARACTERÍSTICAS DAS EQUIPES ═══════════════════════════ -->
 <div class="page" id="page-p1-sec13">
-  <div class="sec-header">
-    <div class="sec-badge">SEÇÃO 1.3</div>
-    <h2>Características das Equipes</h2>
-    <p>Avalie a semelhança das equipes de projetistas, gerenciadora e fiscalização da prefeitura para cada par. Pontue cada tipo de equipe de 1 a 5.</p>
-  </div>
-  <div class="info-box">
-    <strong>Escala por tipo de equipe (1–5):</strong><br>
-    1 = Equipes diferentes de "escolas" diferentes &nbsp;·&nbsp;
-    2 = Equipes diferentes, mesma "escola" &nbsp;·&nbsp;
-    3 = Mesma equipe, membros diferentes &nbsp;·&nbsp;
-    4 = Mesma equipe, parte dos mesmos membros &nbsp;·&nbsp;
-    <strong>5 = Mesma equipe e os mesmos membros (máxima semelhança)</strong>
-    <br><em>Pontuação máxima por cruzamento: 15 (5 × 3 equipes)</em>
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">SEÇÃO 1.3</div>
+      <h2>Características das Equipes</h2>
+      <p>Avalie a semelhança das equipes de projetistas, gerenciadora e fiscalização da prefeitura para cada par. Pontue cada tipo de equipe de 1 a 5.</p>
+    </div>
+    <div class="info-box">
+      <strong>Escala por tipo de equipe (1–5):</strong><br>
+      1 = Equipes diferentes de "escolas" diferentes &nbsp;·&nbsp;
+      2 = Equipes diferentes, mesma "escola" &nbsp;·&nbsp;
+      3 = Mesma equipe, membros diferentes &nbsp;·&nbsp;
+      4 = Mesma equipe, parte dos mesmos membros &nbsp;·&nbsp;
+      <strong>5 = Mesma equipe e os mesmos membros (máxima semelhança)</strong>
+      <br><em>Pontuação máxima por cruzamento: 15 (5 × 3 equipes)</em>
+    </div>
   </div>
   <div class="card">
     <div id="matrix-13"></div>
@@ -372,14 +381,16 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ 1.4 GEP / IGEP ═════════════════════════════════════════════ -->
 <div class="page" id="page-p1-sec14">
-  <div class="sec-header">
-    <div class="sec-badge">SEÇÃO 1.4</div>
-    <h2>Grau de Esforço Projetual (GEP / IGEP)</h2>
-    <p>Insira o valor do IGEP de cada projeto para calcular as diferenças absolutas entre pares. Menor diferença = maior semelhança de esforço projetual.</p>
-  </div>
-  <div class="info-box">
-    <strong>IGEP — Indicador de Grau de Esforço Projetual</strong><br>
-    Desenvolvido nesta pesquisa com base em Andrade et al. (2024, 2025). Quantifica o grau de complexidade/esforço projetual de cada projeto. A diferença absoluta entre dois projetos indica o quão similares eles são em termos de esforço projetual.
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">SEÇÃO 1.4</div>
+      <h2>Grau de Esforço Projetual (GEP / IGEP)</h2>
+      <p>Insira o valor do IGEP de cada projeto para calcular as diferenças absolutas entre pares. Menor diferença = maior semelhança de esforço projetual.</p>
+    </div>
+    <div class="info-box">
+      <strong>IGEP — Indicador de Grau de Esforço Projetual</strong><br>
+      Desenvolvido nesta pesquisa com base em Andrade et al. (2024, 2025). Quantifica o grau de complexidade/esforço projetual de cada projeto. A diferença absoluta entre dois projetos indica o quão similares eles são em termos de esforço projetual.
+    </div>
   </div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
@@ -405,13 +416,15 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ 1.5 SELEÇÃO FINAL ══════════════════════════════════════════ -->
 <div class="page" id="page-p1-sec15">
-  <div class="sec-header">
-    <div class="sec-badge">SEÇÃO 1.5</div>
-    <h2>Consolidação e Seleção dos Pares Análogos</h2>
-    <p>Veja o ranking de todos os cruzamentos por semelhança global. Selecione os pares que serão levados à Parte 2 para comparação de desempenho.</p>
-  </div>
-  <div class="info-box">
-    <strong>Critério de ordenação:</strong> Os cruzamentos são ordenados pela diferença IGEP (menor = melhor), considerando também as pontuações de contratação (1.2) e equipes (1.3). Clique em um par para selecioná-lo para a Parte 2.
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">SEÇÃO 1.5</div>
+      <h2>Consolidação e Seleção dos Pares Análogos</h2>
+      <p>Veja o ranking de todos os cruzamentos por semelhança global. Selecione os pares que serão levados à Parte 2 para comparação de desempenho.</p>
+    </div>
+    <div class="info-box">
+      <strong>Critério de ordenação:</strong> Os cruzamentos são ordenados pela diferença IGEP (menor = melhor), considerando também as pontuações de contratação (1.2) e equipes (1.3). Clique em um par para selecioná-lo para a Parte 2.
+    </div>
   </div>
   <div id="ranking-list"></div>
   <div id="selected-pairs" style="margin-top:20px"></div>
@@ -423,13 +436,15 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ PARTE 2 — DOCS E TEMPO ════════════════════════════════════ -->
 <div class="page" id="page-p2-data">
-  <div class="sec-header">
-    <div class="sec-badge">PARTE 2 — SEÇÕES 2.1 E 2.2</div>
-    <h2>Documentos Entregues e Tempo de Entrega</h2>
-    <p>Registre a quantidade total de documentos entregues e o tempo de entrega em meses para cada projeto selecionado.</p>
-  </div>
-  <div class="warn-box">
-    <strong>Atenção (Seção 2.2):</strong> No total de meses de entrega, não devem ser considerados os meses em que a paralisação dos trabalhos não teve origem motivada pelos projetistas.
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">PARTE 2 — SEÇÕES 2.1 E 2.2</div>
+      <h2>Documentos Entregues e Tempo de Entrega</h2>
+      <p>Registre a quantidade total de documentos entregues e o tempo de entrega em meses para cada projeto selecionado.</p>
+    </div>
+    <div class="warn-box">
+      <strong>Atenção (Seção 2.2):</strong> No total de meses de entrega, não devem ser considerados os meses em que a paralisação dos trabalhos não teve origem motivada pelos projetistas.
+    </div>
   </div>
   <div id="p2-eixos-form"></div>
   <div class="actions">
@@ -440,10 +455,12 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ PARTE 2 — INDICADORES 2.3-2.6 ════════════════════════════ -->
 <div class="page" id="page-p2-indicators">
-  <div class="sec-header">
-    <div class="sec-badge">PARTE 2 — SEÇÕES 2.3 A 2.6</div>
-    <h2>Registro dos Indicadores de Desempenho</h2>
-    <p>Complete os dados necessários para calcular os 4 indicadores de desempenho. Os valores de 2.3 são calculados automaticamente.</p>
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">PARTE 2 — SEÇÕES 2.3 A 2.6</div>
+      <h2>Registro dos Indicadores de Desempenho</h2>
+      <p>Complete os dados necessários para calcular os 4 indicadores de desempenho. Os valores de 2.3 são calculados automaticamente.</p>
+    </div>
   </div>
   <div id="p2-indicators-form"></div>
   <div class="actions">
@@ -454,10 +471,12 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 <!-- ═══════ PARTE 2 — SÍNTESE 2.7 ════════════════════════════════════ -->
 <div class="page" id="page-p2-synthesis">
-  <div class="sec-header">
-    <div class="sec-badge">SEÇÃO 2.7 — QUADRO-SÍNTESE</div>
-    <h2>Comparação dos Indicadores de Desempenho das Entregas</h2>
-    <p>Análise consolidada de todos os indicadores. Permite julgar qual modalidade de contratação apresentou melhor desempenho de entrega.</p>
+  <div class="sticky-top">
+    <div class="sec-header">
+      <div class="sec-badge">SEÇÃO 2.7 — QUADRO-SÍNTESE</div>
+      <h2>Comparação dos Indicadores de Desempenho das Entregas</h2>
+      <p>Análise consolidada de todos os indicadores. Permite julgar qual modalidade de contratação apresentou melhor desempenho de entrega.</p>
+    </div>
   </div>
   <div id="synthesis-content"></div>
 </div>
