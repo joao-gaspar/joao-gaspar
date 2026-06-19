@@ -13,10 +13,11 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
-    { href: "#sobre", label: t('nav_sobre') },
-    { href: "#experiencia", label: t('nav_experiencia') },
-    { href: "#publicacoes", label: t('nav_publicacoes') },
-    { href: "#contato", label: t('nav_contato') },
+    { href: "/#sobre", label: t('nav_sobre') },
+    { href: "/#experiencia", label: t('nav_experiencia') },
+    { href: "/#publicacoes", label: t('nav_publicacoes') },
+    { href: "/tese", label: t('nav_tese') },
+    { href: "/#contato", label: t('nav_contato') },
   ]
 
   return (
