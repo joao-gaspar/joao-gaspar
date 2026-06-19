@@ -10,7 +10,8 @@
     "nav_sobre": "Sobre Mí",
     "nav_experiencia": "Experiencia",
     "nav_publicacoes": "Publicaciones",
-    "nav_contato": "Contacto"
+    "nav_contato": "Contacto",
+    "nav_tese": "Tesis Doctoral"
   },
   "Hero": {
     "name": "João Gaspar",
@@ -309,7 +310,9 @@
         "url": "https://www.probooks.com.br",
         "amazonUrl": "https://www.amazon.com/dp/B075FH115Z",
         "coverImage": "https://m.media-amazon.com/images/P/B075FH115Z.01.LZZZZZZZ.jpg",
-        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-pro-2013-paso-a-paso-en-espa%C3%B1ol/paperback/product-1gg49g2w.html"
+        "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-pro-2013-paso-a-paso-en-espa%C3%B1ol/paperback/product-1gg49g2w.html",
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-2013-passo-a-passo-FYR-8098-000-BK",
+        "appleUrl": "https://books.apple.com/us/book/sketchup-pro-2013-passo-a-passo/id1280057413"
       },
       {
         "year": "2011",

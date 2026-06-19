@@ -8,7 +8,7 @@ export function Footer() {
   const t = useTranslations('Footer')
 
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-6 border-t border-border">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-6">

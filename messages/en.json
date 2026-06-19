@@ -10,7 +10,8 @@
     "nav_sobre": "About",
     "nav_experiencia": "Experience",
     "nav_publicacoes": "Publications",
-    "nav_contato": "Contact"
+    "nav_contato": "Contact",
+    "nav_tese": "Doctoral Thesis"
   },
   "Hero": {
     "name": "João Gaspar",
@@ -310,7 +311,8 @@
         "amazonUrl": "https://www.amazon.com/dp/B075FGN812",
         "coverImage": "https://m.media-amazon.com/images/P/B075FGN812.01.LZZZZZZZ.jpg",
         "luluUrl": "https://www.lulu.com/shop/joao-gaspar/sketchup-pro-2013-step-by-step/paperback/product-1jnjrkr8.html",
-        "appleUrl": "https://books.apple.com/us/book/google-sketchup-pro-8-step-by-step/id514447489"
+        "appleUrl": "https://books.apple.com/us/book/google-sketchup-pro-8-step-by-step/id514447489",
+        "estanteVirtualUrl": "https://www.estantevirtual.com.br/livro/sketchup-pro-2013-passo-a-passo-FYR-8098-000-BK"
       },
       {
         "year": "2011",
