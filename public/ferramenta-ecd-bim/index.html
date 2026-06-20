@@ -1485,8 +1485,51 @@ function renderSynthesis() {
     html += '</tr>';
   });
 
+  // Ranking Row
+  html += `<tr><td style="${B};background:#D9D9D9;font-weight:700;padding:6px 10px;font-size:12px;text-align:left">Classifica&ccedil;&atilde;o escolhida pelo usu&aacute;rio</td>`;
+  projects.forEach((p, idx) => {
+    html += `<td style="${TD};background:#F3F4F6">
+      <select style="width:100%;padding:4px;border-radius:4px;border:1px solid #D1D5DB;font-size:12px;outline:none;cursor:pointer">
+        <option value="">-</option>
+        ${projects.map((_, i) => `<option value="${i+1}">${i+1}&ordm; Lugar</option>`).join('')}
+      </select>
+    </td>`;
+  });
+  html += '</tr>';
+
   html += '</tbody></table></div></div>';
 
+  // TRANSPOSED TABLE
+  html += `<div class="card" style="margin-top:24px">
+    <h3>2.7 Quadro-s&iacute;ntese comparativo (Transposto)</h3>
+    <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
+      <tr>
+        <th style="${TH};text-align:left;min-width:180px;background:#F9FAFB">Projetos</th>
+        ${rows.map(row => `<th style="${TH};min-width:120px;white-space:normal">${row.label}</th>`).join('')}
+        <th style="${TH};min-width:120px;white-space:normal;background:#D9D9D9">Classifica&ccedil;&atilde;o escolhida pelo usu&aacute;rio</th>
+      </tr>
+    </thead><tbody>`;
+
+  projects.forEach(p => {
+    const d = getProjectEixo(p);
+    html += `<tr>
+      <td style="${B};background:#F9FAFB;padding:6px 10px;font-size:12px;text-align:left;font-weight:700;${p.type === 'bim' ? 'color:#0D9488' : 'color:#92400E'}">${p.name}</td>`;
+    
+    rows.forEach(row => {
+      const value = getP27Value(d, row.key);
+      const bg = cellBg(p, row.key);
+      html += `<td style="${TD};background:${bg};font-weight:700">${fmtP27(value, row.decimals)}</td>`;
+    });
+    
+    html += `<td style="${TD};background:#F3F4F6">
+      <select style="width:100%;padding:4px;border-radius:4px;border:1px solid #D1D5DB;font-size:12px;outline:none;cursor:pointer">
+        <option value="">-</option>
+        ${projects.map((_, i) => `<option value="${i+1}">${i+1}&ordm; Lugar</option>`).join('')}
+      </select>
+    </td></tr>`;
+  });
+
+  html += '</tbody></table></div></div>';
   // Action bar (export/share)
   const _btnBase = 'display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid';
   html += `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding:14px 18px;background:white;border:1px solid #E2E8F0;border-radius:12px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06)">
