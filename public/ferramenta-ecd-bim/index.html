@@ -715,7 +715,7 @@ function updateScore13Cell(el, bimId, ecdId, bi, ei, team) {
   const totTd = document.getElementById(`c13_${bi}_${ei}_Total`);
   if (totTd) {
     setTdColor(totTd, scoreColor13(tot, true));
-    totTd.textContent = tot > 0 ? tot.toFixed(2) : '';
+    if (tot > 0) { totTd.textContent = tot.toFixed(2); } else { totTd.innerHTML = '<span style="font-size:9px;color:#9CA3AF;font-weight:400;line-height:1.5">Projetistas + Prefeitura<br>+ Gerenciadora<br>(cálculo automático)</span>'; }
   }
   save();
 }
@@ -753,7 +753,7 @@ function renderMatrix13() {
       r1.push(inp('Projetistas', vP, bi, ei, b.id, e.id));
       r1.push(inp('Prefeitura', vPf, bi, ei, b.id, e.id));
       r2.push(inp('Gerenciadora', vG, bi, ei, b.id, e.id));
-      r2.push(`<td id="c13_${bi}_${ei}_Total" style="${B};${scoreColor13(tot, true)};text-align:center;font-size:12px;font-weight:700;padding:5px 3px;min-width:62px">${tot > 0 ? tot.toFixed(2) : ''}</td>`);
+      r2.push(`<td id="c13_${bi}_${ei}_Total" style="${B};${scoreColor13(tot, true)};text-align:center;font-weight:700;padding:5px 3px;min-width:90px">${tot > 0 ? `<span style="font-size:12px">${tot.toFixed(2)}</span>` : '<span style="font-size:9px;color:#9CA3AF;font-weight:400;line-height:1.5">Projetistas + Prefeitura<br>+ Gerenciadora<br>(cálculo automático)</span>'}</td>`);
     });
     h += `<tr><td rowspan="2" style="${B};background:#F3F4F6;padding:6px 10px;font-weight:700;font-size:12px;white-space:nowrap;vertical-align:middle">${b.name}</td>${r1.join('')}</tr>`;
     h += `<tr>${r2.join('')}</tr>`;
@@ -817,7 +817,7 @@ function renderSec14() {
   if (!el) return;
   if (!S.ecd.length || !S.bim.length) { el.innerHTML = '<p style="color:#94A3B8">Cadastre projetos primeiro.</p>'; return; }
   const B = 'border:1px solid #D1D5DB';
-  const BLUE = `${B};background:#CCFBF1;padding:3px;text-align:center`;
+  const BLUE = `${B};background:#CCFBF1;padding:3px;text-align:center;min-width:82px`;
   let h = `<div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>`;
   // Row 1: "Projetos ECD"
   h += `<tr><th colspan="2" style="${B};background:#F9FAFB;padding:6px"></th>`;
@@ -831,7 +831,7 @@ function renderSec14() {
   h += `<tr><td style="${B};background:#F9FAFB"></td><td style="${B};background:#F9FAFB;text-align:center;font-size:11px;color:#94A3B8;padding:4px">IGEP</td>`;
   S.ecd.forEach(e => {
     h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${S.igep[e.id]||''}" placeholder="IGEP"
-      style="width:64px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
+      style="width:76px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
       oninput="updateIgep('${e.id}',this.value,false)"></td>`;
   });
   h += '</tr></thead><tbody>';
@@ -840,7 +840,7 @@ function renderSec14() {
     const bVal = S.igep[b.id] || 0;
     h += `<tr><td style="${B};background:#F3F4F6;padding:4px 8px;font-weight:700;font-size:12px;white-space:nowrap">${b.name}</td>`;
     h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${bVal||''}" placeholder="IGEP"
-      style="width:64px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
+      style="width:76px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
       oninput="updateIgep('${b.id}',this.value,true)"></td>`;
     S.ecd.forEach((e, ei) => {
       const eVal = S.igep[e.id] || 0;
@@ -1120,10 +1120,10 @@ function renderSynthesis() {
     }).join('');
 
     return `<div class="card" style="margin-bottom:24px">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap">
-        <h3 style="margin:0">Par analisado:</h3>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap;background:#F0FDFA;border-radius:8px;padding:14px 18px;border-left:4px solid #0D9488">
+        <h3 style="margin:0;font-size:17px;font-weight:800;color:#0F172A;letter-spacing:-0.01em">Par analisado:</h3>
         <span class="tag tag-bim" style="font-size:13px;padding:4px 14px">${ex.bimName}</span>
-        <span style="color:#94A3B8">vs</span>
+        <span style="color:#94A3B8;font-weight:600">vs</span>
         <span class="tag tag-ecd" style="font-size:13px;padding:4px 14px">${ex.ecdName}</span>
       </div>
       <div class="tbl-wrap">
@@ -1376,9 +1376,10 @@ function loadHypotheticalExample() {
       const k = b.id+'_'+e.id;
       const isBA = bimGroupA.includes(b.id);
       const isEX = ecdGroupX.includes(e.id);
-      if (isBA && isEX)       S.scores13[k] = { Projetistas:2, Gerenciadora:4, Prefeitura:4 };
-      else if (!isBA && isEX) S.scores13[k] = { Projetistas:3, Gerenciadora:5, Prefeitura:5 };
-      else                    S.scores13[k] = { Projetistas:0, Gerenciadora:0, Prefeitura:0 };
+      if (isBA && isEX)        S.scores13[k] = { Projetistas:2, Gerenciadora:4, Prefeitura:4 };
+      else if (!isBA && isEX)  S.scores13[k] = { Projetistas:3, Gerenciadora:5, Prefeitura:5 };
+      else if (isBA && !isEX)  S.scores13[k] = { Projetistas:4, Gerenciadora:4, Prefeitura:4 };
+      else                     S.scores13[k] = { Projetistas:3, Gerenciadora:3, Prefeitura:3 };
     });
   });
 
