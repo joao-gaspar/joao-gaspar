@@ -1325,36 +1325,60 @@ function renderP26Table(projects) {
   </div>`;
 }
 
+function renderP23Table(projects) {
+  const B = 'border:1px solid #111827';
+  const TH = `${B};background:#F3F4F6;padding:4px 6px;font-size:11px;font-weight:700;text-align:left`;
+  const TD = `${B};padding:4px 6px;font-size:12px;text-align:left`;
+
+  return `<div class="card">
+    <h3>2.3 Quantidade m&eacute;dia de documentos entregues por m&ecirc;s</h3>
+    <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
+      <tr>
+        <th style="${B};background:#F9FAFB"></th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:4px 6px;text-align:left;font-size:12px;font-weight:700">Projetos</th>
+      </tr>
+      <tr>
+        <th style="${TH};min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
+        ${projects.map(p => `<th style="${TH};min-width:90px">${p.name}</th>`).join('')}
+      </tr>
+    </thead><tbody>
+      <tr>
+        <td style="${TD};background:#D9D9D9">Se&ccedil;&atilde;o 2.1 Total de documentos entregues</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          syncDocsFromTypes(d);
+          return `<td style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F8696B'}">${d.docs || 0}</td>`;
+        }).join('')}
+      </tr>
+      <tr>
+        <td style="${TD};background:#D9D9D9">Se&ccedil;&atilde;o 2.2 Tempo de entrega em meses</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          return `<td style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F4A582'}">${d.months || 0}</td>`;
+        }).join('')}
+      </tr>
+      <tr>
+        <td style="${TD};background:#FFFF00;font-weight:700">Quantidade m&eacute;dia de documentos entregues por m&ecirc;s</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          const result = d.months ? d.docs / d.months : 0;
+          return `<td style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F8696B'};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
+        }).join('')}
+      </tr>
+    </tbody></table></div>
+  </div>`;
+}
+
 function renderP2Indicators() {
   const el = document.getElementById('p2-indicators-form');
   if (!S.selectedPairs.length) { el.innerHTML = '<div class="warn-box">Nenhum par selecionado.</div>'; return; }
   const projects = getP2SelectedProjects();
   applyKnownP2Data(projects);
+  const p23Table = renderP23Table(projects);
   const p24Table = renderP24Table(projects);
   const p25Table = renderP25Table(projects);
   const p26Table = renderP26Table(projects);
-  const pairCards = S.selectedPairs.map(key => {
-    const ex = S.eixos[key] || {};
-    return `<div class="card">
-      <h3 style="margin-bottom:4px">Par: <span class="tag tag-bim">${ex.bimName}</span> &times; <span class="tag tag-ecd">${ex.ecdName}</span></h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px">
-        ${['ecd','bim'].map(type => {
-          const d = (ex[type] || {});
-          const docs23 = d.months ? (d.docs / d.months).toFixed(2) : '&mdash;';
-          return `<div>
-            <h4 style="color:${type==='bim'?'#0D9488':'#92400E'};margin-bottom:12px;font-size:13px;text-transform:uppercase;letter-spacing:.5px">
-              ${type==='bim'?'BIM':'ECD'}: ${type==='bim'?ex.bimName:ex.ecdName}
-            </h4>
-            <div style="background:#F0FDFA;border-radius:8px;padding:12px;margin-bottom:12px;font-size:12px;color:#0D9488">
-              <strong>2.3 (calculado):</strong> ${docs23} docs/mes &nbsp;
-              (${d.docs||0} docs / ${d.months||0} meses)
-            </div>
-          </div>`;
-        }).join('')}
-      </div>
-    </div>`;
-  }).join('');
-  el.innerHTML = p24Table + p25Table + p26Table + pairCards;
+  el.innerHTML = p23Table + p24Table + p25Table + p26Table;
 }
 function calcIndicators() {
   S.selectedPairs.forEach(key => {
