@@ -83,7 +83,7 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 /* ─── SCALE SELECTOR ─────────────────────────────────────────────────── */
 .scale-selector{display:flex;gap:6px;flex-wrap:wrap}
-.scale-btn{min-width:48px;height:36px;border-radius:8px;border:1.5px solid #CBD5E1;background:white;cursor:pointer;font-size:13px;font-weight:700;color:#64748B;transition:all .15s}
+.scale-btn{min-width:34px;height:25px;border-radius:6px;border:1.5px solid #CBD5E1;background:white;cursor:pointer;font-size:12px;font-weight:700;color:#64748B;transition:all .15s}
 .scale-btn:hover{border-color:#1D4ED8;color:#1D4ED8;background:#EFF6FF}
 .scale-btn.selected{background:#1D4ED8;color:white;border-color:#1D4ED8}
 .scale-btn.selected-good{background:#16A34A;color:white;border-color:#16A34A}
@@ -615,8 +615,8 @@ function renderMatrix12() {
     S.ecd.forEach(e => {
       const key = b.id + '_' + e.id;
       const cur = (S.scores12[b.id] || {})[e.id] || 0;
-      html += `<div style="margin-bottom:16px;padding:14px;background:#F8FAFF;border-radius:10px;border:1px solid #E2E8F0">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      html += `<div style="margin-bottom:11px;padding:10px;background:#F8FAFF;border-radius:10px;border:1px solid #E2E8F0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
           <span class="tag tag-bim">${b.name}</span>
           <span style="color:#94A3B8">×</span>
           <span class="tag tag-ecd">${e.name}</span>
@@ -625,7 +625,7 @@ function renderMatrix12() {
         <div class="scale-selector">
           ${SCALE12.map(s => `<button class="scale-btn${cur===s.v?' selected':''}" title="${s.label}" onclick="setScore12('${b.id}','${e.id}',${s.v})">${s.v}</button>`).join('')}
         </div>
-        <div style="font-size:11px;color:#64748B;margin-top:6px">${cur ? SCALE12.find(x=>x.v===cur).label : 'Selecione uma pontuação'}</div>
+        <div style="font-size:11px;color:#64748B;margin-top:4px">${cur ? SCALE12.find(x=>x.v===cur).label : 'Selecione uma pontuação'}</div>
       </div>`;
     });
   });
@@ -665,8 +665,8 @@ function renderMatrix13() {
     S.ecd.forEach(e => {
       const k = b.id + '_' + e.id;
       const total = getTotal13(b.id, e.id);
-      html += `<div style="margin-bottom:16px;padding:14px;background:#F8FAFF;border-radius:10px;border:1px solid #E2E8F0">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      html += `<div style="margin-bottom:11px;padding:10px;background:#F8FAFF;border-radius:10px;border:1px solid #E2E8F0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
           <span class="tag tag-bim">${b.name}</span>
           <span style="color:#94A3B8">×</span>
           <span class="tag tag-ecd">${e.name}</span>
@@ -674,7 +674,7 @@ function renderMatrix13() {
         </div>`;
       TEAMS.forEach(team => {
         const cur = (S.scores13[k] || {})[team] || 0;
-        html += `<div style="margin-bottom:8px"><div style="font-size:12px;font-weight:600;color:#374151;margin-bottom:4px">${team}</div>
+        html += `<div style="margin-bottom:6px"><div style="font-size:12px;font-weight:600;color:#374151;margin-bottom:3px">${team}</div>
           <div class="scale-selector">
             ${SCALE13.map(s => `<button class="scale-btn${cur===s.v?' selected':''}" title="${s.label}" onclick="setScore13('${b.id}','${e.id}','${team}',${s.v})">${s.v}</button>`).join('')}
           </div></div>`;
