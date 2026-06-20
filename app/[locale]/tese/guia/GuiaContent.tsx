@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 function SectionLabel({ label }: { label: string }) {
   return (
@@ -214,15 +214,18 @@ export function GuiaContent() {
           {/* COMO COMEÃ‡AR */}
           <section className="bg-card border border-border rounded-xl p-7">
             <SectionLabel label={t('sec_howto')} />
-            <p className="text-sm leading-relaxed text-foreground">
-              {t('howto_text')}{' '}
-              <a
+            <div className="mt-4 p-6 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <p className="text-base font-medium text-blue-900 dark:text-blue-100">
+                {t('howto_text')}...
+              </p>
+              <Link
                 href="/ferramenta-ecd-bim/"
-                className="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:shadow-blue-500/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 active:scale-95"
               >
                 {t('howto_link_label')}
-              </a>.
-            </p>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </section>
 
           {/* SUPORTE */}
@@ -409,15 +412,18 @@ export function GuiaContent() {
           {/* COMO COMEÇAR */}
           <section className="bg-card border border-border rounded-xl p-7">
             <SectionLabel label={t('sec_howto')} />
-            <p className="text-sm leading-relaxed text-foreground">
-              {t('howto_text')}{' '}
-              <a
+            <div className="mt-4 p-6 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <p className="text-base font-medium text-blue-900 dark:text-blue-100">
+                {t('howto_text')}...
+              </p>
+              <Link
                 href="/ferramenta-ecd-bim/"
-                className="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:shadow-blue-500/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 active:scale-95"
               >
                 {t('howto_link_label')}
-              </a>.
-            </p>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </section>
 
           {/* SUPORTE */}
