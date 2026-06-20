@@ -188,6 +188,19 @@
       }
     ]
   },
+  "Tese": {
+    "title": "Ferramenta de Comparação ECD / BIM",
+    "subtitle": "Apêndice A · Tese de Doutorado · FAUUSP · 2026",
+    "description": "Instrumento metodológico para avaliar e comparar projetos de Habitação de Interesse Social (HIS) contratados por Entrega Centrada em Desenhos (ECD) ou BIM. Operacionalizável por agentes públicos e privados sem necessidade de especialização em BIM.",
+    "open_button": "Abrir ferramenta",
+    "open_hint": "Otimizada para desktop — abre em nova aba.",
+    "part1_label": "Parte 1",
+    "part1_title": "Seleção dos Objetos",
+    "part1_desc": "Identifica os pares de projetos ECD e BIM mais semelhantes entre si para garantir a validade da comparação de desempenho.",
+    "part2_label": "Parte 2",
+    "part2_title": "Comparação de Indicadores",
+    "part2_desc": "Avalia e compara indicadores de desempenho de entrega entre os pares selecionados na Parte 1."
+  },
   "Publications": {
     "title": "Publicações Acadêmicas",
     "stats_pub": "33 publicações",

@@ -188,6 +188,19 @@
       }
     ]
   },
+  "Tese": {
+    "title": "ECD / BIM Comparison Tool",
+    "subtitle": "Appendix A · Doctoral Thesis · FAUUSP · 2026",
+    "description": "Methodological instrument to evaluate and compare Social Housing (HIS) projects procured by Drawing-Centric Delivery (ECD) or BIM. Operable by public and private agents without BIM specialization.",
+    "open_button": "Open tool",
+    "open_hint": "Optimized for desktop — opens in a new tab.",
+    "part1_label": "Part 1",
+    "part1_title": "Object Selection",
+    "part1_desc": "Identifies the most similar ECD and BIM project pairs to ensure the validity of the performance comparison.",
+    "part2_label": "Part 2",
+    "part2_title": "Indicator Comparison",
+    "part2_desc": "Evaluates and compares delivery performance indicators between the pairs selected in Part 1."
+  },
   "Publications": {
     "title": "Academic Publications",
     "stats_pub": "33 publications",
