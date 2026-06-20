@@ -189,9 +189,10 @@
     ]
   },
   "Tese": {
-    "badge": "Doctoral Thesis · FAU USP · 2026",
-    "hero_title": "Proposal of a Tool for Comparing ECD and BIM Project Delivery Performance in Social Housing",
-    "hero_desc": "Methodological instrument to evaluate and compare Social Housing (HIS) projects procured by Drawing-Centric Delivery (ECD) or BIM in public procurements in Brazil.",
+    "section_label": "Doctoral Thesis",
+    "heading": "Proposal of a Tool for Comparing ECD and BIM Project Delivery Performance in Social Housing",
+    "desc": "Methodological instrument to evaluate and compare Social Housing (HIS) projects procured by Drawing-Centric Delivery (ECD) or BIM in public procurements in Brazil.",
+    "coming_soon": "Coming soon",
     "banca_title": "Examining Board Presentation",
     "banca_desc": "Slides presented at the public doctoral defense at the Faculty of Architecture and Urbanism of USP.",
     "banca_btn": "Open presentation",

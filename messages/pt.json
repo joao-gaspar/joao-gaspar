@@ -189,9 +189,10 @@
     ]
   },
   "Tese": {
-    "badge": "Tese de Doutorado · FAU USP · 2026",
-    "hero_title": "Proposição de Ferramenta para Comparação do Desempenho de Entrega de Projetos ECD e BIM em HIS",
-    "hero_desc": "Instrumento metodológico para avaliar e comparar projetos de Habitação de Interesse Social contratados por Entrega Centrada em Desenhos (ECD) ou BIM em contratações públicas no Brasil.",
+    "section_label": "Tese de Doutorado",
+    "heading": "Proposição de Ferramenta para Comparação do Desempenho de Entrega de Projetos ECD e BIM em HIS",
+    "desc": "Instrumento metodológico para avaliar e comparar projetos de Habitação de Interesse Social contratados por Entrega Centrada em Desenhos (ECD) ou BIM em contratações públicas no Brasil.",
+    "coming_soon": "Em breve",
     "banca_title": "Apresentação para Banca",
     "banca_desc": "Slides da defesa pública apresentados à banca examinadora da Faculdade de Arquitetura e Urbanismo da USP.",
     "banca_btn": "Abrir apresentação",
