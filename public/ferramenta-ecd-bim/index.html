@@ -948,18 +948,6 @@ function renderSynthesis() {
       </tr>`;
     }).join('');
 
-    // Count wins
-    const bimWins = INDICATORS.filter(ind => {
-      const bv = bim[ind.key]||0, ev = ecd[ind.key]||0;
-      return ind.higherIsBetter ? bv > ev : bv < ev;
-    }).length;
-
-    const verdict = bimWins >= 4
-      ? { txt: 'BIM apresentou melhor desempenho global', color: '#15803D', bg: '#DCFCE7' }
-      : bimWins <= 2
-      ? { txt: 'ECD apresentou melhor desempenho global', color: '#B45309', bg: '#FEF3C7' }
-      : { txt: 'Desempenho similar entre BIM e ECD', color: '#475569', bg: '#F1F5F9' };
-
     // Reference box — dynamic values for this pair
     const refHtml = INDICATORS.map(ind => {
       const bv = bim[ind.key] || 0;
@@ -982,9 +970,6 @@ function renderSynthesis() {
         <span class="tag tag-bim" style="font-size:13px;padding:4px 14px">${ex.bimName}</span>
         <span style="color:#94A3B8">vs</span>
         <span class="tag tag-ecd" style="font-size:13px;padding:4px 14px">${ex.ecdName}</span>
-        <div style="margin-left:auto;background:${verdict.bg};color:${verdict.color};padding:8px 16px;border-radius:10px;font-size:13px;font-weight:700">
-          ${verdict.txt} (${bimWins}/${INDICATORS.length} indicadores)
-        </div>
       </div>
       <div class="tbl-wrap">
         <table class="comp-table">
