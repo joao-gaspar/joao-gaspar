@@ -921,15 +921,14 @@ function renderSynthesis() {
     const ex = S.eixos[key] || {};
     const ecd = ex.ecd || {}; const bim = ex.bim || {};
 
+    const fmt = v => v >= 100 ? Math.round(v).toLocaleString('pt-BR') : v.toFixed(2);
+
     // Score cards
     const scoreHtml = INDICATORS.map(ind => {
       const bv = bim[ind.key] || 0; const ev = ecd[ind.key] || 0;
-      const bimBetter = ind.higherIsBetter ? bv > ev : bv < ev;
-      const pct = ev > 0 ? Math.abs(bv - ev) / ev * 100 : 0;
       const maxV = Math.max(bv, ev, 0.001);
       const bBarPct = Math.round(bv / maxV * 100);
       const eBarPct = Math.round(ev / maxV * 100);
-      const fmt = v => v >= 100 ? Math.round(v).toLocaleString('pt-BR') : v.toFixed(2);
       return `<tr class="comp-row">
         <td style="font-weight:600;max-width:240px">${ind.label}</td>
         <td class="bar-cell">
@@ -961,6 +960,22 @@ function renderSynthesis() {
       ? { txt: 'ECD apresentou melhor desempenho global', color: '#B45309', bg: '#FEF3C7' }
       : { txt: 'Desempenho similar entre BIM e ECD', color: '#475569', bg: '#F1F5F9' };
 
+    // Reference box — dynamic values for this pair
+    const refHtml = INDICATORS.map(ind => {
+      const bv = bim[ind.key] || 0;
+      const ev = ecd[ind.key] || 0;
+      const shortLabel = ind.label.replace(/^\d+\.\d+ — /, '');
+      return `<div style="background:#1E293B;border-radius:10px;padding:14px">
+        <div style="font-size:10px;color:#64748B;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px">${shortLabel}</div>
+        <div style="font-size:10px;color:#475569;margin-bottom:10px">${ind.unit}</div>
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <span style="font-size:20px;font-weight:800;color:#3B82F6">${fmt(bv)}</span>
+          <span style="font-size:11px;color:#3B82F6">BIM</span>
+        </div>
+        <div style="font-size:13px;color:#94A3B8;margin-top:4px">${fmt(ev)} <span style="font-size:11px;color:#D97706">ECD</span></div>
+      </div>`;
+    }).join('');
+
     return `<div class="card" style="margin-bottom:24px">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap">
         <h3 style="margin:0">Par analisado:</h3>
@@ -979,6 +994,12 @@ function renderSynthesis() {
           </tr></thead>
           <tbody>${scoreHtml}</tbody>
         </table>
+      </div>
+      <div style="background:#0F172A;border-radius:12px;padding:20px;margin-top:16px">
+        <h3 style="color:#60A5FA;margin:0 0 14px;font-size:14px">Referência — ${ex.bimName} × ${ex.ecdName}</h3>
+        <div class="metric-grid" style="grid-template-columns:repeat(3,1fr)">
+          ${refHtml}
+        </div>
       </div>
     </div>`;
   }).join('');
