@@ -244,10 +244,10 @@ export function GuiaContent() {
                   <div className="text-xs text-muted-foreground leading-relaxed">{supp.desc}</div>
                 </div>
               ))}
-            Apêndice A — Ferramenta para Comparação do Desempenho de Entrega de Projetos ECD e BIM em HIS
-          </p>
-        </div>
+            </div>
+          </section>
 
+        </div>
         {/* ——— Cover document block —————————————————————————————————— */}
         <div className="rounded-xl overflow-hidden border border-blue-200 dark:border-blue-900 shadow-lg mb-8">
           {/* Cover body */}
