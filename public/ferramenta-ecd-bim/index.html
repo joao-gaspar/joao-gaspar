@@ -1170,25 +1170,25 @@ function refreshP24Results() {
 }
 
 function renderP24Table(projects) {
-  const B = 'border:1px solid #111827';
-  const TH = `${B};background:#F3F4F6;padding:4px 6px;font-size:11px;font-weight:700;text-align:left`;
-  const TD = `${B};padding:4px 6px;font-size:12px;text-align:left`;
-  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:left;font-size:12px;font-weight:600;color:#111827;padding:1px';
+  const B = 'border:1px solid #D1D5DB';
+  const TH = `${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:center;white-space:nowrap`;
+  const TD = `${B};padding:4px 8px;font-size:12px;text-align:center`;
+  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0F766E;padding:2px';
 
   return `<div class="card">
     <h3>2.4 Docs entregues vs consolidados</h3>
     <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
       <tr>
         <th style="${B};background:#F9FAFB"></th>
-        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:4px 6px;text-align:left;font-size:12px;font-weight:700">Projetos</th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:6px;text-align:center;font-size:12px;font-weight:700;color:#374151">Projetos</th>
       </tr>
       <tr>
-        <th style="${TH};min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
-        ${projects.map(p => `<th style="${TH};min-width:90px">${p.name}</th>`).join('')}
+        <th style="${TH};text-align:left;min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
+        ${projects.map(p => `<th style="${TH};min-width:105px">${p.name}</th>`).join('')}
       </tr>
     </thead><tbody>
       <tr>
-        <td style="${TD};background:#D9D9D9">Se&ccedil;&atilde;o 2.1 Total de documentos entregues</td>
+        <td style="${TD};text-align:left;background:#D9D9D9">Se&ccedil;&atilde;o 2.1 Total de documentos entregues</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           syncDocsFromTypes(d);
@@ -1197,7 +1197,7 @@ function renderP24Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};background:#D9D9D9">Quantidade de documentos que consolidam a entrega de cada eixo</td>
+        <td style="${TD};text-align:left;background:#D9D9D9">Quantidade de documentos que consolidam a entrega de cada eixo</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           return `<td style="${TD};background:${p.type === 'bim' ? '#A9D08E' : '#F8696B'}"><input type="number" min="0" value="${d.docsCons || ''}" style="${IN}"
@@ -1205,7 +1205,7 @@ function renderP24Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};background:#FFFF00;font-weight:700">Quantidade de documentos entregues em rela&ccedil;&atilde;o &agrave; quantidade de documentos que consolidam a entrega</td>
+        <td style="${TD};text-align:left;background:#FFFF00;font-weight:700">Quantidade de documentos entregues em rela&ccedil;&atilde;o &agrave; quantidade de documentos que consolidam a entrega</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           const result = d.docsCons ? d.docs / d.docsCons : 0;
@@ -1226,25 +1226,25 @@ function refreshP25Results() {
 }
 
 function renderP25Table(projects) {
-  const B = 'border:1px solid #111827';
-  const TH = `${B};background:#F3F4F6;padding:4px 6px;font-size:11px;font-weight:700;text-align:left`;
-  const TD = `${B};padding:4px 6px;font-size:12px;text-align:left`;
-  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:left;font-size:12px;font-weight:600;color:#111827;padding:1px';
+  const B = 'border:1px solid #D1D5DB';
+  const TH = `${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:center;white-space:nowrap`;
+  const TD = `${B};padding:4px 8px;font-size:12px;text-align:center`;
+  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0F766E;padding:2px';
 
   return `<div class="card">
     <h3>2.5 Versoes por pacote de entrega</h3>
     <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
       <tr>
         <th style="${B};background:#F9FAFB"></th>
-        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:4px 6px;text-align:left;font-size:12px;font-weight:700">Projetos</th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:6px;text-align:center;font-size:12px;font-weight:700;color:#374151">Projetos</th>
       </tr>
       <tr>
-        <th style="${TH};min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
-        ${projects.map(p => `<th style="${TH};min-width:90px">${p.name}</th>`).join('')}
+        <th style="${TH};text-align:left;min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
+        ${projects.map(p => `<th style="${TH};min-width:105px">${p.name}</th>`).join('')}
       </tr>
     </thead><tbody>
       <tr>
-        <td style="${TD}">Quantidade total de vers&otilde;es de documentos enviados</td>
+        <td style="${TD};text-align:left">Quantidade total de vers&otilde;es de documentos enviados</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           return `<td style="${TD}"><input type="number" min="0" step="0.1" value="${d.totalVersions || ''}" style="${IN}"
@@ -1252,7 +1252,7 @@ function renderP25Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD}">Quantidade de pacotes de entrega de projeto</td>
+        <td style="${TD};text-align:left">Quantidade de pacotes de entrega de projeto</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           return `<td style="${TD}"><input type="number" min="0" step="0.1" value="${d.packages || ''}" style="${IN}"
@@ -1260,7 +1260,7 @@ function renderP25Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};background:#FFFF00;font-weight:700">M&eacute;dia de vers&otilde;es de documentos enviados para cada pacote de entrega</td>
+        <td style="${TD};text-align:left;background:#FFFF00;font-weight:700">M&eacute;dia de vers&otilde;es de documentos enviados para cada pacote de entrega</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           const result = d.packages ? d.totalVersions / d.packages : 0;
@@ -1281,25 +1281,25 @@ function refreshP26Results() {
 }
 
 function renderP26Table(projects) {
-  const B = 'border:1px solid #111827';
-  const TH = `${B};background:#F3F4F6;padding:4px 6px;font-size:11px;font-weight:700;text-align:left`;
-  const TD = `${B};padding:4px 6px;font-size:12px;text-align:left`;
-  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:left;font-size:12px;font-weight:600;color:#111827;padding:1px';
+  const B = 'border:1px solid #D1D5DB';
+  const TH = `${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:center;white-space:nowrap`;
+  const TD = `${B};padding:4px 8px;font-size:12px;text-align:center`;
+  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0F766E;padding:2px';
 
   return `<div class="card">
     <h3>2.6 Revisoes por documento aprovado</h3>
     <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
       <tr>
         <th style="${B};background:#F9FAFB"></th>
-        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:4px 6px;text-align:left;font-size:12px;font-weight:700">Projetos</th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:6px;text-align:center;font-size:12px;font-weight:700;color:#374151">Projetos</th>
       </tr>
       <tr>
-        <th style="${TH};min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
-        ${projects.map(p => `<th style="${TH};min-width:90px">${p.name}</th>`).join('')}
+        <th style="${TH};text-align:left;min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
+        ${projects.map(p => `<th style="${TH};min-width:105px">${p.name}</th>`).join('')}
       </tr>
     </thead><tbody>
       <tr>
-        <td style="${TD}">Quantidade de documentos entregues e devolvidos para revis&atilde;o</td>
+        <td style="${TD};text-align:left">Quantidade de documentos entregues e devolvidos para revis&atilde;o</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           return `<td style="${TD}"><input type="number" min="0" value="${d.docsReturned || ''}" style="${IN}"
@@ -1307,7 +1307,7 @@ function renderP26Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD}">Quantidade de documentos aprovados</td>
+        <td style="${TD};text-align:left">Quantidade de documentos aprovados</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           return `<td style="${TD}"><input type="number" min="0" value="${d.docsApproved || ''}" style="${IN}"
@@ -1315,7 +1315,7 @@ function renderP26Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};background:#FFFF00;font-weight:700">M&eacute;dia de documentos revisados para cada documento aprovado</td>
+        <td style="${TD};text-align:left;background:#FFFF00;font-weight:700">M&eacute;dia de documentos revisados para cada documento aprovado</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           const result = d.docsApproved ? d.docsReturned / d.docsApproved : 0;
@@ -1336,25 +1336,25 @@ function refreshP23Results() {
 }
 
 function renderP23Table(projects) {
-  const B = 'border:1px solid #111827';
-  const TH = `${B};background:#F3F4F6;padding:4px 6px;font-size:11px;font-weight:700;text-align:left`;
-  const TD = `${B};padding:4px 6px;font-size:12px;text-align:left`;
-  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:left;font-size:12px;font-weight:600;color:#111827;padding:1px';
+  const B = 'border:1px solid #D1D5DB';
+  const TH = `${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:center;white-space:nowrap`;
+  const TD = `${B};padding:4px 8px;font-size:12px;text-align:center`;
+  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0F766E;padding:2px';
 
   return `<div class="card">
     <h3>2.3 Quantidade m&eacute;dia de documentos entregues por m&ecirc;s</h3>
     <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
       <tr>
         <th style="${B};background:#F9FAFB"></th>
-        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:4px 6px;text-align:left;font-size:12px;font-weight:700">Projetos</th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:6px;text-align:center;font-size:12px;font-weight:700;color:#374151">Projetos</th>
       </tr>
       <tr>
-        <th style="${TH};min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
-        ${projects.map(p => `<th style="${TH};min-width:90px">${p.name}</th>`).join('')}
+        <th style="${TH};text-align:left;min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
+        ${projects.map(p => `<th style="${TH};min-width:105px">${p.name}</th>`).join('')}
       </tr>
     </thead><tbody>
       <tr>
-        <td style="${TD};background:#D9D9D9">Se&ccedil;&atilde;o 2.1 Total de documentos entregues</td>
+        <td style="${TD};text-align:left;background:#D9D9D9">Se&ccedil;&atilde;o 2.1 Total de documentos entregues</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           syncDocsFromTypes(d);
@@ -1363,7 +1363,7 @@ function renderP23Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};background:#D9D9D9">Se&ccedil;&atilde;o 2.2 Tempo de entrega em meses</td>
+        <td style="${TD};text-align:left;background:#D9D9D9">Se&ccedil;&atilde;o 2.2 Tempo de entrega em meses</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           return `<td style="${TD};background:${p.type === 'bim' ? '#A9D08E' : '#F4A582'}"><input type="number" min="0" value="${d.months || ''}" style="${IN}"
@@ -1371,7 +1371,7 @@ function renderP23Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};background:#FFFF00;font-weight:700">Quantidade m&eacute;dia de documentos entregues por m&ecirc;s</td>
+        <td style="${TD};text-align:left;background:#FFFF00;font-weight:700">Quantidade m&eacute;dia de documentos entregues por m&ecirc;s</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           const result = d.months ? d.docs / d.months : 0;
