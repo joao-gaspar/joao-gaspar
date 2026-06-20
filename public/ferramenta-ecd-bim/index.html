@@ -937,85 +937,367 @@ function togglePair(key, bimName, ecdName) {
 // ─────────────────────────────────────────────────────────────────────────────
 // PARTE 2 — DATA ENTRY
 // ─────────────────────────────────────────────────────────────────────────────
+const DOC_TYPE_ROWS = [
+  'Laudos',
+  'Pareceres',
+  'Relatorios',
+  'Modelos 3D',
+  'Modelos de Revit',
+  'Modelos BIM',
+  'Memoriais quantitativos',
+  'Memorias de calculo',
+  'Memoriais descritivos',
+  'Pranchas com desenhos tecnicos'
+];
+
+const P2_KNOWN_DOC_TYPES = {
+  'ECD 01': {
+    'Laudos':9, 'Pareceres':3, 'Relatorios':4, 'Modelos 3D':1, 'Modelos de Revit':18,
+    'Modelos BIM':3, 'Memoriais quantitativos':28, 'Memorias de calculo':56,
+    'Memoriais descritivos':98, 'Pranchas com desenhos tecnicos':1214
+  },
+  'ECD 02': {
+    'Laudos':14, 'Pareceres':21, 'Relatorios':6, 'Modelos 3D':2, 'Modelos de Revit':9,
+    'Modelos BIM':2, 'Memoriais quantitativos':28, 'Memorias de calculo':76,
+    'Memoriais descritivos':138, 'Pranchas com desenhos tecnicos':984
+  },
+  'BIM 04': {
+    'Laudos':10, 'Pareceres':5, 'Relatorios':242, 'Modelos 3D':5, 'Modelos de Revit':252,
+    'Modelos BIM':380, 'Memoriais quantitativos':0, 'Memorias de calculo':131,
+    'Memoriais descritivos':15, 'Pranchas com desenhos tecnicos':3864
+  },
+  'BIM 05': {
+    'Laudos':6, 'Pareceres':2, 'Relatorios':192, 'Modelos 3D':4, 'Modelos de Revit':188,
+    'Modelos BIM':269, 'Memoriais quantitativos':0, 'Memorias de calculo':170,
+    'Memoriais descritivos':20, 'Pranchas com desenhos tecnicos':3843
+  }
+};
+
+const P2_KNOWN_MONTHS = { 'ECD 01':26, 'ECD 02':29, 'BIM 04':18, 'BIM 05':21 };
+
+function getP2SelectedProjects() {
+  const ecdIds = new Set();
+  const bimIds = new Set();
+  S.selectedPairs.forEach(key => {
+    const ex = S.eixos[key] || {};
+    const bim = S.bim.find(p => ex.bimName && ex.bimName.indexOf(p.name) === 0);
+    const ecd = S.ecd.find(p => ex.ecdName && ex.ecdName.indexOf(p.name) === 0);
+    if (ecd) ecdIds.add(ecd.id);
+    if (bim) bimIds.add(bim.id);
+  });
+  return S.ecd.filter(p => ecdIds.has(p.id)).map(p => ({ type:'ecd', id:p.id, name:p.name }))
+    .concat(S.bim.filter(p => bimIds.has(p.id)).map(p => ({ type:'bim', id:p.id, name:p.name })));
+}
+
+function getProjectEixo(project) {
+  for (const key of S.selectedPairs) {
+    const ex = S.eixos[key] || {};
+    if (project.type === 'ecd' && ex.ecdName && ex.ecdName.indexOf(project.name) === 0) {
+      if (!ex.ecd) ex.ecd = {};
+      return ex.ecd;
+    }
+    if (project.type === 'bim' && ex.bimName && ex.bimName.indexOf(project.name) === 0) {
+      if (!ex.bim) ex.bim = {};
+      return ex.bim;
+    }
+  }
+  return {};
+}
+
+function sumDocTypes(d) {
+  return DOC_TYPE_ROWS.reduce((total, row) => total + (parseFloat((d.docTypes || {})[row]) || 0), 0);
+}
+
+function syncDocsFromTypes(d) {
+  const total = sumDocTypes(d);
+  if (total > 0 || d.docTypes) d.docs = total;
+}
+
+function applyKnownP2Data(projects) {
+  let changed = false;
+  projects.forEach(p => {
+    const d = getProjectEixo(p);
+    const knownDocs = P2_KNOWN_DOC_TYPES[p.name];
+    if (knownDocs && (!d.docTypes || Array.isArray(d.docTypes) || sumDocTypes(d) === 0)) {
+      d.docTypes = { ...knownDocs };
+      d.docs = sumDocTypes(d);
+      changed = true;
+    }
+    if (P2_KNOWN_MONTHS[p.name] && !d.months) {
+      d.months = P2_KNOWN_MONTHS[p.name];
+      changed = true;
+    }
+  });
+  if (changed) save();
+}
+
+function setProjectEixoVal(projectType, projectName, field, val) {
+  S.selectedPairs.forEach(key => {
+    const ex = S.eixos[key] || {};
+    const matches = projectType === 'ecd'
+      ? ex.ecdName && ex.ecdName.indexOf(projectName) === 0
+      : ex.bimName && ex.bimName.indexOf(projectName) === 0;
+    if (matches) setEixoVal(key, projectType, field, val, false);
+  });
+  save();
+}
+
+function setDocTypeVal(projectType, projectName, docType, val) {
+  S.selectedPairs.forEach(key => {
+    const ex = S.eixos[key] || {};
+    const matches = projectType === 'ecd'
+      ? ex.ecdName && ex.ecdName.indexOf(projectName) === 0
+      : ex.bimName && ex.bimName.indexOf(projectName) === 0;
+    if (!matches) return;
+    if (!S.eixos[key][projectType]) S.eixos[key][projectType] = {};
+    const d = S.eixos[key][projectType];
+    if (!d.docTypes || Array.isArray(d.docTypes)) d.docTypes = {};
+    d.docTypes[docType] = parseFloat(val) || 0;
+    d.docs = sumDocTypes(d);
+  });
+  save();
+  refreshP2DocTotals();
+}
+
+function refreshP2DocTotals() {
+  getP2SelectedProjects().forEach(p => {
+    const d = getProjectEixo(p);
+    syncDocsFromTypes(d);
+    const cell = document.getElementById(`p2_total_${p.type}_${p.id}`);
+    if (cell) cell.textContent = d.docs || 0;
+  });
+}
+
 function renderP2Data() {
   const el = document.getElementById('p2-eixos-form');
   if (!S.selectedPairs.length) {
-    el.innerHTML = '<div class="warn-box">Nenhum par selecionado. Volte à Seção 1.5 e selecione os pares para análise.</div>';
+    el.innerHTML = '<div class="warn-box">Nenhum par selecionado. Volte &agrave; Se&ccedil;&atilde;o 1.5 e selecione os pares para an&aacute;lise.</div>';
     return;
   }
-  el.innerHTML = S.selectedPairs.map(key => {
-    const ex = S.eixos[key] || {};
-    const [bimId, ecdId] = key.split('_').reduce((acc, _, i, arr) => i === 0 ? [arr[0], arr[1]] : acc, []);
-    return `<div class="card">
-      <h3 style="margin-bottom:4px">Par: <span class="tag tag-bim">${ex.bimName || '?'}</span> × <span class="tag tag-ecd">${ex.ecdName || '?'}</span></h3>
-      <p class="hint">Preencha os dados de entrega para cada eixo de comparação deste par.</p>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-        ${['ecd','bim'].map(type => `
-        <div>
-          <h4 style="color:${type==='bim'?'#0D9488':'#92400E'};margin-bottom:12px;font-size:13px;text-transform:uppercase;letter-spacing:.5px">
-            ${type==='bim'?'🏗 Projeto BIM':'📋 Projeto ECD'}: ${type==='bim'?ex.bimName:ex.ecdName}
-          </h4>
-          <div class="form-row cols-2">
-            <div><label>2.1 — Total de documentos entregues</label>
-              <input type="number" placeholder="Ex: 1284" value="${(ex[type]||{}).docs||''}"
-                oninput="setEixoVal('${key}','${type}','docs',this.value)"></div>
-            <div><label>2.2 — Meses de entrega</label>
-              <input type="number" placeholder="Ex: 26" value="${(ex[type]||{}).months||''}"
-                oninput="setEixoVal('${key}','${type}','months',this.value)"></div>
-          </div>
-          <div class="form-row">
-            <div><label>Documentos que consolidam a entrega (2.4)</label>
-              <input type="number" placeholder="Ex: 243" value="${(ex[type]||{}).docsCons||''}"
-                oninput="setEixoVal('${key}','${type}','docsCons',this.value)"></div>
-          </div>
-        </div>`).join('')}
-      </div>
-    </div>`;
-  }).join('');
+  const projects = getP2SelectedProjects();
+  if (!projects.length) {
+    el.innerHTML = '<div class="warn-box">Nenhum projeto encontrado nos pares selecionados.</div>';
+    return;
+  }
+  applyKnownP2Data(projects);
+
+  const B = 'border:1px solid #D1D5DB';
+  const TH = `${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:center;white-space:nowrap`;
+  const TD = `${B};padding:4px 8px;font-size:12px;text-align:center`;
+  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0F766E;padding:2px';
+
+  let docsTable = `<div class="card">
+    <h3>2.1 Quantidade e tipos de documentos</h3>
+    <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
+      <tr>
+        <th style="${B};background:#F9FAFB"></th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:6px;text-align:center;font-size:12px;font-weight:700;color:#374151">Projetos</th>
+      </tr>
+      <tr>
+        <th style="${TH};text-align:left;min-width:230px">Tipo de documento</th>
+        ${projects.map(p => `<th style="${TH};min-width:105px">${p.name}</th>`).join('')}
+      </tr>
+    </thead><tbody>`;
+
+  docsTable += `<tr>
+    <td style="${B};background:#F9FAFB;padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Total de documentos entregues</td>
+    ${projects.map(p => {
+      const d = getProjectEixo(p);
+      syncDocsFromTypes(d);
+      return `<td id="p2_total_${p.type}_${p.id}" style="${B};background:#CCFBF1;color:#0F766E;padding:6px 8px;font-size:12px;font-weight:800;text-align:center">${d.docs || 0}</td>`;
+    }).join('')}
+  </tr>`;
+
+  DOC_TYPE_ROWS.forEach(row => {
+    docsTable += `<tr>
+      <td style="${B};padding:5px 10px;font-size:12px;text-align:left">${row}</td>
+      ${projects.map(p => {
+        const d = getProjectEixo(p);
+        const val = (d.docTypes || {})[row] || '';
+        return `<td style="${TD}"><input type="number" min="0" value="${val}" style="${IN}"
+          oninput="setDocTypeVal('${p.type}','${p.name}','${row}',this.value)"></td>`;
+      }).join('')}
+    </tr>`;
+  });
+  docsTable += '</tbody></table></div></div>';
+
+  let monthsTable = `<div class="card">
+    <h3>2.2 Tempo de entrega</h3>
+    <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
+      <tr>
+        <th style="${B};background:#F9FAFB"></th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:6px;text-align:center;font-size:12px;font-weight:700;color:#374151">Projetos</th>
+      </tr>
+      <tr>
+        <th style="${TH};text-align:left;min-width:230px">Tempo de entrega</th>
+        ${projects.map(p => `<th style="${TH};min-width:105px">${p.name}</th>`).join('')}
+      </tr>
+    </thead><tbody>
+      <tr>
+        <td style="${B};padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Total de meses necess&aacute;rios para a entrega</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          return `<td style="${TD}"><input type="number" min="0" value="${d.months || ''}" style="${IN}"
+            oninput="setProjectEixoVal('${p.type}','${p.name}','months',this.value)"></td>`;
+        }).join('')}
+      </tr>
+    </tbody></table></div>
+  </div>`;
+
+  el.innerHTML = docsTable + monthsTable;
 }
 
-function setEixoVal(key, type, field, val) {
+function setEixoVal(key, type, field, val, shouldSave = true) {
   if (!S.eixos[key]) S.eixos[key] = {};
   if (!S.eixos[key][type]) S.eixos[key][type] = {};
   S.eixos[key][type][field] = parseFloat(val) || 0;
+  if (shouldSave) save();
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// PARTE 2 — INDICATORS
-// ─────────────────────────────────────────────────────────────────────────────
+function formatOneDecimalBR(value) {
+  if (!isFinite(value)) return '';
+  return value.toLocaleString('pt-BR', { minimumFractionDigits:1, maximumFractionDigits:1 });
+}
+
+function refreshP24Results() {
+  getP2SelectedProjects().forEach(p => {
+    const d = getProjectEixo(p);
+    const result = d.docsCons ? d.docs / d.docsCons : 0;
+    const cell = document.getElementById(`p24_result_${p.type}_${p.id}`);
+    if (cell) cell.textContent = result ? formatOneDecimalBR(result) : '';
+  });
+}
+
+function renderP24Table(projects) {
+  const B = 'border:1px solid #111827';
+  const TH = `${B};background:#F3F4F6;padding:4px 6px;font-size:11px;font-weight:700;text-align:left`;
+  const TD = `${B};padding:4px 6px;font-size:12px;text-align:left`;
+  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:left;font-size:12px;font-weight:600;color:#111827;padding:1px';
+
+  return `<div class="card">
+    <h3>2.4 Docs entregues vs consolidados</h3>
+    <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
+      <tr>
+        <th style="${B};background:#F9FAFB"></th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:4px 6px;text-align:left;font-size:12px;font-weight:700">Projetos</th>
+      </tr>
+      <tr>
+        <th style="${TH};min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
+        ${projects.map(p => `<th style="${TH};min-width:90px">${p.name}</th>`).join('')}
+      </tr>
+    </thead><tbody>
+      <tr>
+        <td style="${TD};background:#D9D9D9">Se&ccedil;&atilde;o 2.1 Total de documentos entregues</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          syncDocsFromTypes(d);
+          return `<td style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F8696B'};font-weight:700">${d.docs || 0}</td>`;
+        }).join('')}
+      </tr>
+      <tr>
+        <td style="${TD};background:#D9D9D9">Quantidade de documentos que consolidam a entrega de cada eixo</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          return `<td style="${TD};background:${p.type === 'bim' ? '#A9D08E' : '#F8696B'}"><input type="number" min="0" value="${d.docsCons || ''}" style="${IN}"
+            oninput="setProjectEixoVal('${p.type}','${p.name}','docsCons',this.value);refreshP24Results()"></td>`;
+        }).join('')}
+      </tr>
+      <tr>
+        <td style="${TD};background:#FFFF00;font-weight:700">Quantidade de documentos entregues em rela&ccedil;&atilde;o &agrave; quantidade de documentos que consolidam a entrega</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          const result = d.docsCons ? d.docs / d.docsCons : 0;
+          return `<td id="p24_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F4A582'};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
+        }).join('')}
+      </tr>
+    </tbody></table></div>
+  </div>`;
+}
+
+function refreshP25Results() {
+  getP2SelectedProjects().forEach(p => {
+    const d = getProjectEixo(p);
+    const result = d.packages ? d.totalVersions / d.packages : 0;
+    const cell = document.getElementById(`p25_result_${p.type}_${p.id}`);
+    if (cell) cell.textContent = result ? formatOneDecimalBR(result) : '';
+  });
+}
+
+function renderP25Table(projects) {
+  const B = 'border:1px solid #111827';
+  const TH = `${B};background:#F3F4F6;padding:4px 6px;font-size:11px;font-weight:700;text-align:left`;
+  const TD = `${B};padding:4px 6px;font-size:12px;text-align:left`;
+  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:left;font-size:12px;font-weight:600;color:#111827;padding:1px';
+
+  return `<div class="card">
+    <h3>2.5 Versoes por pacote de entrega</h3>
+    <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
+      <tr>
+        <th style="${B};background:#F9FAFB"></th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:4px 6px;text-align:left;font-size:12px;font-weight:700">Projetos</th>
+      </tr>
+      <tr>
+        <th style="${TH};min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
+        ${projects.map(p => `<th style="${TH};min-width:90px">${p.name}</th>`).join('')}
+      </tr>
+    </thead><tbody>
+      <tr>
+        <td style="${TD}">Quantidade total de vers&otilde;es de documentos enviados</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          return `<td style="${TD}"><input type="number" min="0" step="0.1" value="${d.totalVersions || ''}" style="${IN}"
+            oninput="setProjectEixoVal('${p.type}','${p.name}','totalVersions',this.value);refreshP25Results()"></td>`;
+        }).join('')}
+      </tr>
+      <tr>
+        <td style="${TD}">Quantidade de pacotes de entrega de projeto</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          return `<td style="${TD}"><input type="number" min="0" step="0.1" value="${d.packages || ''}" style="${IN}"
+            oninput="setProjectEixoVal('${p.type}','${p.name}','packages',this.value);refreshP25Results()"></td>`;
+        }).join('')}
+      </tr>
+      <tr>
+        <td style="${TD};background:#FFFF00;font-weight:700">M&eacute;dia de vers&otilde;es de documentos enviados para cada pacote de entrega</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          const result = d.packages ? d.totalVersions / d.packages : 0;
+          return `<td id="p25_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? (result <= 3 ? '#F8696B' : '#F4C27A') : '#A9D08E'};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
+        }).join('')}
+      </tr>
+    </tbody></table></div>
+  </div>`;
+}
+
 function renderP2Indicators() {
   const el = document.getElementById('p2-indicators-form');
   if (!S.selectedPairs.length) { el.innerHTML = '<div class="warn-box">Nenhum par selecionado.</div>'; return; }
-  el.innerHTML = S.selectedPairs.map(key => {
+  const projects = getP2SelectedProjects();
+  applyKnownP2Data(projects);
+  const p24Table = renderP24Table(projects);
+  const p25Table = renderP25Table(projects);
+  const pairCards = S.selectedPairs.map(key => {
     const ex = S.eixos[key] || {};
     return `<div class="card">
-      <h3 style="margin-bottom:4px">Par: <span class="tag tag-bim">${ex.bimName}</span> × <span class="tag tag-ecd">${ex.ecdName}</span></h3>
+      <h3 style="margin-bottom:4px">Par: <span class="tag tag-bim">${ex.bimName}</span> &times; <span class="tag tag-ecd">${ex.ecdName}</span></h3>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px">
         ${['ecd','bim'].map(type => {
           const d = (ex[type] || {});
-          const docs23 = d.months ? (d.docs / d.months).toFixed(2) : '—';
+          const docs23 = d.months ? (d.docs / d.months).toFixed(2) : '&mdash;';
           return `<div>
             <h4 style="color:${type==='bim'?'#0D9488':'#92400E'};margin-bottom:12px;font-size:13px;text-transform:uppercase;letter-spacing:.5px">
-              ${type==='bim'?'🏗 BIM':'📋 ECD'}: ${type==='bim'?ex.bimName:ex.ecdName}
+              ${type==='bim'?'BIM':'ECD'}: ${type==='bim'?ex.bimName:ex.ecdName}
             </h4>
             <div style="background:#F0FDFA;border-radius:8px;padding:12px;margin-bottom:12px;font-size:12px;color:#0D9488">
-              <strong>2.3 (calculado):</strong> ${docs23} docs/mês &nbsp;
-              (${d.docs||0} docs ÷ ${d.months||0} meses)
+              <strong>2.3 (calculado):</strong> ${docs23} docs/mes &nbsp;
+              (${d.docs||0} docs / ${d.months||0} meses)
             </div>
             <div class="form-row cols-2">
-              <div><label>2.5 — Quantidade total de versões de documentos enviados</label>
-                <input type="number" placeholder="Ex: 14" value="${d.totalVersions||''}"
-                  oninput="setEixoVal('${key}','${type}','totalVersions',this.value)"></div>
-              <div><label>2.5 — Nº de pacotes de entrega</label>
-                <input type="number" placeholder="Ex: 9" value="${d.packages||''}"
-                  oninput="setEixoVal('${key}','${type}','packages',this.value)"></div>
-            </div>
-            <div class="form-row cols-2">
-              <div><label>2.6 — Docs entregues e devolvidos para revisão</label>
+              <div><label>2.6 - Docs entregues e devolvidos para revisao</label>
                 <input type="number" placeholder="Ex: 12" value="${d.docsReturned||''}"
                   oninput="setEixoVal('${key}','${type}','docsReturned',this.value)"></div>
-              <div><label>2.6 — Docs aprovados</label>
+              <div><label>2.6 - Docs aprovados</label>
                 <input type="number" placeholder="Ex: 8" value="${d.docsApproved||''}"
                   oninput="setEixoVal('${key}','${type}','docsApproved',this.value)"></div>
             </div>
@@ -1024,11 +1306,8 @@ function renderP2Indicators() {
       </div>
     </div>`;
   }).join('');
+  el.innerHTML = p24Table + p25Table + pairCards;
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// CALCULATIONS
-// ─────────────────────────────────────────────────────────────────────────────
 function calcIndicators() {
   S.selectedPairs.forEach(key => {
     const ex = S.eixos[key];
@@ -1395,15 +1674,36 @@ function loadHypotheticalExample() {
   S.selectedPairs = [key1, key2];
   S.eixos = {};
 
+  const docsECD01 = {
+    'Laudos':9, 'Pareceres':3, 'Relatorios':4, 'Modelos 3D':1, 'Modelos de Revit':18,
+    'Modelos BIM':3, 'Memoriais quantitativos':28, 'Memorias de calculo':56,
+    'Memoriais descritivos':98, 'Pranchas com desenhos tecnicos':1214
+  };
+  const docsECD02 = {
+    'Laudos':14, 'Pareceres':21, 'Relatorios':6, 'Modelos 3D':2, 'Modelos de Revit':9,
+    'Modelos BIM':2, 'Memoriais quantitativos':28, 'Memorias de calculo':76,
+    'Memoriais descritivos':138, 'Pranchas com desenhos tecnicos':984
+  };
+  const docsBIM04 = {
+    'Laudos':10, 'Pareceres':5, 'Relatorios':242, 'Modelos 3D':5, 'Modelos de Revit':252,
+    'Modelos BIM':380, 'Memoriais quantitativos':0, 'Memorias de calculo':131,
+    'Memoriais descritivos':15, 'Pranchas com desenhos tecnicos':3864
+  };
+  const docsBIM05 = {
+    'Laudos':6, 'Pareceres':2, 'Relatorios':192, 'Modelos 3D':4, 'Modelos de Revit':188,
+    'Modelos BIM':269, 'Memoriais quantitativos':0, 'Memorias de calculo':170,
+    'Memoriais descritivos':20, 'Pranchas com desenhos tecnicos':3843
+  };
+
   S.eixos[key1] = {
     bimName:'BIM 05 (BIM)', ecdName:'ECD 01 (ECD)',
-    ecd:{ docs:1434, months:26, docsCons:223, totalVersions:14, packages:3, docsReturned:1597, docsApproved:243 },
-    bim:{ docs:4694, months:21, docsCons:526, totalVersions:23, packages:6, docsReturned:2103, docsApproved:699 }
+    ecd:{ docs:1434, months:26, docTypes:docsECD01, docsCons:223, totalVersions:14, packages:3, docsReturned:1597, docsApproved:243 },
+    bim:{ docs:4694, months:21, docTypes:docsBIM05, docsCons:526, totalVersions:23, packages:6, docsReturned:2103, docsApproved:699 }
   };
   S.eixos[key2] = {
     bimName:'BIM 04 (BIM)', ecdName:'ECD 02 (ECD)',
-    ecd:{ docs:1280, months:29, docsCons:215, totalVersions:16, packages:3, docsReturned:1421, docsApproved:224 },
-    bim:{ docs:4904, months:18, docsCons:612, totalVersions:20, packages:7, docsReturned:1924, docsApproved:712 }
+    ecd:{ docs:1280, months:29, docTypes:docsECD02, docsCons:215, totalVersions:16, packages:3, docsReturned:1421, docsApproved:224 },
+    bim:{ docs:4904, months:18, docTypes:docsBIM04, docsCons:612, totalVersions:20, packages:7, docsReturned:1924, docsApproved:712 }
   };
 
   save();
