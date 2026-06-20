@@ -917,7 +917,19 @@ function renderSynthesis() {
     { key: 'ind26',     label: '2.6 — Revisões por doc aprovado',      unit: 'revisões/doc', higherIsBetter: false },
   ];
 
-  let html = S.selectedPairs.map(key => {
+  const _btnBase = 'display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid';
+  const actionBar = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;padding:14px 18px;background:white;border:1px solid #E2E8F0;border-radius:12px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+    <span style="font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.6px;margin-right:2px">Exportar</span>
+    <button onclick="exportPDF()" style="${_btnBase} #1E3A8A;background:#1E3A8A;color:white">📄 PDF</button>
+    <div style="width:1px;height:22px;background:#E2E8F0;margin:0 4px"></div>
+    <span style="font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.6px;margin-right:2px">Compartilhar</span>
+    <button onclick="shareLinkedIn()" style="${_btnBase} #0A66C2;background:#0A66C2;color:white">LinkedIn</button>
+    <button onclick="shareFacebook()" style="${_btnBase} #1877F2;background:#1877F2;color:white">Facebook</button>
+    <button onclick="shareInstagram()" style="${_btnBase} #E1306C;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border-color:#E1306C;color:white">📷 Instagram</button>
+    <button onclick="shareEmail()" style="${_btnBase} #475569;background:#F1F5F9;color:#475569">✉ E-mail</button>
+  </div>`;
+
+  let html = actionBar + S.selectedPairs.map(key => {
     const ex = S.eixos[key] || {};
     const ecd = ex.ecd || {}; const bim = ex.bim || {};
 
@@ -991,6 +1003,141 @@ function renderSynthesis() {
 
 
   el.innerHTML = html;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EXPORT PDF
+// ─────────────────────────────────────────────────────────────────────────────
+function exportPDF() {
+  const win = window.open('', '_blank', 'width=960,height=720');
+  if (!win) { alert('Permita popups neste navegador para exportar o PDF.'); return; }
+  win.document.write(buildReportHTML());
+  win.document.close();
+  win.focus();
+}
+
+function buildReportHTML() {
+  const INDICATORS = [
+    { key:'docs',          label:'2.1 — Total de documentos entregues',      unit:'docs' },
+    { key:'months',        label:'2.2 — Tempo de entrega',                    unit:'meses' },
+    { key:'ind23',         label:'2.3 — Documentos entregues por mês',        unit:'docs/mês' },
+    { key:'ind24',         label:'2.4 — Docs entregues / consolidados',       unit:'razão' },
+    { key:'ind25',         label:'2.5 — Versões por pacote de entrega',       unit:'versões/pacote' },
+    { key:'ind26',         label:'2.6 — Revisões por doc aprovado',           unit:'revisões/doc' },
+  ];
+  const INPUT_FIELDS = [
+    { key:'docs',          label:'Total de documentos entregues' },
+    { key:'months',        label:'Meses de entrega' },
+    { key:'docsCons',      label:'Documentos consolidados' },
+    { key:'totalVersions', label:'Total de versões de documentos enviados' },
+    { key:'packages',      label:'Pacotes de entrega' },
+    { key:'docsReturned',  label:'Docs entregues e devolvidos para revisão' },
+    { key:'docsApproved',  label:'Documentos aprovados' },
+  ];
+  const fmt = v => (v != null && !isNaN(v) && v !== '') ? (Number(v) >= 100 ? Math.round(Number(v)).toLocaleString('pt-BR') : Number(v).toFixed(2)) : '—';
+  const now = new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' });
+
+  const pairsHtml = S.selectedPairs.map((key, idx) => {
+    const ex = S.eixos[key] || {};
+    const bim = ex.bim || {}; const ecd = ex.ecd || {};
+    const inputRows = INPUT_FIELDS.map(f => `<tr>
+      <td>${f.label}</td>
+      <td class="num bim">${bim[f.key] != null && bim[f.key] !== '' ? bim[f.key] : '—'}</td>
+      <td class="num ecd">${ecd[f.key] != null && ecd[f.key] !== '' ? ecd[f.key] : '—'}</td>
+    </tr>`).join('');
+    const indicatorRows = INDICATORS.map(ind => `<tr>
+      <td>${ind.label}</td>
+      <td class="num bim">${fmt(bim[ind.key])}</td>
+      <td class="num ecd">${fmt(ecd[ind.key])}</td>
+      <td class="unit">${ind.unit}</td>
+    </tr>`).join('');
+    return `${idx > 0 ? '<div class="pb"></div>' : ''}
+    <h2>Par ${idx+1}: ${ex.bimName || '—'} <span style="color:#94A3B8">×</span> ${ex.ecdName || '—'}</h2>
+    <h3>Dados de entrada</h3>
+    <table><thead><tr><th>Campo</th><th>BIM</th><th>ECD</th></tr></thead><tbody>${inputRows}</tbody></table>
+    <h3>Indicadores calculados</h3>
+    <table><thead><tr><th>Indicador</th><th>BIM</th><th>ECD</th><th>Unidade</th></tr></thead><tbody>${indicatorRows}</tbody></table>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
+<title>Relatório — Ferramenta de Comparação ECD/BIM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',sans-serif;font-size:13px;color:#0F172A;line-height:1.6;padding:48px 52px;max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:'IBM Plex Serif',serif}
+h1{font-size:22px;color:#1E3A8A;margin-bottom:6px}
+h2{font-size:15px;color:#1E3A8A;border-bottom:2px solid #1E3A8A;padding-bottom:6px;margin:28px 0 12px}
+h3{font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.6px;margin:18px 0 8px}
+table{width:100%;border-collapse:collapse;margin-bottom:12px}
+th{background:#1E3A8A;color:white;padding:7px 10px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+td{padding:7px 10px;border-bottom:1px solid #E2E8F0;font-size:12px}
+tr:nth-child(even) td{background:#F8FAFC}
+td.num{text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+td.bim{color:#1D4ED8}
+td.ecd{color:#B45309}
+td.unit{text-align:center;color:#94A3B8;font-size:11px}
+.header{margin-bottom:36px;padding-bottom:24px;border-bottom:3px solid #1E3A8A}
+.subtitle{color:#64748B;font-size:12px;margin-bottom:4px}
+.date{color:#94A3B8;font-size:11px;margin-bottom:16px}
+.links{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px}
+.links a{font-size:11px;color:#1D4ED8;text-decoration:none}
+.footer{margin-top:48px;padding-top:16px;border-top:1px solid #E2E8F0;font-size:10px;color:#94A3B8;line-height:1.8}
+.pb{page-break-before:always;margin-top:36px}
+.print-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:8px 18px;border-radius:8px;border:1.5px solid #1E3A8A;background:#1E3A8A;color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+@media print{.print-btn{display:none}.pb{page-break-before:always}}
+</style></head><body>
+<div class="header">
+  <h1>Ferramenta de Comparação ECD/BIM — HIS</h1>
+  <p class="subtitle">Apêndice A · Tese de Doutorado · FAUUSP · 2026</p>
+  <p class="date">Relatório gerado em ${now}</p>
+  <button class="print-btn" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+  <div class="links">
+    <a href="https://www.joaogaspar.com">🌐 joaogaspar.com</a>
+    <a href="mailto:contato@joaogaspar.com">✉ contato@joaogaspar.com</a>
+    <a href="https://www.linkedin.com/in/joao-motta-gaspar/">💼 linkedin.com/in/joao-motta-gaspar</a>
+    <a href="http://lattes.cnpq.br/9745462238309062">📋 lattes.cnpq.br/9745462238309062</a>
+  </div>
+</div>
+${pairsHtml}
+<div class="footer">
+  <p>João Gaspar · Tese de Doutorado FAUUSP 2026</p>
+  <p>joaogaspar.com · contato@joaogaspar.com · linkedin.com/in/joao-motta-gaspar · lattes.cnpq.br/9745462238309062</p>
+</div>
+</body></html>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SHARE
+// ─────────────────────────────────────────────────────────────────────────────
+function shareLinkedIn() {
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent('https://www.joaogaspar.com/ferramenta-ecd-bim/index.html'), '_blank', 'width=600,height=500');
+}
+function shareFacebook() {
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('https://www.joaogaspar.com/ferramenta-ecd-bim/index.html'), '_blank', 'width=600,height=500');
+}
+function shareInstagram() {
+  var url = 'https://www.joaogaspar.com/ferramenta-ecd-bim/index.html';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(function() { alert('Link copiado! Cole nos Stories ou na bio do Instagram.'); });
+  } else {
+    prompt('Copie o link abaixo para compartilhar no Instagram:', url);
+  }
+}
+function shareEmail() {
+  var pairs = S.selectedPairs.map(function(key) {
+    var ex = S.eixos[key] || {};
+    return (ex.bimName || '') + ' × ' + (ex.ecdName || '');
+  }).join('\n  • ');
+  var subject = encodeURIComponent('Resultados — Ferramenta de Comparação ECD/BIM · Tese João Gaspar FAUUSP');
+  var body = encodeURIComponent(
+    'Olá,\n\nCompartilho os resultados da análise realizada com a Ferramenta de Comparação ECD/BIM (Apêndice A da Tese de Doutorado João Gaspar · FAUUSP · 2026).\n\n' +
+    'Pares analisados:\n  • ' + pairs + '\n\n' +
+    'Acesse a ferramenta: https://www.joaogaspar.com/ferramenta-ecd-bim/index.html\n\n' +
+    'João Gaspar\njoaogaspar.com · contato@joaogaspar.com\nLinkedIn: linkedin.com/in/joao-motta-gaspar\nLattes: lattes.cnpq.br/9745462238309062'
+  );
+  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
