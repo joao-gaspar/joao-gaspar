@@ -15,21 +15,24 @@ export default async function Tese() {
       title: t('banca_title'),
       desc: t('banca_desc'),
       btn: t('banca_btn'),
-      href: "#", // TODO: URL da apresentação para banca
+      href: "#",
+      external: false,
     },
     {
       icon: <BookOpen className="h-5 w-5 text-primary" />,
       title: t('guia_title'),
       desc: t('guia_desc'),
       btn: t('guia_btn'),
-      href: "#", // TODO: URL do guia
+      href: "#",
+      external: false,
     },
     {
       icon: <BarChart3 className="h-5 w-5 text-primary" />,
       title: t('igep_title'),
       desc: t('igep_desc'),
       btn: t('igep_btn'),
-      href: "#", // TODO: URL da ferramenta IGEP
+      href: "/tese/igep",
+      external: false,
     },
     {
       icon: <GitCompare className="h-5 w-5 text-primary" />,
@@ -37,6 +40,7 @@ export default async function Tese() {
       desc: t('ecd_desc'),
       btn: t('ecd_btn'),
       href: "/ferramenta-ecd-bim/index.html",
+      external: true,
     },
   ]
 
@@ -64,11 +68,11 @@ export default async function Tese() {
             <div className="grid md:grid-cols-2 gap-6">
               {cards.map((card, i) => {
                 const ready = card.href !== "#"
-                return (
-                  <Card
-                    key={i}
-                    className="bg-card border-border hover:border-primary/50 transition-colors group"
-                  >
+                const linkProps = card.external
+                  ? { target: '_blank' as const, rel: 'noopener noreferrer' }
+                  : {}
+                const cardEl = (
+                  <Card className={`bg-card border-border transition-colors group ${ready ? 'hover:border-primary/50 cursor-pointer' : ''}`}>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -89,20 +93,22 @@ export default async function Tese() {
                             {card.desc}
                           </p>
                           {ready && (
-                            <Link
-                              href={card.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 transition-colors"
-                            >
+                            <div className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary">
                               {card.btn}
-                              <ExternalLink className="h-3 w-3" />
-                            </Link>
+                              {card.external && <ExternalLink className="h-3 w-3" />}
+                            </div>
                           )}
                         </div>
                       </div>
                     </CardContent>
                   </Card>
+                )
+                return ready ? (
+                  <Link key={i} href={card.href} {...linkProps} className="block">
+                    {cardEl}
+                  </Link>
+                ) : (
+                  <div key={i}>{cardEl}</div>
                 )
               })}
             </div>
