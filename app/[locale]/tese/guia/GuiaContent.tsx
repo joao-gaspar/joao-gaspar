@@ -311,6 +311,7 @@ export function GuiaContent() {
                     {t('info_grp2_label')}
                   </span>
                 </div>
+                <p className="text-sm leading-relaxed text-foreground mb-3">{t('info_grp2_intro')}</p>
                 <ul className="space-y-2.5">
                   {(['info_grp2_li1', 'info_grp2_li2', 'info_grp2_li3', 'info_grp2_li4', 'info_grp2_li5', 'info_grp2_li6', 'info_grp2_li7'] as const).map((key) => (
                     <li key={key} className="flex items-start gap-3 text-sm leading-relaxed text-foreground">

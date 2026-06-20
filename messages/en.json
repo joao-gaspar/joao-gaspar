@@ -620,6 +620,7 @@
     "info_grp1_li2": "Information about the design teams, project management analysts (if applicable), and public supervision staff, to assess the degree of similarity between these actors across the ECD and BIM projects in the sample.",
     "info_grp1_li3": "The design effort grade required to develop each ECD and BIM project to be evaluated. The \"design effort grade\" is an indicator that numerically summarises the effort needed to develop a given project, based on its programmatic and morphological characteristics defined during the feasibility phase and massing plan, before the decision to use BIM.",
     "info_grp2_label": "About the deliveries of each selected project",
+    "info_grp2_intro": "These are the delivery-related pieces of information for each selected ECD and BIM Project that you will need to gather:",
     "info_grp2_li1": "Delivery dates of all project documents to the project manager or supervisor.",
     "info_grp2_li2": "File path lists of documents on the designers' computers. The more correctly structured the folders and subfolders organising a procurement, and the more logically named the documents, the easier and more reliable data extraction will be.",
     "info_grp2_li3": "Information on the number of delivery packages (stages related to validation of design services and payment releases) structuring the procurement.",

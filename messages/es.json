@@ -620,6 +620,7 @@
     "info_grp1_li2": "Información sobre los equipos de proyectistas contratados, los analistas de la gerenciadora (cuando contratada) y la supervisión pública, para evaluar el grado de similitud entre estos actores en los Proyectos ECD y BIM de la muestra.",
     "info_grp1_li3": "El grado de esfuerzo proyectual necesario para desarrollar cada Proyecto ECD y BIM a evaluar. El \"grado de esfuerzo proyectual\" es un indicador que registra numéricamente el esfuerzo realizado para desarrollar un determinado proyecto, dadas sus características programáticas y morfológicas definidas en la fase de viabilidad y en el plan de masas, antes de la decisión de usar BIM.",
     "info_grp2_label": "Sobre las entregas de cada proyecto seleccionado",
+    "info_grp2_intro": "Esta es la información pertinente a las entregas de cada Proyecto ECD y BIM seleccionado para ser evaluado que necesitará reunir:",
     "info_grp2_li1": "Fechas de entrega de todos los documentos del proyecto a la gerenciadora o supervisión.",
     "info_grp2_li2": "Listas de rutas de los documentos en los equipos utilizados por los proyectistas. Cuanto más correctamente estructuradas estén las carpetas y subcarpetas, y cuanto más lógicamente estén nombrados los documentos, más fácil y confiable será la extracción de datos.",
     "info_grp2_li3": "Información sobre la cantidad de paquetes de entrega (etapas relacionadas con la validación de servicios y la liberación de mediciones) que estructuran la contratación.",
