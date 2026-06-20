@@ -204,7 +204,7 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
       <span class="num">3</span> 1.3 Equipes
     </div>
     <div class="nav-item" onclick="nav('p1-sec14')" id="nav-p1-sec14">
-      <span class="num">4</span> 1.4 GEP / IGEP
+      <span class="num">4</span> 1.4 IGEP
     </div>
     <div class="nav-item" onclick="nav('p1-sec15')" id="nav-p1-sec15">
       <span class="num">5</span> 1.5 Seleção Final
@@ -248,7 +248,7 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
         <li>1.1 Contemporaneidade das contratações</li>
         <li>1.2 Características das contratações</li>
         <li>1.3 Características das equipes</li>
-        <li>1.4 Grau de Esforço Projetual (IGEP)</li>
+        <li>1.4 Indicador de Grau de Esforço Projetual (IGEP)</li>
         <li>1.5 Consolidação e seleção dos pares</li>
       </ul>
     </div>
@@ -286,6 +286,10 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
   </div>
   <div class="card">
     <div class="tbl-wrap" id="table-11"></div>
+    <div style="margin-top:10px;display:flex;gap:8px">
+      <button class="btn btn-ghost btn-sm" onclick="addProjectInline('bim')">+ Adicionar BIM</button>
+      <button class="btn btn-ghost btn-sm" onclick="addProjectInline('ecd')">+ Adicionar ECD</button>
+    </div>
   </div>
   <div class="actions">
     <button class="btn btn-primary" onclick="nav('p1-sec12')">Avançar para 1.2 →</button>
@@ -351,7 +355,7 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
   <div class="sticky-top">
     <div class="sec-header">
       <div class="sec-badge">SEÇÃO 1.4</div>
-      <h2>Grau de Esforço Projetual (GEP / IGEP)</h2>
+      <h2>Indicador de Grau de Esforço Projetual (IGEP)</h2>
       <p>Insira o valor do IGEP de cada projeto para calcular as diferenças absolutas entre pares. Menor diferença = maior semelhança de esforço projetual.</p>
     </div>
     <div class="info-box">
@@ -521,79 +525,71 @@ function renderSec11() {
   const el = document.getElementById('table-11');
   if (!el) return;
   const B = 'border:1px solid #D1D5DB';
-  const GRAY = `style="${B};background:#F3F4F6;padding:4px 6px"`;
   const BLUE = `style="${B};background:#CCFBF1;padding:3px;text-align:center"`;
-  const EMPTY = `style="${B};background:#F9FAFB"`;
-  const BTN = 'style="font-size:11px;color:#6B7280;background:#F3F4F6;border:1px dashed #9CA3AF;border-radius:4px;padding:3px 8px;cursor:pointer;white-space:nowrap"';
-  const INP = 'style="background:transparent;border:none;outline:none;font-size:12px;font-weight:600;width:100%"';
 
   const ecds = S.ecd, bims = S.bim;
   const diffs = bims.map(b => ecds.map(e => Math.abs(b.year - e.year)));
 
   let h = `<table style="border-collapse:collapse;width:100%"><thead>`;
 
-  // Row 1 — "Projetos ECD" spanning + add ECD button
+  const YR = 'width:72px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488;-webkit-appearance:none;-moz-appearance:textfield;appearance:textfield';
+
+  // Row 1 — "Projetos ECD" spanning
   h += '<tr>';
-  h += `<th colspan="2" ${EMPTY}></th>`;
+  h += `<th colspan="2" style="${B};background:#F9FAFB"></th>`;
   if (ecds.length) h += `<th colspan="${ecds.length}" style="${B};background:#CCFBF1;color:#0D9488;font-weight:700;font-size:13px;text-align:center;padding:6px">Projetos ECD</th>`;
-  h += `<td ${EMPTY} style="${B};background:#F9FAFB;padding:4px;text-align:center"><button ${BTN} onclick="addProjectInline('ecd')">=+Adicionar…</button></td>`;
   h += '</tr>';
 
-  // Row 2 — "Projetos BIM" | "Ano" | ECD names (gray editable) | empty
+  // Row 2 — "Projetos BIM" | "Ano" | ECD names (editable)
   h += '<tr>';
-  h += `<th ${GRAY} style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;white-space:nowrap">Projetos BIM</th>`;
-  h += `<th ${GRAY} style="${B};background:#F3F4F6;padding:6px;text-align:center;font-size:12px">Ano</th>`;
+  h += `<th style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;white-space:nowrap">Projetos BIM</th>`;
+  h += `<th style="${B};background:#F3F4F6;padding:6px;text-align:center;font-size:12px">Ano</th>`;
   ecds.forEach(e => {
-    h += `<th style="${B};background:#F3F4F6;padding:3px;min-width:80px;text-align:center">
-      <div style="display:flex;align-items:center;justify-content:center;gap:2px">
-        <input type="text" value="${e.name}" ${INP} style="background:transparent;border:none;outline:none;font-size:12px;font-weight:600;text-align:center;width:72px"
+    h += `<th style="${B};background:#F3F4F6;padding:4px 6px;min-width:120px;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;gap:4px">
+        <input type="text" value="${e.name}"
+          style="background:transparent;border:none;outline:none;font-size:12px;font-weight:600;text-align:center;flex:1;min-width:90px"
           onblur="updateProject('ecd','${e.id}','name',this.value)">
-        <button onclick="removeProject('ecd','${e.id}')" style="font-size:9px;color:#EF4444;background:none;border:none;cursor:pointer" title="Remover">✕</button>
+        <button onclick="removeProject('ecd','${e.id}')" style="font-size:9px;color:#EF4444;background:none;border:none;cursor:pointer;flex-shrink:0" title="Remover">✕</button>
       </div></th>`;
   });
-  h += `<td ${EMPTY}></td></tr>`;
+  h += '</tr>';
 
-  // Row 3 — empty | "Ano" label | ECD year inputs (blue) | empty
+  // Row 3 — empty | "Ano" label | ECD year inputs (blue)
   h += '<tr>';
-  h += `<td ${EMPTY}></td>`;
+  h += `<td style="${B};background:#F9FAFB"></td>`;
   h += `<td style="${B};background:#F9FAFB;text-align:center;font-size:11px;color:#94A3B8;padding:4px">Ano</td>`;
   ecds.forEach(e => {
     h += `<td ${BLUE}>
-      <input type="number" value="${e.year}" min="2000" max="2035"
-        style="width:56px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
+      <input type="number" value="${e.year}" min="2000" max="2035" style="${YR}"
         onblur="updateProject('ecd','${e.id}','year',+this.value||2020);renderSec11()">
     </td>`;
   });
-  h += `<td ${EMPTY}></td></tr>`;
+  h += '</tr>';
   h += '</thead><tbody>';
 
   // BIM rows
   bims.forEach((b, bi) => {
     h += '<tr>';
     h += `<td style="${B};background:#F3F4F6;padding:3px 6px;white-space:nowrap">
-      <div style="display:flex;align-items:center;gap:2px">
-        <input type="text" value="${b.name}" style="background:transparent;border:none;outline:none;font-size:12px;font-weight:600;width:90px"
+      <div style="display:flex;align-items:center;gap:4px">
+        <input type="text" value="${b.name}"
+          style="background:transparent;border:none;outline:none;font-size:12px;font-weight:600;flex:1;min-width:80px;max-width:140px"
           onblur="updateProject('bim','${b.id}','name',this.value)">
-        <button onclick="removeProject('bim','${b.id}')" style="font-size:9px;color:#EF4444;background:none;border:none;cursor:pointer" title="Remover">✕</button>
+        <button onclick="removeProject('bim','${b.id}')" style="font-size:9px;color:#EF4444;background:none;border:none;cursor:pointer;flex-shrink:0" title="Remover">✕</button>
       </div></td>`;
     h += `<td ${BLUE}>
-      <input type="number" value="${b.year}" min="2000" max="2035"
-        style="width:56px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
+      <input type="number" value="${b.year}" min="2000" max="2035" style="${YR}"
         onblur="updateProject('bim','${b.id}','year',+this.value||2020);renderSec11()">
     </td>`;
     ecds.forEach((e, ei) => {
       const d = diffs[bi][ei];
       h += `<td class="score-cell" style="${B};${cellColor11(d)};text-align:center">${d.toFixed(2)}</td>`;
     });
-    h += `<td ${EMPTY}></td></tr>`;
+    h += '</tr>';
   });
 
-  // Add BIM row
-  h += `<tr><td colspan="2" style="${B};background:#F9FAFB;padding:4px">
-    <button ${BTN} onclick="addProjectInline('bim')">=+Adicionar…</button>
-  </td>`;
-  for (let i = 0; i < ecds.length + 1; i++) h += `<td ${EMPTY}></td>`;
-  h += '</tr></tbody></table>';
+  h += '</tbody></table>';
   el.innerHTML = h;
 }
 
@@ -817,13 +813,13 @@ function renderSec14() {
   h += `<th colspan="${S.ecd.length}" style="${B};background:#CCFBF1;color:#0D9488;font-weight:700;font-size:13px;text-align:center;padding:6px">Projetos ECD</th></tr>`;
   // Row 2: "Projetos BIM" | "GEP" | ECD names
   h += `<tr><th style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Projetos BIM</th>`;
-  h += `<th style="${B};background:#F3F4F6;padding:6px;text-align:center;font-size:12px;font-weight:700">GEP</th>`;
+  h += `<th style="${B};background:#F3F4F6;padding:6px;text-align:center;font-size:12px;font-weight:700">IGEP</th>`;
   S.ecd.forEach(e => h += `<th style="${B};background:#F3F4F6;font-size:12px;font-weight:700;text-align:center;padding:5px 8px;min-width:70px;white-space:nowrap">${e.name}</th>`);
   h += '</tr>';
   // Row 3: ECD GEP inputs
-  h += `<tr><td style="${B};background:#F9FAFB"></td><td style="${B};background:#F9FAFB;text-align:center;font-size:11px;color:#94A3B8;padding:4px">GEP</td>`;
+  h += `<tr><td style="${B};background:#F9FAFB"></td><td style="${B};background:#F9FAFB;text-align:center;font-size:11px;color:#94A3B8;padding:4px">IGEP</td>`;
   S.ecd.forEach(e => {
-    h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${S.igep[e.id]||''}" placeholder="GEP"
+    h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${S.igep[e.id]||''}" placeholder="IGEP"
       style="width:64px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
       oninput="updateIgep('${e.id}',this.value,false)"></td>`;
   });
@@ -832,7 +828,7 @@ function renderSec14() {
   S.bim.forEach((b, bi) => {
     const bVal = S.igep[b.id] || 0;
     h += `<tr><td style="${B};background:#F3F4F6;padding:4px 8px;font-weight:700;font-size:12px;white-space:nowrap">${b.name}</td>`;
-    h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${bVal||''}" placeholder="GEP"
+    h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${bVal||''}" placeholder="IGEP"
       style="width:64px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
       oninput="updateIgep('${b.id}',this.value,true)"></td>`;
     S.ecd.forEach((e, ei) => {
@@ -1281,13 +1277,13 @@ function shareEmail() {
 // ─────────────────────────────────────────────────────────────────────────────
 function loadExample() {
   const bimProjects = [
-    { name:'Área 09', year:2019 }, { name:'Área 37', year:2019 }, { name:'Área 38', year:2019 },
-    { name:'Área 39', year:2019 }, { name:'Área 11', year:2019 }, { name:'Área 12', year:2019 },
-    { name:'Área 36', year:2019 }, { name:'Área 06', year:2019 }, { name:'Área 10', year:2019 },
-    { name:'Área 26', year:2019 }
+    { name:'Área 09', year:2021 }, { name:'Área 37', year:2021 }, { name:'Área 38', year:2021 },
+    { name:'Área 39', year:2021 }, { name:'Área 11', year:2021 }, { name:'Área 12', year:2021 },
+    { name:'Área 36', year:2021 }, { name:'Área 06', year:2021 }, { name:'Área 10', year:2021 },
+    { name:'Área 26', year:2021 }
   ];
   const ecdProjects = [
-    { name:'Jd Colombo A1', year:2018 }, { name:'Jd Colombo A4', year:2018 }
+    { name:'Jd Colombo A1', year:2022 }, { name:'Jd Colombo A4', year:2022 }
   ];
 
   S.bim = bimProjects.map(p => ({ ...p, id:'bim_'+p.name.replace(/\s/g,'_') }));
@@ -1350,7 +1346,6 @@ function clearData() {
 // ─────────────────────────────────────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────────────────────────────────────
-load();
 renderProjects();
 </script>
 </body>

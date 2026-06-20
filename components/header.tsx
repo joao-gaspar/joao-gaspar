@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -10,14 +11,17 @@ import { useTranslations, useLocale } from "next-intl"
 export function Header() {
   const t = useTranslations('Header')
   const locale = useLocale()
+  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const isOnTesePage = pathname?.includes('/tese') ?? false
+
   const navItems = [
-    { href: "#sobre", label: t('nav_sobre') },
-    { href: "#experiencia", label: t('nav_experiencia') },
-    { href: "#publicacoes", label: t('nav_publicacoes') },
-    { href: `/${locale}/tese`, label: t('nav_tese') },
-    { href: "#contato", label: t('nav_contato') },
+    { href: "#sobre", label: t('nav_sobre'), isTese: false },
+    { href: "#experiencia", label: t('nav_experiencia'), isTese: false },
+    { href: "#publicacoes", label: t('nav_publicacoes'), isTese: false },
+    { href: `/${locale}/tese`, label: t('nav_tese'), isTese: true },
+    { href: "#contato", label: t('nav_contato'), isTese: false },
   ]
 
   return (
@@ -31,15 +35,24 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <nav className="flex items-center gap-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.isTese && isOnTesePage ? (
+                  <span
+                    key={item.href}
+                    className="text-sm text-primary font-medium cursor-default"
+                  >
+                    {item.label}
+                  </span>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </nav>
             <div className="flex items-center gap-3 border-l border-border pl-8">
               <Link href="/pt" className={`text-xs font-bold transition-colors ${locale === 'pt' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>PT</Link>
@@ -63,16 +76,25 @@ export function Header() {
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.isTese && isOnTesePage ? (
+                  <span
+                    key={item.href}
+                    className="text-sm text-primary font-medium cursor-default"
+                  >
+                    {item.label}
+                  </span>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
               <div className="flex items-center gap-6 mt-2 pt-4 border-t border-border">
                 <Link href="/pt" className={`text-sm font-bold transition-colors ${locale === 'pt' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>PT</Link>
                 <Link href="/en" className={`text-sm font-bold transition-colors ${locale === 'en' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>EN</Link>
