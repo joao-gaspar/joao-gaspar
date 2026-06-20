@@ -15,7 +15,7 @@ h1,h2,h3,h4{font-family:'Geist',system-ui,-apple-system,Arial,sans-serif;font-we
 
 /* ─── LAYOUT ─────────────────────────────────────────────────────────── */
 .app{display:flex;flex-direction:column;height:100vh}
-.topbar{background:#1E3A8A;color:white;padding:0 24px;height:56px;display:flex;align-items:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.topbar{background:#0F766E;color:white;padding:0 24px;height:56px;display:flex;align-items:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .topbar h1{font-size:15px;font-weight:700;letter-spacing:.2px}
 .topbar p{font-size:11px;opacity:.75;margin-top:1px}
 .topbar-back{display:inline-flex;align-items:center;gap:6px;color:white;font-size:13px;font-weight:600;text-decoration:none;padding:7px 14px;border-radius:8px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);transition:background .15s;white-space:nowrap;flex-shrink:0}
@@ -28,9 +28,9 @@ aside{width:240px;background:#0F172A;overflow-y:auto;flex-shrink:0;padding:16px 
 .nav-group{font-size:10px;font-weight:700;letter-spacing:1px;color:#475569;padding:12px 16px 4px;text-transform:uppercase}
 .nav-item{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:pointer;color:#94A3B8;font-size:12.5px;transition:all .15s;border-left:3px solid transparent}
 .nav-item:hover{color:#F1F5F9;background:#1E293B}
-.nav-item.active{color:white;background:#1E3A8A;border-left-color:#60A5FA;font-weight:600}
+.nav-item.active{color:white;background:#0F766E;border-left-color:#5EEAD4;font-weight:600}
 .nav-item .num{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.nav-item.active .num{background:#60A5FA;color:#0F172A}
+.nav-item.active .num{background:#5EEAD4;color:#0F172A}
 .nav-item.done .num{background:#22C55E;color:white}
 .nav-divider{height:1px;background:#1E293B;margin:8px 16px}
 
@@ -41,7 +41,7 @@ main{flex:1;overflow-y:auto;padding:0 32px 28px}
 
 /* ─── CARDS & PANELS ─────────────────────────────────────────────────── */
 .card{background:white;border-radius:12px;border:1px solid #E2E8F0;padding:24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.card h3{font-size:15px;color:#1E3A8A;margin-bottom:6px}
+.card h3{font-size:15px;color:#0F766E;margin-bottom:6px}
 .card .hint{font-size:12px;color:#64748B;margin-bottom:16px;line-height:1.5}
 
 /* ─── SECTION HEADER ─────────────────────────────────────────────────── */
@@ -49,15 +49,15 @@ main{flex:1;overflow-y:auto;padding:0 32px 28px}
 .sec-header{margin-bottom:8px}
 .sec-header h2{font-size:17px;color:#0F172A}
 .sec-header p{font-size:12px;color:#64748B;margin-top:3px;max-width:700px;line-height:1.5}
-.sec-badge{display:inline-flex;align-items:center;gap:6px;background:#EFF6FF;color:#1D4ED8;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;margin-bottom:5px;letter-spacing:.3px}
+.sec-badge{display:inline-flex;align-items:center;gap:6px;background:#F0FDFA;color:#0D9488;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;margin-bottom:5px;letter-spacing:.3px}
 
 /* ─── TABLES ─────────────────────────────────────────────────────────── */
 .tbl-wrap{overflow-x:auto;border-radius:8px;border:1px solid #E2E8F0}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th{background:#F8FAFF;padding:10px 12px;text-align:left;font-weight:600;color:#1E3A8A;border-bottom:2px solid #E2E8F0;white-space:nowrap}
+th{background:#F0FDFA;padding:10px 12px;text-align:left;font-weight:600;color:#0F766E;border-bottom:2px solid #E2E8F0;white-space:nowrap}
 td{padding:9px 12px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:#F8FAFF}
+tr:hover td{background:#F0FDFA}
 td.center,th.center{text-align:center}
 .score-cell{text-align:center;font-weight:700;font-size:15px}
 
@@ -66,7 +66,7 @@ label{display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:4
 input[type=text],input[type=number],select,textarea{
   width:100%;padding:8px 12px;border:1.5px solid #CBD5E1;border-radius:8px;font-size:13px;
   background:white;color:#0F172A;transition:border-color .15s;outline:none}
-input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3px rgba(29,78,216,.1)}
+input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3px rgba(13,148,136,.1)}
 .form-row{display:grid;gap:16px;margin-bottom:16px}
 .form-row.cols-2{grid-template-columns:1fr 1fr}
 .form-row.cols-3{grid-template-columns:1fr 1fr 1fr}
@@ -74,9 +74,9 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 /* ─── BUTTONS ─────────────────────────────────────────────────────────── */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
-.btn-primary{background:#1D4ED8;color:white}.btn-primary:hover{background:#1E40AF}
+.btn-primary{background:#0D9488;color:white}.btn-primary:hover{background:#0F766E}
 .btn-success{background:#16A34A;color:white}.btn-success:hover{background:#15803D}
-.btn-ghost{background:transparent;color:#64748B;border:1.5px solid #E2E8F0}.btn-ghost:hover{background:#F8FAFF;color:#0F172A}
+.btn-ghost{background:transparent;color:#64748B;border:1.5px solid #E2E8F0}.btn-ghost:hover{background:#F0FDFA;color:#0F172A}
 .btn-danger{background:#DC2626;color:white}.btn-danger:hover{background:#B91C1C}
 .btn-sm{padding:5px 12px;font-size:12px}
 .actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
@@ -84,16 +84,16 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 /* ─── SCALE SELECTOR ─────────────────────────────────────────────────── */
 .scale-selector{display:flex;gap:6px;flex-wrap:wrap}
 .scale-btn{min-width:34px;height:25px;border-radius:6px;border:1.5px solid #CBD5E1;background:white;cursor:pointer;font-size:12px;font-weight:700;color:#64748B;transition:all .15s}
-.scale-btn:hover{border-color:#1D4ED8;color:#1D4ED8;background:#EFF6FF}
-.scale-btn.selected{background:#1D4ED8;color:white;border-color:#1D4ED8}
+.scale-btn:hover{border-color:#0D9488;color:#0D9488;background:#F0FDFA}
+.scale-btn.selected{background:#0D9488;color:white;border-color:#0D9488}
 .scale-btn.selected-good{background:#16A34A;color:white;border-color:#16A34A}
 
 /* ─── METRIC CARD ─────────────────────────────────────────────────────── */
 .metric-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px}
 .metric-card{background:white;border:1px solid #E2E8F0;border-radius:12px;padding:20px;position:relative;overflow:hidden}
-.metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--c,#1D4ED8)}
+.metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--c,#0D9488)}
 .metric-card .label{font-size:11px;font-weight:700;color:#64748B;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
-.metric-card .value{font-size:32px;font-weight:800;color:var(--c,#1D4ED8);line-height:1}
+.metric-card .value{font-size:32px;font-weight:800;color:var(--c,#0D9488);line-height:1}
 .metric-card .unit{font-size:12px;color:#94A3B8;margin-top:4px}
 .metric-card .sub{font-size:12px;color:#64748B;margin-top:6px}
 
@@ -101,7 +101,7 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 .comp-table{width:100%;border-collapse:collapse;font-size:13px}
 .comp-table th{padding:10px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#64748B;border-bottom:2px solid #E2E8F0}
 .comp-table td{padding:12px 14px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
-.comp-row:hover td{background:#F8FAFF}
+.comp-row:hover td{background:#F0FDFA}
 .bar-cell{width:300px}
 .bar-wrap{display:flex;align-items:center;gap:8px}
 .bar-bg{flex:1;height:10px;background:#F1F5F9;border-radius:5px;overflow:hidden}
@@ -112,13 +112,13 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 .badge-neutral{background:#F1F5F9;color:#64748B;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px}
 
 /* ─── INFO BOX ─────────────────────────────────────────────────────────── */
-.info-box{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:7px 12px;font-size:12px;color:#1E40AF;line-height:1.5;margin-bottom:0}
-.info-box strong{color:#1E3A8A}
+.info-box{background:#F0FDFA;border:1px solid #99F6E4;border-radius:8px;padding:7px 12px;font-size:12px;color:#0F766E;line-height:1.5;margin-bottom:0}
+.info-box strong{color:#0F766E}
 .warn-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:7px 12px;font-size:12px;color:#92400E;line-height:1.5;margin-bottom:0}
 
 /* ─── TAG/CHIP ─────────────────────────────────────────────────────────── */
 .tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
-.tag-bim{background:#DBEAFE;color:#1D4ED8}
+.tag-bim{background:#CCFBF1;color:#0D9488}
 .tag-ecd{background:#FEF3C7;color:#92400E}
 .tag-yes{background:#DCFCE7;color:#15803D}
 .tag-no{background:#F1F5F9;color:#64748B}
@@ -127,7 +127,7 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 .steps{display:flex;align-items:center;margin-bottom:24px;gap:0}
 .step{display:flex;flex-direction:column;align-items:center;position:relative;flex:1}
 .step-dot{width:32px;height:32px;border-radius:50%;border:2px solid #CBD5E1;background:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#94A3B8;z-index:1}
-.step-dot.active{border-color:#1D4ED8;background:#1D4ED8;color:white}
+.step-dot.active{border-color:#0D9488;background:#0D9488;color:white}
 .step-dot.done{border-color:#16A34A;background:#16A34A;color:white}
 .step-label{font-size:11px;color:#64748B;margin-top:5px;text-align:center;max-width:80px}
 .step-line{flex:1;height:2px;background:#E2E8F0;margin-top:-22px}
@@ -135,7 +135,7 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 
 /* ─── RANKING ─────────────────────────────────────────────────────────── */
 .rank-row{display:flex;align-items:center;padding:12px 16px;border-radius:10px;margin-bottom:8px;background:white;border:1px solid #E2E8F0;gap:14px;cursor:pointer;transition:all .15s}
-.rank-row:hover{border-color:#1D4ED8;box-shadow:0 2px 8px rgba(29,78,216,.1)}
+.rank-row:hover{border-color:#0D9488;box-shadow:0 2px 8px rgba(13,148,136,.1)}
 .rank-row.selected{border-color:#16A34A;background:#F0FDF4;box-shadow:0 2px 8px rgba(22,163,74,.15)}
 .rank-pos{width:32px;height:32px;border-radius:50%;background:#F1F5F9;font-size:13px;font-weight:800;color:#64748B;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .rank-pos.gold{background:#FEF3C7;color:#92400E}
@@ -147,7 +147,7 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#F1F5F9}::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:3px}
 
 /* ─── HOME PAGE ─────────────────────────────────────────────────────────── */
-.home-hero{background:linear-gradient(135deg,#1E3A8A 0%,#1D4ED8 50%,#0F766E 100%);border-radius:16px;padding:40px;color:white;margin-bottom:24px;margin-top:28px}
+.home-hero{background:linear-gradient(135deg,#134E4A 0%,#0F766E 50%,#0D9488 100%);border-radius:16px;padding:40px;color:white;margin-bottom:24px;margin-top:28px}
 .home-hero h2{font-size:26px;margin-bottom:10px}
 .home-hero p{font-size:14px;opacity:.9;max-width:600px;line-height:1.7}
 .part-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
@@ -156,7 +156,7 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
 .part-card p{font-size:13px;color:#64748B;line-height:1.6;margin-bottom:12px}
 .part-card ul{list-style:none;font-size:12.5px;color:#475569}
 .part-card ul li{padding:4px 0 4px 16px;position:relative}
-.part-card ul li::before{content:'→';position:absolute;left:0;color:#1D4ED8;font-weight:700}
+.part-card ul li::before{content:'→';position:absolute;left:0;color:#0D9488;font-weight:700}
 </style>
 </head>
 <body>
@@ -194,23 +194,20 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
   <div class="nav-divider"></div>
   <div class="nav-section">
     <div class="nav-group">Parte 1 — Seleção</div>
-    <div class="nav-item" onclick="nav('p1-projects')" id="nav-p1-projects">
-      <span class="num">1</span> Cadastrar Projetos
-    </div>
     <div class="nav-item" onclick="nav('p1-sec11')" id="nav-p1-sec11">
-      <span class="num">2</span> 1.1 Contemporaneidade
+      <span class="num">1</span> 1.1 Projetos + Contemp.
     </div>
     <div class="nav-item" onclick="nav('p1-sec12')" id="nav-p1-sec12">
-      <span class="num">3</span> 1.2 Contratações
+      <span class="num">2</span> 1.2 Contratações
     </div>
     <div class="nav-item" onclick="nav('p1-sec13')" id="nav-p1-sec13">
-      <span class="num">4</span> 1.3 Equipes
+      <span class="num">3</span> 1.3 Equipes
     </div>
     <div class="nav-item" onclick="nav('p1-sec14')" id="nav-p1-sec14">
-      <span class="num">5</span> 1.4 GEP / IGEP
+      <span class="num">4</span> 1.4 GEP / IGEP
     </div>
     <div class="nav-item" onclick="nav('p1-sec15')" id="nav-p1-sec15">
-      <span class="num">6</span> 1.5 Seleção Final
+      <span class="num">5</span> 1.5 Seleção Final
     </div>
   </div>
 
@@ -238,14 +235,14 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
     <h2>Ferramenta para Comparação do Desempenho de Entrega de Projetos ECD e BIM</h2>
     <p>Instrumento metodológico para avaliar e comparar projetos de Habitação de Interesse Social (HIS). Operacionalizável por agentes públicos e privados sem necessidade de especialização em BIM.</p>
     <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn btn-primary" style="background:white;color:#1E3A8A" onclick="nav('p1-projects')">Começar Parte 1 →</button>
+      <button class="btn btn-primary" style="background:white;color:#0F766E" onclick="nav('p1-sec11')">Começar Parte 1 →</button>
       <button class="btn btn-ghost" style="color:white;border-color:rgba(255,255,255,.4)" onclick="loadExample()">Ver Exemplo da Tese</button>
     </div>
   </div>
 
   <div class="part-grid">
     <div class="part-card">
-      <h3><span style="background:#DBEAFE;color:#1D4ED8;padding:4px 10px;border-radius:8px;font-size:12px">PARTE 1</span> Seleção dos Objetos</h3>
+      <h3><span style="background:#CCFBF1;color:#0D9488;padding:4px 10px;border-radius:8px;font-size:12px">PARTE 1</span> Seleção dos Objetos</h3>
       <p>Identifica os pares de projetos ECD e BIM mais semelhantes entre si para garantir a validade da comparação de desempenho.</p>
       <ul>
         <li>1.1 Contemporaneidade das contratações</li>
@@ -275,62 +272,22 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
   </div>
 </div>
 
-<!-- ═══════ CADASTRAR PROJETOS ═══════════════════════════════════════════ -->
-<div class="page" id="page-p1-projects">
-  <div class="sticky-top">
-    <div class="sec-header">
-      <div class="sec-badge">PARTE 1 — PREPARAÇÃO</div>
-      <h2>Cadastrar Projetos ECD e BIM</h2>
-      <p>Defina os projetos ECD e BIM a serem analisados. Eles formarão os cruzamentos avaliados nas seções 1.1 a 1.5.</p>
-    </div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-    <div class="card">
-      <h3 style="color:#92400E">📋 Projetos ECD</h3>
-      <p class="hint">Projetos com Entrega Centrada em Desenhos. Adicione nome e ano de início dos trabalhos.</p>
-      <div id="ecd-list"></div>
-      <div class="form-row cols-2" style="margin-top:12px">
-        <div><label>Nome do Projeto ECD</label><input type="text" id="new-ecd-name" placeholder="Ex: Jd Colombo A1"></div>
-        <div><label>Ano de Início</label><input type="number" id="new-ecd-year" placeholder="2018" min="2000" max="2035"></div>
-      </div>
-      <button class="btn btn-ghost btn-sm" onclick="addProject('ecd')">+ Adicionar Projeto ECD</button>
-    </div>
-
-    <div class="card">
-      <h3 style="color:#1D4ED8">🏗 Projetos BIM</h3>
-      <p class="hint">Projetos com Entrega Centrada em Modelos BIM. Adicione nome e ano de início dos trabalhos.</p>
-      <div id="bim-list"></div>
-      <div class="form-row cols-2" style="margin-top:12px">
-        <div><label>Nome do Projeto BIM</label><input type="text" id="new-bim-name" placeholder="Ex: Área 06"></div>
-        <div><label>Ano de Início</label><input type="number" id="new-bim-year" placeholder="2019" min="2000" max="2035"></div>
-      </div>
-      <button class="btn btn-ghost btn-sm" onclick="addProject('bim')">+ Adicionar Projeto BIM</button>
-    </div>
-  </div>
-
-  <div class="actions">
-    <button class="btn btn-primary" onclick="nav('p1-sec11')">Avançar para 1.1 Contemporaneidade →</button>
-  </div>
-</div>
-
-<!-- ═══════ 1.1 CONTEMPORANEIDADE ══════════════════════════════════════ -->
+<!-- ═══════ 1.1 PROJETOS + CONTEMPORANEIDADE ══════════════════════════ -->
 <div class="page" id="page-p1-sec11">
   <div class="sticky-top">
     <div class="sec-header">
       <div class="sec-badge">SEÇÃO 1.1</div>
-      <h2>Contemporaneidade das Contratações</h2>
-      <p>Encontre os pares ECD/BIM com menor intervalo de tempo entre as contratações. Menor diferença = par mais adequado para comparação.</p>
+      <h2>Projetos e Contemporaneidade das Contratações</h2>
+      <p>Cadastre os projetos ECD e BIM diretamente na tabela. Os cruzamentos mostram a diferença de anos entre as contratações — <strong>verde = mesma época</strong>, vermelho = épocas distintas.</p>
     </div>
     <div class="info-box">
-      <strong>Interpretação:</strong> Células em <strong>verde escuro</strong> indicam os cruzamentos com menor diferença de anos — os pares mais contemporâneos e, portanto, mais adequados para comparação.
+      <strong>Como usar:</strong> Clique em qualquer nome para renomear. Clique no ano (azul) para alterar. Use <strong>=+Adicionar…</strong> para incluir novos projetos. Os cruzamentos são calculados automaticamente.
     </div>
   </div>
   <div class="card">
     <div class="tbl-wrap" id="table-11"></div>
   </div>
   <div class="actions">
-    <button class="btn btn-ghost" onclick="nav('p1-projects')">← Voltar</button>
     <button class="btn btn-primary" onclick="nav('p1-sec12')">Avançar para 1.2 →</button>
   </div>
 </div>
@@ -403,20 +360,8 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
     </div>
   </div>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
-    <div class="card">
-      <h3 style="color:#92400E">IGEP dos Projetos ECD</h3>
-      <div id="igep-ecd-inputs"></div>
-    </div>
-    <div class="card">
-      <h3 style="color:#1D4ED8">IGEP dos Projetos BIM</h3>
-      <div id="igep-bim-inputs"></div>
-    </div>
-  </div>
-
   <div class="card">
-    <h3 style="margin-bottom:12px">Matriz de Diferenças IGEP (|BIM − ECD|)</h3>
-    <div class="tbl-wrap" id="table-14"></div>
+    <div id="sec14-matrix"></div>
   </div>
   <div class="actions">
     <button class="btn btn-ghost" onclick="nav('p1-sec13')">← Voltar</button>
@@ -433,7 +378,7 @@ input:focus,select:focus,textarea:focus{border-color:#1D4ED8;box-shadow:0 0 0 3p
       <p>Veja o ranking de todos os cruzamentos por semelhança global. Selecione os pares que serão levados à Parte 2 para comparação de desempenho.</p>
     </div>
     <div class="info-box">
-      <strong>Critério de ordenação:</strong> Os cruzamentos são ordenados pela diferença IGEP (menor = melhor), considerando também as pontuações de contratação (1.2) e equipes (1.3). Clique em um par para selecioná-lo para a Parte 2.
+      <strong>Como usar:</strong> A tabela abaixo resume os resultados das seções 1.1 a 1.4 para todos os cruzamentos BIM × ECD. Analise os valores e cores e clique em <strong>"Não"</strong> na coluna <em>1.5_Selecionado?</em> para marcar o par como <strong>SIM</strong>. Pares selecionados avançam para a Parte 2.
     </div>
   </div>
   <div id="ranking-list"></div>
@@ -517,7 +462,6 @@ function nav(id) {
   const ni = document.getElementById('nav-' + id);
   if (ni) ni.classList.add('active');
   // Re-render dynamic pages
-  if (id === 'p1-projects') renderProjects();
   if (id === 'p1-sec11') renderSec11();
   if (id === 'p1-sec12') renderMatrix12();
   if (id === 'p1-sec13') renderMatrix13();
@@ -544,92 +488,174 @@ function addProject(type) {
 
 function removeProject(type, id) {
   S[type] = S[type].filter(p => p.id !== id);
-  renderProjects();
+  save();
+  renderSec11();
 }
 
-function renderProjects() {
-  ['ecd', 'bim'].forEach(type => {
-    const el = document.getElementById(type + '-list');
-    if (!el) return;
-    if (!S[type].length) { el.innerHTML = '<p style="color:#94A3B8;font-size:12px;margin-bottom:12px">Nenhum projeto cadastrado.</p>'; return; }
-    el.innerHTML = S[type].map(p => `
-      <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #F1F5F9">
-        <span class="tag tag-${type}" style="flex-shrink:0">${type.toUpperCase()}</span>
-        <span style="flex:1;font-weight:600">${p.name}</span>
-        <span style="color:#94A3B8;font-size:12px">${p.year}</span>
-        <button class="btn btn-danger btn-sm" onclick="removeProject('${type}','${p.id}')">✕</button>
-      </div>`).join('');
-  });
+function renderProjects() { renderSec11(); }
+
+function addProjectInline(type) {
+  const n = S[type].length + 1;
+  S[type].push({ id: type + '_' + Date.now(), name: (type === 'bim' ? 'BIM ' : 'ECD ') + String(n).padStart(2, '0'), year: 2023 });
+  save();
+  renderSec11();
+}
+
+function updateProject(type, id, field, value) {
+  const p = S[type].find(p => p.id === id);
+  if (p) { p[field] = value; save(); }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SECTION 1.1 — CONTEMPORANEIDADE
 // ─────────────────────────────────────────────────────────────────────────────
+function cellColor11(d) {
+  if (d === 0) return 'background:#166534;color:#fff';
+  if (d === 1) return 'background:#16A34A;color:#fff';
+  if (d === 2) return 'background:#86EFAC;color:#14532D';
+  if (d <= 4)  return 'background:#FDE68A;color:#78350F';
+  return 'background:#FCA5A5;color:#7F1D1D';
+}
+
 function renderSec11() {
   const el = document.getElementById('table-11');
-  if (!S.ecd.length || !S.bim.length) { el.innerHTML = '<p style="padding:20px;color:#94A3B8">Cadastre projetos ECD e BIM primeiro.</p>'; return; }
-  const diffs = S.bim.map(b => S.ecd.map(e => Math.abs(b.year - e.year)));
-  const minDiff = Math.min(...diffs.flat());
-  const maxDiff = Math.max(...diffs.flat()) || 1;
-  let html = '<table><thead><tr><th>BIM \\ ECD</th>';
-  S.ecd.forEach(e => html += `<th class="center">${e.name}<br><span style="font-weight:400;color:#94A3B8">${e.year}</span></th>`);
-  html += '</tr></thead><tbody>';
-  S.bim.forEach((b, bi) => {
-    html += `<tr><td><strong>${b.name}</strong> <span style="color:#94A3B8">${b.year}</span></td>`;
-    S.ecd.forEach((e, ei) => {
-      const d = diffs[bi][ei];
-      const pct = 1 - d / maxDiff;
-      const bg = pct > 0.8 ? '#166534' : pct > 0.5 ? '#16A34A' : pct > 0.2 ? '#86EFAC' : '#F1F5F9';
-      const fc = pct > 0.5 ? 'white' : '#0F172A';
-      html += `<td class="score-cell" style="background:${bg};color:${fc}">${d}</td>`;
-    });
-    html += '</tr>';
+  if (!el) return;
+  const B = 'border:1px solid #D1D5DB';
+  const GRAY = `style="${B};background:#F3F4F6;padding:4px 6px"`;
+  const BLUE = `style="${B};background:#CCFBF1;padding:3px;text-align:center"`;
+  const EMPTY = `style="${B};background:#F9FAFB"`;
+  const BTN = 'style="font-size:11px;color:#6B7280;background:#F3F4F6;border:1px dashed #9CA3AF;border-radius:4px;padding:3px 8px;cursor:pointer;white-space:nowrap"';
+  const INP = 'style="background:transparent;border:none;outline:none;font-size:12px;font-weight:600;width:100%"';
+
+  const ecds = S.ecd, bims = S.bim;
+  const diffs = bims.map(b => ecds.map(e => Math.abs(b.year - e.year)));
+
+  let h = `<table style="border-collapse:collapse;width:100%"><thead>`;
+
+  // Row 1 — "Projetos ECD" spanning + add ECD button
+  h += '<tr>';
+  h += `<th colspan="2" ${EMPTY}></th>`;
+  if (ecds.length) h += `<th colspan="${ecds.length}" style="${B};background:#CCFBF1;color:#0D9488;font-weight:700;font-size:13px;text-align:center;padding:6px">Projetos ECD</th>`;
+  h += `<td ${EMPTY} style="${B};background:#F9FAFB;padding:4px;text-align:center"><button ${BTN} onclick="addProjectInline('ecd')">=+Adicionar…</button></td>`;
+  h += '</tr>';
+
+  // Row 2 — "Projetos BIM" | "Ano" | ECD names (gray editable) | empty
+  h += '<tr>';
+  h += `<th ${GRAY} style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;white-space:nowrap">Projetos BIM</th>`;
+  h += `<th ${GRAY} style="${B};background:#F3F4F6;padding:6px;text-align:center;font-size:12px">Ano</th>`;
+  ecds.forEach(e => {
+    h += `<th style="${B};background:#F3F4F6;padding:3px;min-width:80px;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;gap:2px">
+        <input type="text" value="${e.name}" ${INP} style="background:transparent;border:none;outline:none;font-size:12px;font-weight:600;text-align:center;width:72px"
+          onblur="updateProject('ecd','${e.id}','name',this.value)">
+        <button onclick="removeProject('ecd','${e.id}')" style="font-size:9px;color:#EF4444;background:none;border:none;cursor:pointer" title="Remover">✕</button>
+      </div></th>`;
   });
-  html += '</tbody></table>';
-  el.innerHTML = html;
+  h += `<td ${EMPTY}></td></tr>`;
+
+  // Row 3 — empty | "Ano" label | ECD year inputs (blue) | empty
+  h += '<tr>';
+  h += `<td ${EMPTY}></td>`;
+  h += `<td style="${B};background:#F9FAFB;text-align:center;font-size:11px;color:#94A3B8;padding:4px">Ano</td>`;
+  ecds.forEach(e => {
+    h += `<td ${BLUE}>
+      <input type="number" value="${e.year}" min="2000" max="2035"
+        style="width:56px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
+        onblur="updateProject('ecd','${e.id}','year',+this.value||2020);renderSec11()">
+    </td>`;
+  });
+  h += `<td ${EMPTY}></td></tr>`;
+  h += '</thead><tbody>';
+
+  // BIM rows
+  bims.forEach((b, bi) => {
+    h += '<tr>';
+    h += `<td style="${B};background:#F3F4F6;padding:3px 6px;white-space:nowrap">
+      <div style="display:flex;align-items:center;gap:2px">
+        <input type="text" value="${b.name}" style="background:transparent;border:none;outline:none;font-size:12px;font-weight:600;width:90px"
+          onblur="updateProject('bim','${b.id}','name',this.value)">
+        <button onclick="removeProject('bim','${b.id}')" style="font-size:9px;color:#EF4444;background:none;border:none;cursor:pointer" title="Remover">✕</button>
+      </div></td>`;
+    h += `<td ${BLUE}>
+      <input type="number" value="${b.year}" min="2000" max="2035"
+        style="width:56px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
+        onblur="updateProject('bim','${b.id}','year',+this.value||2020);renderSec11()">
+    </td>`;
+    ecds.forEach((e, ei) => {
+      const d = diffs[bi][ei];
+      h += `<td class="score-cell" style="${B};${cellColor11(d)};text-align:center">${d.toFixed(2)}</td>`;
+    });
+    h += `<td ${EMPTY}></td></tr>`;
+  });
+
+  // Add BIM row
+  h += `<tr><td colspan="2" style="${B};background:#F9FAFB;padding:4px">
+    <button ${BTN} onclick="addProjectInline('bim')">=+Adicionar…</button>
+  </td>`;
+  for (let i = 0; i < ecds.length + 1; i++) h += `<td ${EMPTY}></td>`;
+  h += '</tr></tbody></table>';
+  el.innerHTML = h;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SECTION 1.2 — CHARACTERISTICS
 // ─────────────────────────────────────────────────────────────────────────────
-const SCALE12 = [
-  { v: 1, label: '1 — Leg. diferente, Obj. diferentes (sem sobreposição)' },
-  { v: 2, label: '2 — Leg. diferente, Obj. semelhantes' },
-  { v: 3, label: '3 — Leg. diferente, mesmo objeto' },
-  { v: 4, label: '4 — Mesma leg., Obj. diferentes' },
-  { v: 5, label: '5 — Mesma leg., Obj. semelhantes' },
-  { v: 6, label: '6 — Mesma leg., mesmo objeto ★' },
-];
+// Shared TD color helper (used by 1.2, 1.3, 1.4, 1.5)
+function setTdColor(td, cs) {
+  td.style.background = '';
+  td.style.color = '';
+  if (!cs) return;
+  cs.split(';').forEach(p => {
+    const [k, v] = p.split(':').map(s => s.trim());
+    if (k === 'background') td.style.background = v;
+    if (k === 'color') td.style.color = v;
+  });
+}
 
-function setScore12(bimId, ecdId, val) {
+function scoreColor12(v) {
+  if (!v || v < 1) return '';
+  const C = {1:'background:#EF4444;color:#fff',2:'background:#F87171;color:#7F1D1D',
+              3:'background:#FCA5A5;color:#7F1D1D',4:'background:#FBBF24;color:#78350F',
+              5:'background:#FDE68A;color:#78350F',6:'background:#16A34A;color:#fff'};
+  return C[Math.min(6, Math.max(1, Math.round(v)))] || '';
+}
+
+function updateScore12Cell(el, bimId, ecdId, bi, ei) {
+  const v = parseInt(el.value) || 0;
   if (!S.scores12[bimId]) S.scores12[bimId] = {};
-  S.scores12[bimId][ecdId] = val;
-  renderMatrix12();
+  S.scores12[bimId][ecdId] = v;
+  const td = document.getElementById(`c12_${bi}_${ei}`);
+  if (td) setTdColor(td, scoreColor12(v));
+  save();
 }
 
 function renderMatrix12() {
   const el = document.getElementById('matrix-12');
   if (!S.ecd.length || !S.bim.length) { el.innerHTML = '<p style="color:#94A3B8">Cadastre projetos primeiro.</p>'; return; }
-  let html = '';
-  S.bim.forEach(b => {
-    S.ecd.forEach(e => {
-      const key = b.id + '_' + e.id;
-      const cur = (S.scores12[b.id] || {})[e.id] || 0;
-      html += `<div style="margin-bottom:11px;padding:10px;background:#F8FAFF;border-radius:10px;border:1px solid #E2E8F0">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
-          <span class="tag tag-bim">${b.name}</span>
-          <span style="color:#94A3B8">×</span>
-          <span class="tag tag-ecd">${e.name}</span>
-          ${cur ? `<span class="tag tag-yes">Pontuação: ${cur}</span>` : '<span class="tag tag-no">Sem pontuação</span>'}
-        </div>
-        <div class="scale-selector">
-          ${SCALE12.map(s => `<button class="scale-btn${cur===s.v?' selected':''}" title="${s.label}" onclick="setScore12('${b.id}','${e.id}',${s.v})">${s.v}</button>`).join('')}
-        </div>
-        <div style="font-size:11px;color:#64748B;margin-top:4px">${cur ? SCALE12.find(x=>x.v===cur).label : 'Selecione uma pontuação'}</div>
-      </div>`;
+  const B = 'border:1px solid #D1D5DB';
+  let h = `<div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>`;
+  // Row 1: "Projetos ECD" header
+  h += `<tr><th style="${B};background:#F9FAFB;padding:6px"></th>`;
+  h += `<th colspan="${S.ecd.length}" style="${B};background:#CCFBF1;color:#0D9488;font-weight:700;font-size:13px;text-align:center;padding:6px">Projetos ECD</th></tr>`;
+  // Row 2: ECD names
+  h += `<tr><th style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Projeto BIM</th>`;
+  S.ecd.forEach(e => h += `<th style="${B};background:#F3F4F6;font-size:12px;font-weight:700;text-align:center;padding:5px 8px;min-width:70px">${e.name}</th>`);
+  h += '</tr></thead><tbody>';
+  S.bim.forEach((b, bi) => {
+    h += `<tr><td style="${B};background:#F3F4F6;padding:5px 10px;font-weight:700;font-size:12px;white-space:nowrap">${b.name}</td>`;
+    S.ecd.forEach((e, ei) => {
+      const v = (S.scores12[b.id] || {})[e.id] || 0;
+      h += `<td id="c12_${bi}_${ei}" style="${B};${scoreColor12(v)};padding:0;min-width:70px">
+        <input type="number" min="1" max="6" value="${v||''}" placeholder="1–6"
+          oninput="updateScore12Cell(this,'${b.id}','${e.id}',${bi},${ei})"
+          style="width:100%;background:transparent;border:none;outline:none;text-align:center;
+                 font-size:13px;font-weight:700;color:inherit;padding:7px 4px;box-sizing:border-box">
+      </td>`;
     });
+    h += '</tr>';
   });
-  el.innerHTML = html;
+  h += '</tbody></table></div>';
+  el.innerHTML = h;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -657,81 +683,172 @@ function getTotal13(bimId, ecdId) {
   return TEAMS.reduce((s, t) => s + (sc[t] || 0), 0);
 }
 
+function scoreColor13(v, isTotal) {
+  if (isTotal) {
+    if (!v) return '';
+    if (v <= 5)  return 'background:#EF4444;color:#fff';
+    if (v <= 9)  return 'background:#FB923C;color:#fff';
+    return 'background:#16A34A;color:#fff';
+  }
+  if (!v || v < 1) return '';
+  const C = {1:'background:#EF4444;color:#fff',2:'background:#F87171;color:#7F1D1D',
+             3:'background:#FB923C;color:#fff',4:'background:#86EFAC;color:#14532D',
+             5:'background:#16A34A;color:#fff'};
+  return C[Math.min(5, Math.max(1, Math.round(v)))] || '';
+}
+
+function updateScore13Cell(el, bimId, ecdId, bi, ei, team) {
+  const v = parseInt(el.value) || 0;
+  const k = bimId + '_' + ecdId;
+  if (!S.scores13[k]) S.scores13[k] = {};
+  S.scores13[k][team] = v;
+  const td = document.getElementById(`c13_${bi}_${ei}_${team}`);
+  if (td) setTdColor(td, scoreColor13(v, false));
+  const tot = getTotal13(bimId, ecdId);
+  const totTd = document.getElementById(`c13_${bi}_${ei}_Total`);
+  if (totTd) {
+    setTdColor(totTd, scoreColor13(tot, true));
+    totTd.textContent = tot > 0 ? tot.toFixed(2) : '';
+  }
+  save();
+}
+
 function renderMatrix13() {
   const el = document.getElementById('matrix-13');
   if (!S.ecd.length || !S.bim.length) { el.innerHTML = '<p style="color:#94A3B8">Cadastre projetos primeiro.</p>'; return; }
-  let html = '';
-  S.bim.forEach(b => {
-    S.ecd.forEach(e => {
+  const B = 'border:1px solid #D1D5DB';
+
+  const inp = (team, v, bi, ei, bimId, ecdId) => {
+    const cs = scoreColor13(v, false);
+    return `<td id="c13_${bi}_${ei}_${team}" style="${B};${cs};padding:0;min-width:62px">
+      <input type="number" min="1" max="5" value="${v||''}" placeholder="${team}"
+        oninput="updateScore13Cell(this,'${bimId}','${ecdId}',${bi},${ei},'${team}')"
+        style="width:100%;background:transparent;border:none;outline:none;text-align:center;
+               font-size:12px;font-weight:700;color:inherit;padding:5px 3px;box-sizing:border-box">
+    </td>`;
+  };
+
+  let h = `<div class="tbl-wrap"><table style="border-collapse:collapse"><thead>`;
+  h += '<tr>';
+  h += `<th rowspan="2" style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;vertical-align:middle">Projeto BIM</th>`;
+  if (S.ecd.length) h += `<th colspan="${S.ecd.length * 2}" style="${B};background:#CCFBF1;color:#0D9488;font-weight:700;font-size:13px;text-align:center;padding:6px">Projetos ECD</th>`;
+  h += '</tr><tr>';
+  S.ecd.forEach(e => h += `<th colspan="2" style="${B};background:#F3F4F6;font-weight:700;font-size:12px;text-align:center;padding:5px 8px;white-space:nowrap">${e.name}</th>`);
+  h += '</tr></thead><tbody>';
+
+  S.bim.forEach((b, bi) => {
+    const r1 = [], r2 = [];
+    S.ecd.forEach((e, ei) => {
       const k = b.id + '_' + e.id;
-      const total = getTotal13(b.id, e.id);
-      html += `<div style="margin-bottom:11px;padding:10px;background:#F8FAFF;border-radius:10px;border:1px solid #E2E8F0">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-          <span class="tag tag-bim">${b.name}</span>
-          <span style="color:#94A3B8">×</span>
-          <span class="tag tag-ecd">${e.name}</span>
-          <span class="tag ${total>=12?'tag-yes':total>=6?'tag-bim':'tag-no'}">Total: ${total}/15</span>
-        </div>`;
-      TEAMS.forEach(team => {
-        const cur = (S.scores13[k] || {})[team] || 0;
-        html += `<div style="margin-bottom:6px"><div style="font-size:12px;font-weight:600;color:#374151;margin-bottom:3px">${team}</div>
-          <div class="scale-selector">
-            ${SCALE13.map(s => `<button class="scale-btn${cur===s.v?' selected':''}" title="${s.label}" onclick="setScore13('${b.id}','${e.id}','${team}',${s.v})">${s.v}</button>`).join('')}
-          </div></div>`;
-      });
-      html += '</div>';
+      const sc = S.scores13[k] || {};
+      const vP = sc.Projetistas || 0, vG = sc.Gerenciadora || 0, vPf = sc.Prefeitura || 0;
+      const tot = vP + vG + vPf;
+      r1.push(inp('Projetistas', vP, bi, ei, b.id, e.id));
+      r1.push(inp('Prefeitura', vPf, bi, ei, b.id, e.id));
+      r2.push(inp('Gerenciadora', vG, bi, ei, b.id, e.id));
+      r2.push(`<td id="c13_${bi}_${ei}_Total" style="${B};${scoreColor13(tot, true)};text-align:center;font-size:12px;font-weight:700;padding:5px 3px;min-width:62px">${tot > 0 ? tot.toFixed(2) : ''}</td>`);
     });
+    h += `<tr><td rowspan="2" style="${B};background:#F3F4F6;padding:6px 10px;font-weight:700;font-size:12px;white-space:nowrap;vertical-align:middle">${b.name}</td>${r1.join('')}</tr>`;
+    h += `<tr>${r2.join('')}</tr>`;
   });
-  el.innerHTML = html;
+
+  h += '</tbody></table></div>';
+  h += `<div style="margin-top:14px;display:inline-block;font-size:11px">
+    <div style="font-weight:700;color:#374151;margin-bottom:5px">LEGENDA</div>
+    <table style="border-collapse:collapse">
+      <tr>
+        <td style="border:1px solid #D1D5DB;padding:4px 14px;background:#F87171;color:#7F1D1D;font-weight:600">Projetistas</td>
+        <td style="border:1px solid #D1D5DB;padding:4px 14px;background:#86EFAC;color:#14532D;font-weight:600">Prefeitura</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #D1D5DB;padding:4px 14px;background:#FBBF24;color:#78350F;font-weight:600">Gerenciadora</td>
+        <td style="border:1px solid #D1D5DB;padding:4px 14px;background:#16A34A;color:#fff;font-weight:600">Total</td>
+      </tr>
+    </table>
+  </div>`;
+  el.innerHTML = h;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SECTION 1.4 — GEP / IGEP
 // ─────────────────────────────────────────────────────────────────────────────
-function renderSec14() {
-  ['ecd', 'bim'].forEach(type => {
-    const el = document.getElementById('igep-' + type + '-inputs');
-    if (!el) return;
-    el.innerHTML = S[type].map(p => `
-      <div style="margin-bottom:10px">
-        <label>${p.name} (${p.year})</label>
-        <input type="number" step="0.0001" placeholder="Ex: 1.2500"
-          value="${S.igep[p.id] || ''}"
-          oninput="S.igep['${p.id}']=parseFloat(this.value)||0;renderTable14()">
-      </div>`).join('') || '<p style="color:#94A3B8">Nenhum projeto.</p>';
-  });
-  renderTable14();
+function scoreColor14(d) {
+  if (d <= 0.15) return 'background:#16A34A;color:#fff';
+  if (d <= 0.30) return 'background:#86EFAC;color:#14532D';
+  if (d <= 0.55) return 'background:#FBBF24;color:#78350F';
+  if (d <= 0.70) return 'background:#F97316;color:#fff';
+  return 'background:#EF4444;color:#fff';
 }
 
-function renderTable14() {
-  const el = document.getElementById('table-14');
-  if (!el || !S.ecd.length || !S.bim.length) return;
-  const diffs = S.bim.map(b => S.ecd.map(e => {
-    const bi = S.igep[b.id], ei = S.igep[e.id];
-    return (bi !== undefined && ei !== undefined) ? Math.abs(bi - ei) : null;
-  }));
-  const allVals = diffs.flat().filter(x => x !== null);
-  const minDiff = allVals.length ? Math.min(...allVals) : 0;
-  const maxDiff = allVals.length ? Math.max(...allVals) : 1;
-  let html = '<table><thead><tr><th>BIM \\ ECD</th>';
-  S.ecd.forEach(e => html += `<th class="center">${e.name}<br><small style="color:#94A3B8;font-weight:400">IGEP: ${S.igep[e.id]?.toFixed(4) ?? '—'}</small></th>`);
-  html += '</tr></thead><tbody>';
-  S.bim.forEach((b, bi) => {
-    const bIgep = S.igep[b.id];
-    html += `<tr><td><strong>${b.name}</strong><br><small style="color:#94A3B8">IGEP: ${bIgep?.toFixed(4) ?? '—'}</small></td>`;
-    S.ecd.forEach((e, ei) => {
-      const d = diffs[bi][ei];
-      if (d === null) { html += '<td class="center" style="color:#94A3B8">—</td>'; return; }
-      const pct = maxDiff > minDiff ? 1 - (d - minDiff) / (maxDiff - minDiff) : 1;
-      const bg = pct > 0.8 ? '#166534' : pct > 0.5 ? '#16A34A' : pct > 0.2 ? '#86EFAC' : '#F1F5F9';
-      const fc = pct > 0.5 ? 'white' : '#0F172A';
-      html += `<td class="score-cell" style="background:${bg};color:${fc}">${d.toFixed(4)}</td>`;
-    });
-    html += '</tr>';
-  });
-  html += '</tbody></table>';
-  el.innerHTML = html;
+function updateDiffCell14(td, bVal, eVal) {
+  if (!bVal || !eVal) { td.innerHTML = '<span style="color:#94A3B8">—</span>'; setTdColor(td, ''); return; }
+  const d = Math.abs(bVal - eVal);
+  td.textContent = d.toFixed(2);
+  setTdColor(td, scoreColor14(d));
 }
+
+function updateIgep(projectId, val, isBim) {
+  S.igep[projectId] = parseFloat(val) || 0;
+  if (isBim) {
+    const bi = S.bim.findIndex(p => p.id === projectId);
+    S.ecd.forEach((e, ei) => {
+      const td = document.getElementById(`d14_${bi}_${ei}`);
+      if (td) updateDiffCell14(td, S.igep[projectId], S.igep[e.id]);
+    });
+  } else {
+    const ei = S.ecd.findIndex(p => p.id === projectId);
+    S.bim.forEach((b, bi) => {
+      const td = document.getElementById(`d14_${bi}_${ei}`);
+      if (td) updateDiffCell14(td, S.igep[b.id], S.igep[projectId]);
+    });
+  }
+  save();
+}
+
+function renderSec14() {
+  const el = document.getElementById('sec14-matrix');
+  if (!el) return;
+  if (!S.ecd.length || !S.bim.length) { el.innerHTML = '<p style="color:#94A3B8">Cadastre projetos primeiro.</p>'; return; }
+  const B = 'border:1px solid #D1D5DB';
+  const BLUE = `${B};background:#CCFBF1;padding:3px;text-align:center`;
+  let h = `<div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>`;
+  // Row 1: "Projetos ECD"
+  h += `<tr><th colspan="2" style="${B};background:#F9FAFB;padding:6px"></th>`;
+  h += `<th colspan="${S.ecd.length}" style="${B};background:#CCFBF1;color:#0D9488;font-weight:700;font-size:13px;text-align:center;padding:6px">Projetos ECD</th></tr>`;
+  // Row 2: "Projetos BIM" | "GEP" | ECD names
+  h += `<tr><th style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Projetos BIM</th>`;
+  h += `<th style="${B};background:#F3F4F6;padding:6px;text-align:center;font-size:12px;font-weight:700">GEP</th>`;
+  S.ecd.forEach(e => h += `<th style="${B};background:#F3F4F6;font-size:12px;font-weight:700;text-align:center;padding:5px 8px;min-width:70px;white-space:nowrap">${e.name}</th>`);
+  h += '</tr>';
+  // Row 3: ECD GEP inputs
+  h += `<tr><td style="${B};background:#F9FAFB"></td><td style="${B};background:#F9FAFB;text-align:center;font-size:11px;color:#94A3B8;padding:4px">GEP</td>`;
+  S.ecd.forEach(e => {
+    h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${S.igep[e.id]||''}" placeholder="GEP"
+      style="width:64px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
+      oninput="updateIgep('${e.id}',this.value,false)"></td>`;
+  });
+  h += '</tr></thead><tbody>';
+  // BIM rows
+  S.bim.forEach((b, bi) => {
+    const bVal = S.igep[b.id] || 0;
+    h += `<tr><td style="${B};background:#F3F4F6;padding:4px 8px;font-weight:700;font-size:12px;white-space:nowrap">${b.name}</td>`;
+    h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${bVal||''}" placeholder="GEP"
+      style="width:64px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0D9488"
+      oninput="updateIgep('${b.id}',this.value,true)"></td>`;
+    S.ecd.forEach((e, ei) => {
+      const eVal = S.igep[e.id] || 0;
+      const d = (bVal && eVal) ? Math.abs(bVal - eVal) : null;
+      h += `<td id="d14_${bi}_${ei}" style="${B};${d !== null ? scoreColor14(d) : ''};text-align:center;font-size:12px;font-weight:700;padding:6px">
+        ${d !== null ? d.toFixed(2) : '<span style="color:#94A3B8">—</span>'}
+      </td>`;
+    });
+    h += '</tr>';
+  });
+  h += '</tbody></table></div>';
+  el.innerHTML = h;
+}
+
+function renderTable14() { renderSec14(); }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SECTION 1.5 — RANKING
@@ -748,36 +865,55 @@ function buildCrossings() {
 }
 
 function renderRanking() {
-  const crossings = buildCrossings().sort((a, b) => a.d14 - b.d14 || a.d11 - b.d11 || b.s12 - a.s12 || b.s13 - a.s13);
   const el = document.getElementById('ranking-list');
-  const maxD14 = Math.max(...crossings.map(c => c.d14 === 99 ? 0 : c.d14), 1);
-  el.innerHTML = crossings.map((c, i) => {
-    const sel = S.selectedPairs.includes(c.key);
-    const pct = c.d14 < 99 ? Math.max(0, 1 - c.d14 / maxD14) : 0;
-    return `<div class="rank-row${sel ? ' selected' : ''}" onclick="togglePair('${c.key}','${c.bim.name}','${c.ecd.name}')">
-      <div class="rank-pos ${i === 0 ? 'gold' : i < 3 ? 'silver' : ''}">${i + 1}</div>
-      <div style="flex:1">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px">
-          <span class="tag tag-bim">${c.bim.name}</span>
-          <span style="color:#94A3B8;font-size:12px">×</span>
-          <span class="tag tag-ecd">${c.ecd.name}</span>
-          ${sel ? '<span class="tag tag-yes">✓ Selecionado</span>' : ''}
-        </div>
-        <div class="score-bar"><div class="score-fill" style="width:${pct*100}%"></div></div>
-      </div>
-      <div style="text-align:right;font-size:12px;color:#64748B;min-width:120px">
-        <div>Anos: ${c.d11 < 99 ? c.d11 : '—'} &nbsp; 1.2: ${c.s12 || '—'}/6</div>
-        <div>Equipes: ${c.s13 || '—'}/15 &nbsp; IGEP: ${c.d14 < 99 ? c.d14.toFixed(4) : '—'}</div>
-      </div>
-    </div>`;
-  }).join('') || '<p style="color:#94A3B8">Cadastre projetos primeiro.</p>';
-
   const selEl = document.getElementById('selected-pairs');
-  if (S.selectedPairs.length) {
-    selEl.innerHTML = `<div class="info-box"><strong>${S.selectedPairs.length} par(es) selecionado(s) para a Parte 2.</strong> Clique novamente para desselecionar.</div>`;
-  } else {
-    selEl.innerHTML = '<div class="warn-box">Clique nos pares acima para selecioná-los para análise na Parte 2.</div>';
-  }
+  const B = 'border:1px solid #D1D5DB';
+
+  // ECD outer loop, BIM inner loop (as in Excel)
+  const rows = [];
+  S.ecd.forEach(e => {
+    S.bim.forEach(b => {
+      const d11 = (b.year && e.year) ? Math.abs(b.year - e.year) : null;
+      const s12 = (S.scores12[b.id] || {})[e.id] || 0;
+      const s13 = getTotal13(b.id, e.id);
+      const bv = S.igep[b.id], ev = S.igep[e.id];
+      const d14 = (bv && ev) ? Math.abs(bv - ev) : null;
+      const key = b.id + '_' + e.id;
+      rows.push({ b, e, d11, s12, s13, d14, key, sel: S.selectedPairs.includes(key) });
+    });
+  });
+
+  if (!rows.length) { el.innerHTML = '<p style="color:#94A3B8">Cadastre projetos primeiro.</p>'; return; }
+
+  const TH = `style="${B};background:#F3F4F6;padding:7px 10px;font-size:11px;font-weight:700;white-space:nowrap;text-align:center"`;
+  let h = `<div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead><tr>`;
+  h += `<th style="${B};background:#F3F4F6;padding:7px 10px;font-size:11px;font-weight:700;text-align:left">Cruzamentos</th>`;
+  h += `<th ${TH}>1.1_Cont_Contratação</th><th ${TH}>1.2_Carac_Contratação</th>`;
+  h += `<th ${TH}>1.3_Equipe</th><th ${TH}>1.4_GEP</th><th ${TH}>1.5_Selecionado?</th>`;
+  h += '</tr></thead><tbody>';
+
+  const c11Color = d => d === null ? '' : d === 0 ? 'background:#16A34A;color:#fff' : d === 1 ? 'background:#FBBF24;color:#78350F' : d <= 2 ? 'background:#FB923C;color:#fff' : 'background:#EF4444;color:#fff';
+  const c13Color = v => !v ? '' : v <= 9 ? 'background:#FB923C;color:#fff' : 'background:#16A34A;color:#fff';
+
+  rows.forEach(r => {
+    const rowBg = r.sel ? 'background:#FFFDE7;' : '';
+    const selCs = r.sel ? `${B};background:#FFD700;color:#374151;text-align:center;font-weight:700;cursor:pointer;padding:6px 10px` : `${B};text-align:center;cursor:pointer;color:#94A3B8;padding:6px 10px`;
+    h += `<tr style="${rowBg}">`;
+    h += `<td style="${B};padding:6px 10px;font-size:12px;${r.sel?'font-weight:700;':''}">${r.b.name} X ${r.e.name}</td>`;
+    h += `<td style="${B};${c11Color(r.d11)};text-align:center;font-size:12px;font-weight:700;padding:6px">${r.d11 !== null ? r.d11.toFixed(2) : '—'}</td>`;
+    h += `<td style="${B};${scoreColor12(r.s12)};text-align:center;font-size:12px;font-weight:700;padding:6px">${r.s12 ? r.s12.toFixed(2) : '—'}</td>`;
+    h += `<td style="${B};${c13Color(r.s13)};text-align:center;font-size:12px;font-weight:700;padding:6px">${r.s13 ? r.s13.toFixed(2) : '—'}</td>`;
+    h += `<td style="${B};${r.d14 !== null ? scoreColor14(r.d14) : ''};text-align:center;font-size:12px;font-weight:700;padding:6px">${r.d14 !== null ? r.d14.toFixed(2) : '—'}</td>`;
+    h += `<td style="${selCs}" onclick="togglePair('${r.key}','${r.b.name}','${r.e.name}')">${r.sel ? '<strong>SIM</strong>' : 'Não'}</td>`;
+    h += '</tr>';
+  });
+
+  h += '</tbody></table></div>';
+  el.innerHTML = h;
+  const count = S.selectedPairs.length;
+  selEl.innerHTML = count
+    ? `<div class="info-box" style="margin-top:12px"><strong>${count} par(es) marcado(s) como SIM.</strong> Avance para a Parte 2.</div>`
+    : '<div class="warn-box" style="margin-top:12px">Nenhum par selecionado. Clique em "Não" na última coluna para selecionar.</div>';
 }
 
 function togglePair(key, bimName, ecdName) {
@@ -810,7 +946,7 @@ function renderP2Data() {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
         ${['ecd','bim'].map(type => `
         <div>
-          <h4 style="color:${type==='bim'?'#1D4ED8':'#92400E'};margin-bottom:12px;font-size:13px;text-transform:uppercase;letter-spacing:.5px">
+          <h4 style="color:${type==='bim'?'#0D9488':'#92400E'};margin-bottom:12px;font-size:13px;text-transform:uppercase;letter-spacing:.5px">
             ${type==='bim'?'🏗 Projeto BIM':'📋 Projeto ECD'}: ${type==='bim'?ex.bimName:ex.ecdName}
           </h4>
           <div class="form-row cols-2">
@@ -853,10 +989,10 @@ function renderP2Indicators() {
           const d = (ex[type] || {});
           const docs23 = d.months ? (d.docs / d.months).toFixed(2) : '—';
           return `<div>
-            <h4 style="color:${type==='bim'?'#1D4ED8':'#92400E'};margin-bottom:12px;font-size:13px;text-transform:uppercase;letter-spacing:.5px">
+            <h4 style="color:${type==='bim'?'#0D9488':'#92400E'};margin-bottom:12px;font-size:13px;text-transform:uppercase;letter-spacing:.5px">
               ${type==='bim'?'🏗 BIM':'📋 ECD'}: ${type==='bim'?ex.bimName:ex.ecdName}
             </h4>
-            <div style="background:#F8FAFF;border-radius:8px;padding:12px;margin-bottom:12px;font-size:12px;color:#1D4ED8">
+            <div style="background:#F0FDFA;border-radius:8px;padding:12px;margin-bottom:12px;font-size:12px;color:#0D9488">
               <strong>2.3 (calculado):</strong> ${docs23} docs/mês &nbsp;
               (${d.docs||0} docs ÷ ${d.months||0} meses)
             </div>
@@ -920,7 +1056,7 @@ function renderSynthesis() {
   const _btnBase = 'display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid';
   const actionBar = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;padding:14px 18px;background:white;border:1px solid #E2E8F0;border-radius:12px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06)">
     <span style="font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.6px;margin-right:2px">Exportar</span>
-    <button onclick="exportPDF()" style="${_btnBase} #1E3A8A;background:#1E3A8A;color:white">📄 PDF</button>
+    <button onclick="exportPDF()" style="${_btnBase} #0F766E;background:#0F766E;color:white">📄 PDF</button>
     <div style="width:1px;height:22px;background:#E2E8F0;margin:0 4px"></div>
     <span style="font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.6px;margin-right:2px">Compartilhar</span>
     <button onclick="shareLinkedIn()" style="${_btnBase} #0A66C2;background:#0A66C2;color:white">LinkedIn</button>
@@ -946,9 +1082,9 @@ function renderSynthesis() {
         <td class="bar-cell">
           <div style="margin-bottom:6px">
             <div class="bar-wrap">
-              <span style="font-size:11px;color:#1D4ED8;width:28px">BIM</span>
-              <div class="bar-bg"><div class="bar-fill" style="width:${bBarPct}%;background:#1D4ED8"></div></div>
-              <span class="bar-val" style="color:#1D4ED8">${fmt(bv)}</span>
+              <span style="font-size:11px;color:#0D9488;width:28px">BIM</span>
+              <div class="bar-bg"><div class="bar-fill" style="width:${bBarPct}%;background:#0D9488"></div></div>
+              <span class="bar-val" style="color:#0D9488">${fmt(bv)}</span>
             </div>
             <div class="bar-wrap" style="margin-top:4px">
               <span style="font-size:11px;color:#B45309;width:28px">ECD</span>
@@ -993,7 +1129,7 @@ function renderSynthesis() {
         </table>
       </div>
       <div style="background:#0F172A;border-radius:12px;padding:20px;margin-top:16px">
-        <h3 style="color:#60A5FA;margin:0 0 14px;font-size:14px">Referência — ${ex.bimName} × ${ex.ecdName}</h3>
+        <h3 style="color:#5EEAD4;margin:0 0 14px;font-size:14px">Referência — ${ex.bimName} × ${ex.ecdName}</h3>
         <div class="metric-grid" style="grid-template-columns:repeat(3,1fr)">
           ${refHtml}
         </div>
@@ -1067,25 +1203,25 @@ function buildReportHTML() {
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Geist',system-ui,-apple-system,Arial,sans-serif;font-size:13px;color:#0F172A;line-height:1.6;padding:48px 52px;max-width:900px;margin:0 auto}
 h1,h2,h3{font-family:'Geist',system-ui,-apple-system,Arial,sans-serif}
-h1{font-size:22px;color:#1E3A8A;margin-bottom:6px}
-h2{font-size:15px;color:#1E3A8A;border-bottom:2px solid #1E3A8A;padding-bottom:6px;margin:28px 0 12px}
+h1{font-size:22px;color:#0F766E;margin-bottom:6px}
+h2{font-size:15px;color:#0F766E;border-bottom:2px solid #0F766E;padding-bottom:6px;margin:28px 0 12px}
 h3{font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.6px;margin:18px 0 8px}
 table{width:100%;border-collapse:collapse;margin-bottom:12px}
-th{background:#1E3A8A;color:white;padding:7px 10px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+th{background:#0F766E;color:white;padding:7px 10px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
 td{padding:7px 10px;border-bottom:1px solid #E2E8F0;font-size:12px}
 tr:nth-child(even) td{background:#F8FAFC}
 td.num{text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
-td.bim{color:#1D4ED8}
+td.bim{color:#0D9488}
 td.ecd{color:#B45309}
 td.unit{text-align:center;color:#94A3B8;font-size:11px}
-.header{margin-bottom:36px;padding-bottom:24px;border-bottom:3px solid #1E3A8A}
+.header{margin-bottom:36px;padding-bottom:24px;border-bottom:3px solid #0F766E}
 .subtitle{color:#64748B;font-size:12px;margin-bottom:4px}
 .date{color:#94A3B8;font-size:11px;margin-bottom:16px}
 .links{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px}
-.links a{font-size:11px;color:#1D4ED8;text-decoration:none}
+.links a{font-size:11px;color:#0D9488;text-decoration:none}
 .footer{margin-top:48px;padding-top:16px;border-top:1px solid #E2E8F0;font-size:10px;color:#94A3B8;line-height:1.8}
 .pb{page-break-before:always;margin-top:36px}
-.print-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:8px 18px;border-radius:8px;border:1.5px solid #1E3A8A;background:#1E3A8A;color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.print-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:8px 18px;border-radius:8px;border:1.5px solid #0F766E;background:#0F766E;color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
 @media print{.print-btn{display:none}.pb{page-break-before:always}}
 </style></head><body>
 <div class="header">
@@ -1163,11 +1299,11 @@ function loadExample() {
     S.ecd.forEach(e => { S.scores12[b.id][e.id] = 5; });
   });
 
-  // Section 1.3: Projetistas=3, Gerenciadora=4, Prefeitura=4 → total 11
+  // Section 1.3: Projetistas=2, Gerenciadora=4, Prefeitura=4 → total 10
   S.bim.forEach(b => {
     S.ecd.forEach(e => {
       const k = b.id+'_'+e.id;
-      S.scores13[k] = { Projetistas:3, Gerenciadora:4, Prefeitura:4 };
+      S.scores13[k] = { Projetistas:2, Gerenciadora:4, Prefeitura:4 };
     });
   });
 
@@ -1189,7 +1325,7 @@ function loadExample() {
   };
 
   save();
-  nav('p1-projects');
+  nav('p1-sec11');
   setTimeout(() => alert('✅ Dados de exemplo da tese carregados!\n\nUse a navegação para explorar os resultados. Vá direto para "2.7 Síntese Final" para ver o comparativo completo.'), 100);
 }
 

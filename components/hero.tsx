@@ -8,7 +8,7 @@ export function Hero() {
   const th = useTranslations('Header') // For nav items
 
   return (
-    <section className="min-h-screen flex items-center pt-16">
+    <section id="sobre" className="min-h-screen flex items-center pt-16">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Column - Name and Title */}

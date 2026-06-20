@@ -19,9 +19,6 @@ export default function Home() {
           Sempre que vir esse padrão t('chave'), significa que o texto está vindo 
           do arquivo pt.json e as traduções estão sendo geradas!
         */}
-        <section id="sobre" className="sr-only">
-          <h2>{t('sobre')}</h2>
-        </section>
         <Experience />
         <Skills />
         <Publications />
