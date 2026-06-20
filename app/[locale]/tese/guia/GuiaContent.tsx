@@ -197,14 +197,14 @@ export function GuiaContent() {
 
               <blockquote className="border-l-4 border-blue-700 bg-slate-50 dark:bg-slate-900/60 px-5 py-4 rounded-r-md my-2">
                 <p className="font-serif italic text-sm leading-relaxed">
-                  {t('intro_law')}
+                  {t.rich('intro_law', { b: (chunks) => <strong className="not-italic">{chunks}</strong> })}
                 </p>
                 <cite className="block text-xs text-muted-foreground mt-3 not-italic font-semibold tracking-wide">
                   {t('intro_law_cite')}
                 </cite>
               </blockquote>
 
-              <p>{t('intro_p3')}</p>
+              <p>{t.rich('intro_p3', { b: (chunks) => <strong>{chunks}</strong> })}</p>
               <p>{t('intro_p4')}</p>
 
               <div className="space-y-2 mt-2">
