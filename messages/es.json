@@ -189,17 +189,21 @@
     ]
   },
   "Tese": {
-    "title": "Herramienta de Comparación ECD / BIM",
-    "subtitle": "Apéndice A · Tesis Doctoral · FAUUSP · 2026",
-    "description": "Instrumento metodológico para evaluar y comparar proyectos de Vivienda de Interés Social (HIS) contratados por Entrega Centrada en Planos (ECD) o BIM. Operable por agentes públicos y privados sin especialización en BIM.",
-    "open_button": "Abrir herramienta",
-    "open_hint": "Optimizada para escritorio — se abre en nueva pestaña.",
-    "part1_label": "Parte 1",
-    "part1_title": "Selección de Objetos",
-    "part1_desc": "Identifica los pares de proyectos ECD y BIM más similares entre sí para garantizar la validez de la comparación de desempeño.",
-    "part2_label": "Parte 2",
-    "part2_title": "Comparación de Indicadores",
-    "part2_desc": "Evalúa y compara indicadores de desempeño de entrega entre los pares seleccionados en la Parte 1."
+    "badge": "Tesis Doctoral · FAU USP · 2026",
+    "hero_title": "Proposición de Herramienta para la Comparación del Desempeño de Entrega de Proyectos ECD y BIM en VIS",
+    "hero_desc": "Instrumento metodológico para evaluar y comparar proyectos de Vivienda de Interés Social contratados por Entrega Centrada en Planos (ECD) o BIM en contrataciones públicas en Brasil.",
+    "banca_title": "Presentación al Tribunal",
+    "banca_desc": "Diapositivas de la defensa pública presentadas al tribunal examinador de la Facultad de Arquitectura y Urbanismo de la USP.",
+    "banca_btn": "Abrir presentación",
+    "guia_title": "Guía de la Herramienta",
+    "guia_desc": "Documentación e instrucciones de uso de los instrumentos metodológicos desarrollados para la tesis.",
+    "guia_btn": "Abrir guía",
+    "igep_title": "Herramienta IGEP",
+    "igep_desc": "Índice de Grado de Esfuerzo Proyectual — instrumento de la Parte 1 para la selección y emparejamiento de los objetos de estudio.",
+    "igep_btn": "Abrir herramienta",
+    "ecd_title": "Herramienta Comparación ECD-BIM",
+    "ecd_desc": "Instrumento de la Parte 2 para la evaluación y comparación de indicadores de desempeño de entrega entre proyectos ECD y BIM.",
+    "ecd_btn": "Abrir herramienta"
   },
   "Publications": {
     "title": "Publicaciones Académicas",

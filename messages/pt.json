@@ -189,17 +189,21 @@
     ]
   },
   "Tese": {
-    "title": "Ferramenta de Comparação ECD / BIM",
-    "subtitle": "Apêndice A · Tese de Doutorado · FAUUSP · 2026",
-    "description": "Instrumento metodológico para avaliar e comparar projetos de Habitação de Interesse Social (HIS) contratados por Entrega Centrada em Desenhos (ECD) ou BIM. Operacionalizável por agentes públicos e privados sem necessidade de especialização em BIM.",
-    "open_button": "Abrir ferramenta",
-    "open_hint": "Otimizada para desktop — abre em nova aba.",
-    "part1_label": "Parte 1",
-    "part1_title": "Seleção dos Objetos",
-    "part1_desc": "Identifica os pares de projetos ECD e BIM mais semelhantes entre si para garantir a validade da comparação de desempenho.",
-    "part2_label": "Parte 2",
-    "part2_title": "Comparação de Indicadores",
-    "part2_desc": "Avalia e compara indicadores de desempenho de entrega entre os pares selecionados na Parte 1."
+    "badge": "Tese de Doutorado · FAU USP · 2026",
+    "hero_title": "Proposição de Ferramenta para Comparação do Desempenho de Entrega de Projetos ECD e BIM em HIS",
+    "hero_desc": "Instrumento metodológico para avaliar e comparar projetos de Habitação de Interesse Social contratados por Entrega Centrada em Desenhos (ECD) ou BIM em contratações públicas no Brasil.",
+    "banca_title": "Apresentação para Banca",
+    "banca_desc": "Slides da defesa pública apresentados à banca examinadora da Faculdade de Arquitetura e Urbanismo da USP.",
+    "banca_btn": "Abrir apresentação",
+    "guia_title": "Guia da Ferramenta",
+    "guia_desc": "Documentação e instruções de uso dos instrumentos metodológicos desenvolvidos para a tese.",
+    "guia_btn": "Abrir guia",
+    "igep_title": "Ferramenta IGEP",
+    "igep_desc": "Índice de Grau de Esforço Projetual — instrumento da Parte 1 para seleção e pareamento dos objetos de estudo.",
+    "igep_btn": "Abrir ferramenta",
+    "ecd_title": "Ferramenta Comparação ECD-BIM",
+    "ecd_desc": "Instrumento da Parte 2 para avaliação e comparação de indicadores de desempenho de entrega entre projetos ECD e BIM.",
+    "ecd_btn": "Abrir ferramenta"
   },
   "Publications": {
     "title": "Publicações Acadêmicas",

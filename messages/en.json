@@ -189,17 +189,21 @@
     ]
   },
   "Tese": {
-    "title": "ECD / BIM Comparison Tool",
-    "subtitle": "Appendix A · Doctoral Thesis · FAUUSP · 2026",
-    "description": "Methodological instrument to evaluate and compare Social Housing (HIS) projects procured by Drawing-Centric Delivery (ECD) or BIM. Operable by public and private agents without BIM specialization.",
-    "open_button": "Open tool",
-    "open_hint": "Optimized for desktop — opens in a new tab.",
-    "part1_label": "Part 1",
-    "part1_title": "Object Selection",
-    "part1_desc": "Identifies the most similar ECD and BIM project pairs to ensure the validity of the performance comparison.",
-    "part2_label": "Part 2",
-    "part2_title": "Indicator Comparison",
-    "part2_desc": "Evaluates and compares delivery performance indicators between the pairs selected in Part 1."
+    "badge": "Doctoral Thesis · FAU USP · 2026",
+    "hero_title": "Proposal of a Tool for Comparing ECD and BIM Project Delivery Performance in Social Housing",
+    "hero_desc": "Methodological instrument to evaluate and compare Social Housing (HIS) projects procured by Drawing-Centric Delivery (ECD) or BIM in public procurements in Brazil.",
+    "banca_title": "Examining Board Presentation",
+    "banca_desc": "Slides presented at the public doctoral defense at the Faculty of Architecture and Urbanism of USP.",
+    "banca_btn": "Open presentation",
+    "guia_title": "Tool Guide",
+    "guia_desc": "Documentation and usage instructions for the methodological instruments developed for the thesis.",
+    "guia_btn": "Open guide",
+    "igep_title": "IGEP Tool",
+    "igep_desc": "Design Effort Index (IGEP) — Part 1 instrument for selecting and pairing the study objects.",
+    "igep_btn": "Open tool",
+    "ecd_title": "ECD-BIM Comparison Tool",
+    "ecd_desc": "Part 2 instrument for evaluating and comparing delivery performance indicators between ECD and BIM projects.",
+    "ecd_btn": "Open tool"
   },
   "Publications": {
     "title": "Academic Publications",
