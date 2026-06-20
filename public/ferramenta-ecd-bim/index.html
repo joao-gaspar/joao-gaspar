@@ -929,7 +929,7 @@ function renderSynthesis() {
     <button onclick="shareEmail()" style="${_btnBase} #475569;background:#F1F5F9;color:#475569">✉ E-mail</button>
   </div>`;
 
-  let html = actionBar + S.selectedPairs.map(key => {
+  let html = S.selectedPairs.map(key => {
     const ex = S.eixos[key] || {};
     const ecd = ex.ecd || {}; const bim = ex.bim || {};
 
@@ -1001,7 +1001,7 @@ function renderSynthesis() {
     </div>`;
   }).join('');
 
-
+  html += actionBar;
   el.innerHTML = html;
 }
 
