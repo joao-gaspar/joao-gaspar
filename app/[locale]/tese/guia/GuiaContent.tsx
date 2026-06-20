@@ -126,13 +126,6 @@ export function GuiaContent() {
   const t = useTranslations('Guia')
   const locale = useLocale()
 
-  const requirements = [
-    { num: t('req1_num'), title: t('req1_title'), desc: t('req1_desc'), scale: t('req1_scale') },
-    { num: t('req2_num'), title: t('req2_title'), desc: t('req2_desc'), scale: t('req2_scale') },
-    { num: t('req3_num'), title: t('req3_title'), desc: t('req3_desc'), scale: t('req3_scale') },
-    { num: t('req4_num'), title: t('req4_title'), desc: t('req4_desc'), scale: t('req4_scale') },
-  ]
-
   const downloadCards = [
     { label: t('howto_blank_label'), desc: t('howto_blank_desc'), link: t('howto_blank_link'), variant: 'blank' as const },
     { label: t('howto_hypo_label'), desc: t('howto_hypo_desc'), link: t('howto_hypo_link'), variant: 'hypo' as const },
@@ -266,21 +259,24 @@ export function GuiaContent() {
           {/* REQUISITOS */}
           <section className="bg-card border border-border rounded-xl p-7">
             <SectionLabel label={t('sec_req')} />
-            <p className="text-sm text-muted-foreground mb-5">{t('req_intro')}</p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {requirements.map((req) => (
-                <div key={req.num} className="border border-border rounded-lg overflow-hidden flex flex-col">
-                  <div className="h-1 bg-blue-400" />
-                  <div className="p-4 flex flex-col flex-1">
-                    <div className="text-xs font-bold text-blue-500 tracking-widest uppercase mb-1">{req.num}</div>
-                    <div className="font-bold text-sm text-blue-900 dark:text-blue-200 mb-2 leading-tight">{req.title}</div>
-                    <div className="text-xs text-muted-foreground leading-relaxed flex-1">{req.desc}</div>
-                    <div className="text-xs font-semibold text-blue-600 dark:text-blue-400 border-t border-border pt-2 mt-3">
-                      {req.scale}
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <p className="text-sm text-muted-foreground mb-4">{t('req_intro')}</p>
+            <div className="space-y-2">
+              <div className="flex items-start gap-3 text-sm">
+                <span className="font-serif italic text-muted-foreground flex-shrink-0 min-w-[20px]">a)</span>
+                <span>{t('req_item_a')}</span>
+              </div>
+              <div className="flex items-start gap-3 text-sm">
+                <span className="font-serif italic text-muted-foreground flex-shrink-0 min-w-[20px]">b)</span>
+                <span>{t('req_item_b')}</span>
+              </div>
+              <div className="flex items-start gap-3 text-sm">
+                <span className="font-serif italic text-muted-foreground flex-shrink-0 min-w-[20px]">c)</span>
+                <span>{t('req_item_c')}</span>
+              </div>
+              <div className="flex items-start gap-3 text-sm">
+                <span className="font-serif italic text-muted-foreground flex-shrink-0 min-w-[20px]">d)</span>
+                <span>{t('req_item_d')}</span>
+              </div>
             </div>
           </section>
 
