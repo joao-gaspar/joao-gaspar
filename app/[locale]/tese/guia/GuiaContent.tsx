@@ -206,18 +206,21 @@ export function GuiaContent() {
 
               <p>{t.rich('intro_p3', { b: (chunks) => <strong>{chunks}</strong> })}</p>
               <p>{t('intro_p4')}</p>
+              <blockquote className="border-l-4 border-primary bg-primary/5 px-5 py-4 rounded-r-md my-3">
+                <p className="font-serif italic text-sm leading-relaxed text-foreground">
+                  &ldquo;{t('intro_question')}&rdquo;
+                </p>
+              </blockquote>
+              <p>{t('intro_p4b')}</p>
 
               <div className="space-y-2 mt-2">
                 <div className="flex items-start gap-4 p-3 rounded-md border border-border">
                   <span className="font-serif italic text-sm text-muted-foreground flex-shrink-0 pt-0.5 min-w-[20px]">a)</span>
                   <span className="text-sm">{t('consid_a')}</span>
                 </div>
-                <div className="flex items-start gap-4 p-3 rounded-md border border-blue-500 bg-blue-50 dark:bg-blue-950/30">
-                  <span className="font-serif italic text-sm text-blue-600 font-bold flex-shrink-0 pt-0.5 min-w-[20px]">b)</span>
-                  <span className="text-sm flex-1">{t('consid_b')}</span>
-                  <span className="flex-shrink-0 text-xs font-bold text-blue-600 border border-blue-500 bg-white dark:bg-blue-950 px-2 py-0.5 rounded self-start whitespace-nowrap">
-                    {t('consid_b_tag')}
-                  </span>
+                <div className="flex items-start gap-4 p-3 rounded-md border border-border">
+                  <span className="font-serif italic text-sm text-muted-foreground flex-shrink-0 pt-0.5 min-w-[20px]">b)</span>
+                  <span className="text-sm">{t('consid_b')}</span>
                 </div>
                 <div className="flex items-start gap-4 p-3 rounded-md border border-border">
                   <span className="font-serif italic text-sm text-muted-foreground flex-shrink-0 pt-0.5 min-w-[20px]">c)</span>
