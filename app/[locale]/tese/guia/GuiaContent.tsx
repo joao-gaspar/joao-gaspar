@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
@@ -125,6 +125,7 @@ const INFOG_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 840
 
 export function GuiaContent() {
   const t = useTranslations('Guia')
+  const locale = useLocale()
 
   const requirements = [
     { num: t('req1_num'), title: t('req1_title'), desc: t('req1_desc'), scale: t('req1_scale') },
@@ -150,7 +151,7 @@ export function GuiaContent() {
 
         {/* Back navigation */}
         <Link
-          href="/tese"
+          href={`/${locale}/tese`}
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-4 w-4" />

@@ -16,6 +16,15 @@ export function Header() {
 
   const isOnTesePage = pathname?.includes('/tese') ?? false
 
+  // Strip the locale prefix to build locale-switch links that preserve the current page
+  const pathWithoutLocale = (pathname ?? '/')
+    .replace(/^\/(pt|en|es)(\/|$)/, '/')
+    .replace(/\/$/, '') || '/'
+
+  function localePath(targetLocale: string) {
+    return `/${targetLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
+  }
+
   const navItems = [
     { href: "#sobre", label: t('nav_sobre'), isTese: false },
     { href: "#experiencia", label: t('nav_experiencia'), isTese: false },
@@ -28,7 +37,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="text-lg font-semibold text-foreground">
+          <Link href={`/${locale}`} className="text-lg font-semibold text-foreground">
             João Gaspar
           </Link>
 
@@ -55,9 +64,9 @@ export function Header() {
               )}
             </nav>
             <div className="flex items-center gap-3 border-l border-border pl-8">
-              <Link href="/pt" className={`text-xs font-bold transition-colors ${locale === 'pt' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>PT</Link>
-              <Link href="/en" className={`text-xs font-bold transition-colors ${locale === 'en' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>EN</Link>
-              <Link href="/es" className={`text-xs font-bold transition-colors ${locale === 'es' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>ES</Link>
+              <Link href={localePath('pt')} className={`text-xs font-bold transition-colors ${locale === 'pt' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>PT</Link>
+              <Link href={localePath('en')} className={`text-xs font-bold transition-colors ${locale === 'en' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>EN</Link>
+              <Link href={localePath('es')} className={`text-xs font-bold transition-colors ${locale === 'es' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>ES</Link>
             </div>
           </div>
 
@@ -96,9 +105,9 @@ export function Header() {
                 )
               )}
               <div className="flex items-center gap-6 mt-2 pt-4 border-t border-border">
-                <Link href="/pt" className={`text-sm font-bold transition-colors ${locale === 'pt' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>PT</Link>
-                <Link href="/en" className={`text-sm font-bold transition-colors ${locale === 'en' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>EN</Link>
-                <Link href="/es" className={`text-sm font-bold transition-colors ${locale === 'es' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>ES</Link>
+                <Link href={localePath('pt')} className={`text-sm font-bold transition-colors ${locale === 'pt' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>PT</Link>
+                <Link href={localePath('en')} className={`text-sm font-bold transition-colors ${locale === 'en' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>EN</Link>
+                <Link href={localePath('es')} className={`text-sm font-bold transition-colors ${locale === 'es' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={() => setIsMenuOpen(false)}>ES</Link>
               </div>
             </div>
           </nav>

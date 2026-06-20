@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server"
+import { getTranslations, getLocale } from "next-intl/server"
 import Link from "next/link"
 import { Presentation, BookOpen, BarChart3, GitCompare, ExternalLink } from "lucide-react"
 import { Header } from "@/components/header"
@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 
 export default async function Tese() {
   const t = await getTranslations('Tese')
+  const locale = await getLocale()
 
   const cards = [
     {
@@ -23,7 +24,7 @@ export default async function Tese() {
       title: t('guia_title'),
       desc: t('guia_desc'),
       btn: t('guia_btn'),
-      href: "/tese/guia",
+      href: `/${locale}/tese/guia`,
       external: false,
     },
     {
@@ -31,7 +32,7 @@ export default async function Tese() {
       title: t('igep_title'),
       desc: t('igep_desc'),
       btn: t('igep_btn'),
-      href: "/tese/igep",
+      href: `/${locale}/tese/igep`,
       external: false,
     },
     {
