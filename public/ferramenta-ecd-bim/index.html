@@ -1270,6 +1270,61 @@ function renderP25Table(projects) {
   </div>`;
 }
 
+function refreshP26Results() {
+  getP2SelectedProjects().forEach(p => {
+    const d = getProjectEixo(p);
+    const result = d.docsApproved ? d.docsReturned / d.docsApproved : 0;
+    const cell = document.getElementById(`p26_result_${p.type}_${p.id}`);
+    if (cell) cell.textContent = result ? formatOneDecimalBR(result) : '';
+  });
+}
+
+function renderP26Table(projects) {
+  const B = 'border:1px solid #111827';
+  const TH = `${B};background:#F3F4F6;padding:4px 6px;font-size:11px;font-weight:700;text-align:left`;
+  const TD = `${B};padding:4px 6px;font-size:12px;text-align:left`;
+  const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:left;font-size:12px;font-weight:600;color:#111827;padding:1px';
+
+  return `<div class="card">
+    <h3>2.6 Revisoes por documento aprovado</h3>
+    <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
+      <tr>
+        <th style="${B};background:#F9FAFB"></th>
+        <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:4px 6px;text-align:left;font-size:12px;font-weight:700">Projetos</th>
+      </tr>
+      <tr>
+        <th style="${TH};min-width:420px">Obten&ccedil;&atilde;o do indicador</th>
+        ${projects.map(p => `<th style="${TH};min-width:90px">${p.name}</th>`).join('')}
+      </tr>
+    </thead><tbody>
+      <tr>
+        <td style="${TD}">Quantidade de documentos entregues e devolvidos para revis&atilde;o</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          return `<td style="${TD}"><input type="number" min="0" value="${d.docsReturned || ''}" style="${IN}"
+            oninput="setProjectEixoVal('${p.type}','${p.name}','docsReturned',this.value);refreshP26Results()"></td>`;
+        }).join('')}
+      </tr>
+      <tr>
+        <td style="${TD}">Quantidade de documentos aprovados</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          return `<td style="${TD}"><input type="number" min="0" value="${d.docsApproved || ''}" style="${IN}"
+            oninput="setProjectEixoVal('${p.type}','${p.name}','docsApproved',this.value);refreshP26Results()"></td>`;
+        }).join('')}
+      </tr>
+      <tr>
+        <td style="${TD};background:#FFFF00;font-weight:700">M&eacute;dia de documentos revisados para cada documento aprovado</td>
+        ${projects.map(p => {
+          const d = getProjectEixo(p);
+          const result = d.docsApproved ? d.docsReturned / d.docsApproved : 0;
+          return `<td id="p26_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F8696B'};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
+        }).join('')}
+      </tr>
+    </tbody></table></div>
+  </div>`;
+}
+
 function renderP2Indicators() {
   const el = document.getElementById('p2-indicators-form');
   if (!S.selectedPairs.length) { el.innerHTML = '<div class="warn-box">Nenhum par selecionado.</div>'; return; }
@@ -1277,6 +1332,7 @@ function renderP2Indicators() {
   applyKnownP2Data(projects);
   const p24Table = renderP24Table(projects);
   const p25Table = renderP25Table(projects);
+  const p26Table = renderP26Table(projects);
   const pairCards = S.selectedPairs.map(key => {
     const ex = S.eixos[key] || {};
     return `<div class="card">
@@ -1293,20 +1349,12 @@ function renderP2Indicators() {
               <strong>2.3 (calculado):</strong> ${docs23} docs/mes &nbsp;
               (${d.docs||0} docs / ${d.months||0} meses)
             </div>
-            <div class="form-row cols-2">
-              <div><label>2.6 - Docs entregues e devolvidos para revisao</label>
-                <input type="number" placeholder="Ex: 12" value="${d.docsReturned||''}"
-                  oninput="setEixoVal('${key}','${type}','docsReturned',this.value)"></div>
-              <div><label>2.6 - Docs aprovados</label>
-                <input type="number" placeholder="Ex: 8" value="${d.docsApproved||''}"
-                  oninput="setEixoVal('${key}','${type}','docsApproved',this.value)"></div>
-            </div>
           </div>`;
         }).join('')}
       </div>
     </div>`;
   }).join('');
-  el.innerHTML = p24Table + p25Table + pairCards;
+  el.innerHTML = p24Table + p25Table + p26Table + pairCards;
 }
 function calcIndicators() {
   S.selectedPairs.forEach(key => {
