@@ -14,7 +14,8 @@ export function Header() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const isOnTesePage = pathname?.includes('/tese') ?? false
+  const isOnHomePage = pathname === `/${locale}` || pathname === `/${locale}/`
+  const isOnTesePage = pathname === `/${locale}/tese`
 
   // Strip the locale prefix to build locale-switch links that preserve the current page
   const pathWithoutLocale = (pathname ?? '/')
@@ -25,12 +26,13 @@ export function Header() {
     return `/${targetLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
   }
 
+  const homePrefix = isOnHomePage ? '' : `/${locale}`
   const navItems = [
-    { href: "#sobre", label: t('nav_sobre'), isTese: false },
-    { href: "#experiencia", label: t('nav_experiencia'), isTese: false },
-    { href: "#publicacoes", label: t('nav_publicacoes'), isTese: false },
+    { href: `${homePrefix}#sobre`, label: t('nav_sobre'), isTese: false },
+    { href: `${homePrefix}#experiencia`, label: t('nav_experiencia'), isTese: false },
+    { href: `${homePrefix}#publicacoes`, label: t('nav_publicacoes'), isTese: false },
     { href: `/${locale}/tese`, label: t('nav_tese'), isTese: true },
-    { href: "#contato", label: t('nav_contato'), isTese: false },
+    { href: `${homePrefix}#contato`, label: t('nav_contato'), isTese: false },
   ]
 
   return (
