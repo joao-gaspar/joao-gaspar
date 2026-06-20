@@ -3,7 +3,6 @@
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 
 function SectionLabel({ label }: { label: string }) {
   return (
@@ -158,25 +157,21 @@ export function GuiaContent() {
           {t('back')}
         </Link>
 
-        {/* Page badge */}
-        <div className="mb-6">
-          <Badge variant="secondary" className="text-xs tracking-wide font-medium">
-            {t('badge')}
-          </Badge>
+        {/* Thesis identification */}
+        <div className="mb-8 space-y-1.5">
+          <p className="text-sm font-medium text-foreground leading-snug max-w-3xl">
+            Proposição de ferramenta para comparar o desempenho de entregas de projetos de HIS baseadas em desenhos ou em BIM em contratações públicas no Brasil
+          </p>
+          <p className="text-xs text-muted-foreground">
+            João Alberto da Motta Gaspar · Orientador: Prof. Dr. Gil Garcia de Barros · FAUUSP · 2026
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Apêndice A — Ferramenta para Comparação do Desempenho de Entrega de Projetos ECD e BIM em HIS
+          </p>
         </div>
 
         {/* ── Cover document block ──────────────────────────────────── */}
         <div className="rounded-xl overflow-hidden border border-blue-200 dark:border-blue-900 shadow-lg mb-8">
-          {/* Top bar */}
-          <div className="bg-blue-900 px-6 py-2.5 flex items-center justify-between gap-4">
-            <span className="text-xs font-bold tracking-widest uppercase text-blue-300">
-              FAUUSP · Doutorado 2026
-            </span>
-            <span className="text-xs text-blue-400 tracking-widest uppercase">
-              Apêndice A
-            </span>
-          </div>
-
           {/* Cover body */}
           <div className="bg-white dark:bg-slate-950 px-8 py-8 border-b-4 border-blue-900">
             <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-sm mb-6">
@@ -184,30 +179,9 @@ export function GuiaContent() {
               {t('cover_label')}
             </div>
 
-            <p className="font-serif italic text-xl lg:text-2xl text-blue-900 dark:text-blue-200 leading-snug max-w-2xl mb-7 pb-6 border-b border-slate-200 dark:border-slate-700">
+            <p className="font-serif italic text-xl lg:text-2xl text-blue-900 dark:text-blue-200 leading-snug max-w-2xl">
               {t('cover_question')}
             </p>
-
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-              <div>
-                <p className="text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug max-w-lg">
-                  {t('cover_title')}
-                </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5">
-                  {t('cover_subtitle')}
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 flex-shrink-0">
-                <div className="flex items-center gap-2.5 px-4 py-2 bg-amber-100 border-2 border-amber-700 text-amber-800 text-xs font-black uppercase tracking-wider rounded-sm">
-                  <span className="text-sm font-black">ECD</span>
-                  <span>{t('chip_ecd')}</span>
-                </div>
-                <div className="flex items-center gap-2.5 px-4 py-2 bg-blue-700 text-white text-xs font-black uppercase tracking-wider rounded-sm">
-                  <span className="text-sm font-black">BIM</span>
-                  <span>{t('chip_bim')}</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
