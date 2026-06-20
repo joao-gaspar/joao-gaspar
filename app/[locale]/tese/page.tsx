@@ -23,7 +23,7 @@ export default async function Tese() {
       title: t('guia_title'),
       desc: t('guia_desc'),
       btn: t('guia_btn'),
-      href: "#",
+      href: "/tese/guia",
       external: false,
     },
     {
