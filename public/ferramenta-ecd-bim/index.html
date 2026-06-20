@@ -946,9 +946,6 @@ function renderSynthesis() {
             </div>
           </div>
         </td>
-        <td style="text-align:center"><span class="badge-${bimBetter?'better':'worse'}">${bimBetter?'BIM ✓':'ECD ✓'}</span></td>
-        <td style="text-align:center;font-size:12px;color:#64748B">${pct > 0 ? pct.toFixed(0) + '% diff' : '—'}</td>
-        <td style="font-size:11px;color:#94A3B8">${ind.unit}</td>
       </tr>`;
     }).join('');
 
@@ -979,9 +976,6 @@ function renderSynthesis() {
           <thead><tr>
             <th>Indicador</th>
             <th>Comparação</th>
-            <th class="center">Melhor</th>
-            <th class="center">Diferença</th>
-            <th>Unidade</th>
           </tr></thead>
           <tbody>${scoreHtml}</tbody>
         </table>
@@ -989,30 +983,6 @@ function renderSynthesis() {
     </div>`;
   }).join('');
 
-  // Conclusion box
-  html += `<div class="card" style="background:#0F172A;color:white">
-    <h3 style="color:#60A5FA;margin-bottom:12px">Referência — Resultados da Pesquisa (Tese)</h3>
-    <p style="font-size:12px;color:#94A3B8;line-height:1.7;margin-bottom:12px">
-      Na pesquisa de doutorado, os dados do par <strong style="color:white">Área 06 (BIM) × Jd Colombo A1 (ECD)</strong> produziram os seguintes indicadores:
-    </p>
-    <div class="metric-grid" style="grid-template-columns:repeat(3,1fr)">
-      ${[
-        { label:'Docs/mês', bim:'148,2', ecd:'49,4', c:'#3B82F6' },
-        { label:'Versões/pacote', bim:'3,3', ecd:'7,0', c:'#F59E0B' },
-        { label:'Revisões/doc', bim:'2,5', ecd:'6,6', c:'#EF4444' },
-        { label:'Tempo — Proj. Básico', bim:'12 meses', ecd:'26 meses', c:'#10B981' },
-        { label:'Tempo — Proj. Executivo', bim:'33 meses', ecd:'26 meses (Básico)', c:'#8B5CF6' },
-        { label:'Total documentos', bim:'4.889', ecd:'1.284', c:'#06B6D4' },
-      ].map(m => `<div style="background:#1E293B;border-radius:10px;padding:14px">
-        <div style="font-size:10px;color:#64748B;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">${m.label}</div>
-        <div style="display:flex;align-items:baseline;gap:8px">
-          <span style="font-size:20px;font-weight:800;color:${m.c}">${m.bim}</span>
-          <span style="font-size:11px;color:#3B82F6">BIM</span>
-        </div>
-        <div style="font-size:13px;color:#94A3B8;margin-top:2px">${m.ecd} <span style="color:#D97706;font-size:11px">ECD</span></div>
-      </div>`).join('')}
-    </div>
-  </div>`;
 
   el.innerHTML = html;
 }
