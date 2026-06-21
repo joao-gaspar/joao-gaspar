@@ -399,9 +399,6 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
       <h2>Documentos Entregues e Tempo de Entrega</h2>
       <p>Registre a quantidade total de documentos entregues e o tempo de entrega em meses para cada projeto selecionado.</p>
     </div>
-    <div class="warn-box">
-      <strong>Atenção (Seção 2.2):</strong> No total de meses de entrega, não devem ser considerados os meses em que a paralisação dos trabalhos não teve origem motivada pelos projetistas.
-    </div>
   </div>
   <div id="p2-eixos-form"></div>
   <div class="actions">
@@ -1143,6 +1140,9 @@ function renderP2Data() {
         }).join('')}
       </tr>
     </tbody></table></div>
+    <div class="warn-box" style="margin-top:16px;margin-bottom:0">
+      <strong>Aten&ccedil;&atilde;o (Se&ccedil;&atilde;o 2.2):</strong> No total de meses de entrega, n&atilde;o devem ser considerados os meses em que a paralisa&ccedil;&atilde;o dos trabalhos n&atilde;o teve origem motivada pelos projetistas.
+    </div>
   </div>`;
 
   el.innerHTML = docsTable + monthsTable;
@@ -1232,7 +1232,7 @@ function renderP25Table(projects) {
   const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0F766E;padding:2px';
 
   return `<div class="card">
-    <h3>2.5 Versoes por pacote de entrega</h3>
+    <h3>2.5 Vers&otilde;es por pacote de entrega</h3>
     <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
       <tr>
         <th style="${B};background:#F9FAFB"></th>
@@ -1287,7 +1287,7 @@ function renderP26Table(projects) {
   const IN = 'width:82px;background:transparent;border:none;outline:none;text-align:center;font-size:12px;font-weight:600;color:#0F766E;padding:2px';
 
   return `<div class="card">
-    <h3>2.6 Revisoes por documento aprovado</h3>
+    <h3>2.6 Revis&otilde;es por documento aprovado</h3>
     <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
       <tr>
         <th style="${B};background:#F9FAFB"></th>
