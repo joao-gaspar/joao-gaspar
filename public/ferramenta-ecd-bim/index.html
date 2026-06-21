@@ -236,7 +236,7 @@ body.consult-mode .no-consult-edit{display:none!important}
   <div class="nav-section">
     <div class="nav-group">Parte 2 — Comparação</div>
     <div class="nav-item" onclick="nav('p2-data')" id="nav-p2-data">
-      <span class="num">7</span> <span style="line-height:1.2;margin-top:2px">2.1 Quantidade e tipos de documentos e 2.2 Tempo de entrega</span>
+      <span class="num">7</span> <span style="line-height:1.2;margin-top:2px">2.1 Quantidade e tipos de documentos e 2.2 Tempo de entrega em meses</span>
     </div>
     <div class="nav-item" onclick="nav('p2-indicators')" id="nav-p2-indicators">
       <span class="num">8</span> 2.3 a 2.6 Indicadores
@@ -280,7 +280,7 @@ body.consult-mode .no-consult-edit{display:none!important}
       <p>Coleta e registra os dados de entrega para calcular os 5 indicadores de desempenho e apresentar a síntese comparativa.</p>
       <ul>
         <li>2.1 Quantidade e tipos de documentos</li>
-        <li>2.2 Tempo de entrega (meses)</li>
+        <li>2.2 Tempo de entrega em meses</li>
         <li>2.3 Documentos entregues por mês</li>
         <li>2.4 Docs entregues vs consolidados</li>
         <li>2.5 Versões por pacote de entrega</li>
@@ -1190,14 +1190,14 @@ function renderP2Data() {
   docsTable += '</tbody></table></div></div>';
 
   let monthsTable = `<div class="card">
-    <h3>2.2 Tempo de entrega</h3>
+    <h3>2.2 Tempo de entrega em meses</h3>
     <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%;table-layout:fixed"><thead>
       <tr>
         <th style="${B};background:#F9FAFB"></th>
         <th colspan="${projects.length}" style="${B};background:#F9FAFB;padding:6px;text-align:center;font-size:12px;font-weight:700;color:#374151">Projetos</th>
       </tr>
       <tr>
-        <th style="${TH};text-align:left;width:35%;white-space:normal">Tempo de entrega</th>
+        <th style="${TH};text-align:left;width:35%;white-space:normal">Tempo de entrega em meses</th>
         ${projects.map(p => `<th style="${TH};min-width:105px">${p.name}</th>`).join('')}
       </tr>
     </thead><tbody>
@@ -1548,7 +1548,7 @@ function renderSynthesis() {
 
   const rows = [
     { key:'docs',  label:'2.1 - Quantidade de documentos entregues', decimals:0 },
-    { key:'months',label:'2.2 - Tempo de entrega', decimals:0 },
+    { key:'months',label:'2.2 - Tempo de entrega em meses', decimals:0 },
     { key:'ind23', label:'2.3 - Indicador da quantidade de documentos entregues por mês', decimals:1 },
     { key:'ind24', label:'2.4 - Indicador da quantidade de documentos entregues pela quantidade de documentos da entrega consolidada', decimals:1 },
     { key:'ind25', label:'2.5 - Indicador da média de versões de documentos enviados para cada pacote de entrega', decimals:1 },
