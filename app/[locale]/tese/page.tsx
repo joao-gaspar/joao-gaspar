@@ -14,13 +14,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "Tese" })
+  const title = t("og_title")
   const description = t("og_description")
   return {
+    title,
     description,
     openGraph: {
+      title,
       description,
     },
     twitter: {
+      title,
       description,
     },
   }
