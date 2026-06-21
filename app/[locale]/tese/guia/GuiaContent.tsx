@@ -35,14 +35,14 @@ export function GuiaContent() {
         </Link>
 
         {/* Thesis identification */}
-        <div className="mb-8 space-y-1.5">
-          <p className="text-sm font-medium text-foreground leading-snug max-w-3xl">
+        <div className="mb-8 space-y-2 border-l-4 border-blue-600 pl-4 py-1">
+          <p className="text-lg font-bold text-slate-800 dark:text-slate-100 leading-snug max-w-3xl">
             Proposi&ccedil;&atilde;o de ferramenta para comparar o desempenho de entregas de projetos de HIS baseadas em desenhos ou em BIM em contrata&ccedil;&otilde;es p&uacute;blicas no Brasil
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm font-medium text-slate-600 dark:text-slate-300">
             Jo&atilde;o Alberto da Motta Gaspar &middot; Orientador: Prof. Dr. Gil Garcia de Barros &middot; FAUUSP &middot; 2026
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
             Ap&ecirc;ndice A &mdash; Ferramenta para Compara&ccedil;&atilde;o do Desempenho de Entrega de Projetos ECD e BIM em HIS
           </p>
         </div>
