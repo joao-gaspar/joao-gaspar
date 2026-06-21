@@ -204,7 +204,8 @@
     "igep_btn": "Open tool",
     "ecd_title": "ECD-BIM Comparison Tool",
     "ecd_desc": "Part 2 instrument for evaluating and comparing delivery performance indicators between ECD and BIM projects.",
-    "ecd_btn": "Open tool"
+    "ecd_btn": "Open tool",
+    "og_description": "HIS projects delivered with drawings or BIM models — how to decide? Explore the doctoral research of Arq. João Gaspar, featuring a method and a tool so you can run your own tests."
   },
   "Publications": {
     "title": "Academic Publications",

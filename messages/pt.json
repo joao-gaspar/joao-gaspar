@@ -204,7 +204,8 @@
     "igep_btn": "Abrir ferramenta",
     "ecd_title": "Ferramenta Comparação ECD-BIM",
     "ecd_desc": "Instrumento para avaliação e comparação do desempenho de entrega de projetos ECD e BIM de Habitação de Interesse Social (HIS).",
-    "ecd_btn": "Abrir ferramenta"
+    "ecd_btn": "Abrir ferramenta",
+    "og_description": "Contratar projetos de HIS com entrega centrada em desenhos ou em modelos BIM? Como decidir? Confira agora a pesquisa de Doutorado do Arq. João Gaspar, que apresenta um método e uma ferramenta para você mesmo fazer seus testes!"
   },
   "Publications": {
     "title": "Publicações Acadêmicas",

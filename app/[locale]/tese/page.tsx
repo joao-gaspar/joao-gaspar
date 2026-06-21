@@ -5,6 +5,26 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import type { Metadata } from "next"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "Tese" })
+  const description = t("og_description")
+  return {
+    description,
+    openGraph: {
+      description,
+    },
+    twitter: {
+      description,
+    },
+  }
+}
 
 export default async function Tese() {
   const t = await getTranslations('Tese')
