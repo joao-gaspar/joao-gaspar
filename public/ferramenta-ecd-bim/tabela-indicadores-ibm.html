@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela de Indicadores — IBM Plex Sans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      background: #ffffff;
+      color: #161616;
+      padding: 48px 40px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .table-container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /* Header row — dark gray band */
+    thead th {
+      background: #525252;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid #161616;
+    }
+
+    /* Body rows */
+    tbody td {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e0e0e0;
+      color: #161616;
+    }
+
+    /* Zebra stripe — very subtle */
+    tbody tr:nth-child(even) {
+      background: #f4f4f4;
+    }
+
+    /* Hover */
+    tbody tr:hover {
+      background: #e8e8e8;
+    }
+
+    /* Caption / source line */
+    .source {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 13px;
+      color: #525252;
+      font-weight: 400;
+    }
+
+    /* Print */
+    @media print {
+      body { padding: 0; }
+      tbody tr:hover { background: inherit; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Indicadores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Indicador da quantidade de documentos entregues por m&ecirc;s</td>
+        </tr>
+        <tr>
+          <td>Indicador da quantidade de documentos entregues pela quantidade de documentos da entrega consolidada</td>
+        </tr>
+        <tr>
+          <td>Indicador da m&eacute;dia de vers&otilde;es por pacote</td>
+        </tr>
+        <tr>
+          <td>Indicador da m&eacute;dia de revis&otilde;es por documento aprovado</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="source">Fonte: elaborado pelo autor (2026)</p>
+  </div>
+
+</body>
+</html>
