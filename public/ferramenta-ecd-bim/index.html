@@ -642,7 +642,7 @@ function renderMatrix12() {
   h += `<tr><th style="${B};background:#F9FAFB;padding:6px"></th>`;
   h += `<th colspan="${S.ecd.length}" style="${B};background:#CCFBF1;color:#0D9488;font-weight:700;font-size:13px;text-align:center;padding:6px">Projetos ECD</th></tr>`;
   // Row 2: ECD names
-  h += `<tr><th style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Projeto BIM</th>`;
+  h += `<tr><th style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Projetos BIM</th>`;
   S.ecd.forEach(e => h += `<th style="${B};background:#F3F4F6;font-size:12px;font-weight:700;text-align:center;padding:5px 8px;min-width:70px">${e.name}</th>`);
   h += '</tr></thead><tbody>';
   S.bim.forEach((b, bi) => {
@@ -734,7 +734,7 @@ function renderMatrix13() {
 
   let h = `<div class="tbl-wrap"><table style="border-collapse:collapse"><thead>`;
   h += '<tr>';
-  h += `<th rowspan="2" style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;vertical-align:middle">Projeto BIM</th>`;
+  h += `<th rowspan="2" style="${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;vertical-align:middle">Projetos BIM</th>`;
   if (S.ecd.length) h += `<th colspan="${S.ecd.length * 2}" style="${B};background:#CCFBF1;color:#0D9488;font-weight:700;font-size:13px;text-align:center;padding:6px">Projetos ECD</th>`;
   h += '</tr><tr>';
   S.ecd.forEach(e => h += `<th colspan="2" style="${B};background:#F3F4F6;font-weight:700;font-size:12px;text-align:center;padding:5px 8px;white-space:nowrap">${e.name}</th>`);
