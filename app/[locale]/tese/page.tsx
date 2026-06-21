@@ -58,7 +58,7 @@ export default async function Tese() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               {cards.map((card, i) => {
                 const ready = card.href !== "#"
                 const linkProps = card.external
