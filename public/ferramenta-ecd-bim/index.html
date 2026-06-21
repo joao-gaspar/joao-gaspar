@@ -1128,15 +1128,6 @@ function renderP2Data() {
       </tr>
     </thead><tbody>`;
 
-  docsTable += `<tr>
-    <td style="${B};background:#F9FAFB;padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Total de documentos entregues</td>
-    ${projects.map(p => {
-      const d = getProjectEixo(p);
-      syncDocsFromTypes(d);
-      return `<td id="p2_total_${p.type}_${p.id}" style="${B};background:#CCFBF1;color:#0F766E;padding:6px 8px;font-size:12px;font-weight:800;text-align:center">${d.docs || 0}</td>`;
-    }).join('')}
-  </tr>`;
-
   DOC_TYPE_ROWS.forEach(row => {
     docsTable += `<tr>
       <td style="${B};padding:5px 10px;font-size:12px;text-align:left">${row}</td>
@@ -1148,6 +1139,15 @@ function renderP2Data() {
       }).join('')}
     </tr>`;
   });
+
+  docsTable += `<tr>
+    <td style="${B};background:${COLORS.grayLight};padding:6px 10px;font-size:12px;font-weight:700;text-align:left">Total de documentos entregues</td>
+    ${projects.map(p => {
+      const d = getProjectEixo(p);
+      syncDocsFromTypes(d);
+      return `<td id="p2_total_${p.type}_${p.id}" style="${B};background:${COLORS.tealLight};color:${COLORS.teal};padding:6px 8px;font-size:12px;font-weight:800;text-align:center">${d.docs || 0}</td>`;
+    }).join('')}
+  </tr>`;
   docsTable += '</tbody></table></div></div>';
 
   let monthsTable = `<div class="card">
