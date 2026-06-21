@@ -19,10 +19,7 @@ export function GuiaContent() {
   const t = useTranslations('Guia')
   const locale = useLocale()
 
-  const supportCards = [
-    { type: t('supp1_type'), val: t('supp1_val'), desc: t('supp1_desc') },
-    { type: t('supp2_type'), val: t('supp2_val'), desc: t('supp2_desc') },
-  ]
+
 
   return (
     <div className="py-12">
@@ -231,20 +228,11 @@ export function GuiaContent() {
           {/* SUPORTE */}
           <section className="bg-card border border-border rounded-xl p-7">
             <SectionLabel label={t('sec_support')} />
-            <p className="text-sm leading-relaxed text-foreground mb-4">{t('support_p1')}</p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {supportCards.map((supp) => (
-                <div key={supp.type} className="border border-border rounded-lg p-4 flex flex-col gap-2">
-                  <div className="text-xs font-bold tracking-widest uppercase text-muted-foreground">
-                    {supp.type}
-                  </div>
-                  <div className="text-sm font-semibold text-blue-900 dark:text-blue-200 break-all">
-                    {supp.val}
-                  </div>
-                  <div className="text-xs text-muted-foreground leading-relaxed">{supp.desc}</div>
-                </div>
-              ))}
-            </div>
+            <p className="text-sm leading-relaxed text-foreground">
+              {t.rich('support_p1', {
+                email: (chunks) => <a href="mailto:contato@joaogaspar.com" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">{chunks}</a>
+              })}
+            </p>
           </section>
 
         </div>
