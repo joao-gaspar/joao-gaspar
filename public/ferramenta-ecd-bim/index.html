@@ -1410,6 +1410,18 @@ function calcIndicators() {
 // ─────────────────────────────────────────────────────────────────────────────
 // SYNTHESIS — 2.7
 // ─────────────────────────────────────────────────────────────────────────────
+function updateSynthesisRanking(id, val) {
+  if (!S.rankings) S.rankings = {};
+  if (val === "") {
+    delete S.rankings[id];
+  } else {
+    // optional: remove the rank from another project if we want unique ranks, but letting the user do whatever is fine
+    S.rankings[id] = val;
+  }
+  save();
+  renderSynthesis();
+}
+
 function renderSynthesis() {
   calcIndicators();
   const el = document.getElementById('synthesis-content');
@@ -1458,50 +1470,16 @@ function renderSynthesis() {
   const TH = `${B};background:#F3F4F6;padding:6px 10px;font-size:12px;font-weight:700;text-align:center;white-space:nowrap`;
   const TD = `${B};padding:6px 10px;font-size:12px;text-align:center`;
 
+  if (!S.rankings) S.rankings = {};
+
+  const sortedProjects = [...projects].sort((a, b) => {
+    const rA = S.rankings[a.id] ? parseInt(S.rankings[a.id]) : 999;
+    const rB = S.rankings[b.id] ? parseInt(S.rankings[b.id]) : 999;
+    return rA - rB;
+  });
+
   let html = `<div class="card">
     <h3>2.7 S&iacute;ntese</h3>
-    <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
-      <tr>
-        <th style="${TH};text-align:left;min-width:480px">Indicadores</th>
-        <th colspan="${projects.length}" style="${TH}">Projetos</th>
-      </tr>
-      <tr>
-        <th style="${B};background:#F9FAFB;padding:6px 10px"></th>
-        ${projects.map(p => `<th style="${TH};min-width:100px;${p.type === 'bim' ? 'color:#0D9488' : 'color:#92400E'}">${p.name}</th>`).join('')}
-      </tr>
-    </thead><tbody>`;
-
-  rows.forEach(row => {
-    const isCalc = ['ind23','ind24','ind25','ind26'].includes(row.key);
-    const labelBg = isCalc ? 'background:#FFFF00;font-weight:700' : 'background:#D9D9D9;font-weight:700';
-    html += `<tr><td style="${B};${labelBg};padding:6px 10px;font-size:12px;text-align:left">${row.label}</td>`;
-    projects.forEach(p => {
-      const d = getProjectEixo(p);
-      syncDocsFromTypes(d);
-      const value = getP27Value(d, row.key);
-      const bg = cellBg(p, row.key);
-      html += `<td style="${TD};background:${bg};font-weight:700">${fmtP27(value, row.decimals)}</td>`;
-    });
-    html += '</tr>';
-  });
-
-  // Ranking Row
-  html += `<tr><td style="${B};background:#D9D9D9;font-weight:700;padding:6px 10px;font-size:12px;text-align:left">Classifica&ccedil;&atilde;o escolhida pelo usu&aacute;rio</td>`;
-  projects.forEach((p, idx) => {
-    html += `<td style="${TD};background:#F3F4F6">
-      <select style="width:100%;padding:4px;border-radius:4px;border:1px solid #D1D5DB;font-size:12px;outline:none;cursor:pointer">
-        <option value="">-</option>
-        ${projects.map((_, i) => `<option value="${i+1}">${i+1}&ordm; Lugar</option>`).join('')}
-      </select>
-    </td>`;
-  });
-  html += '</tr>';
-
-  html += '</tbody></table></div></div>';
-
-  // TRANSPOSED TABLE
-  html += `<div class="card" style="margin-top:24px">
-    <h3>2.7 S&iacute;ntese (Transposto)</h3>
     <div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead>
       <tr>
         <th style="${TH};text-align:left;min-width:180px;background:#F9FAFB">Projetos</th>
@@ -1510,7 +1488,7 @@ function renderSynthesis() {
       </tr>
     </thead><tbody>`;
 
-  projects.forEach(p => {
+  sortedProjects.forEach(p => {
     const d = getProjectEixo(p);
     html += `<tr>
       <td style="${B};background:#F9FAFB;padding:6px 10px;font-size:12px;text-align:left;font-weight:700;${p.type === 'bim' ? 'color:#0D9488' : 'color:#92400E'}">${p.name}</td>`;
@@ -1521,26 +1499,58 @@ function renderSynthesis() {
       html += `<td style="${TD};background:${bg};font-weight:700">${fmtP27(value, row.decimals)}</td>`;
     });
     
+    const currRank = S.rankings[p.id] || "";
     html += `<td style="${TD};background:#F3F4F6">
-      <select style="width:100%;padding:4px;border-radius:4px;border:1px solid #D1D5DB;font-size:12px;outline:none;cursor:pointer">
+      <select onchange="updateSynthesisRanking('${p.id}', this.value)" style="width:100%;padding:4px;border-radius:4px;border:1px solid #D1D5DB;font-size:12px;outline:none;cursor:pointer;font-weight:700">
         <option value="">-</option>
-        ${projects.map((_, i) => `<option value="${i+1}">${i+1}&ordm; Lugar</option>`).join('')}
+        ${projects.map((_, i) => `<option value="${i+1}" ${currRank == (i+1) ? 'selected' : ''}>${i+1}&ordm; Lugar</option>`).join('')}
       </select>
     </td></tr>`;
   });
 
   html += '</tbody></table></div></div>';
+
+  // Highlight Card for 1st Place
+  const firstPlaceId = Object.keys(S.rankings).find(k => S.rankings[k] === "1");
+  if (firstPlaceId) {
+    const p1 = projects.find(p => p.id === firstPlaceId);
+    if (p1) {
+      const d1 = getProjectEixo(p1);
+      html += `<div class="card" style="margin-top:24px;border:2px solid #0D9488;background:#F0FDF4">
+        <h3 style="color:#0D9488;display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <span style="font-size:24px">🏆</span> Op&ccedil;&atilde;o Escolhida (1&ordm; Lugar): ${p1.name}
+        </h3>
+        <p style="font-size:13px;color:#475569;margin-bottom:16px">Resumo dos dados e indicadores da modalidade de contrata&ccedil;&atilde;o com melhor desempenho.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:12px">`;
+      
+      rows.forEach(row => {
+        const val = getP27Value(d1, row.key);
+        html += `<div style="background:white;padding:14px;border-radius:10px;border:1px solid #E2E8F0;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+          <div style="font-size:11.5px;color:#64748B;font-weight:700;margin-bottom:8px;line-height:1.4">${row.label}</div>
+          <div style="font-size:22px;font-weight:800;color:#0F766E">${fmtP27(val, row.decimals)}</div>
+        </div>`;
+      });
+      html += `</div></div>`;
+    }
+  }
+
   // Action bar (export/share)
   const _btnBase = 'display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid';
-  html += `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding:14px 18px;background:white;border:1px solid #E2E8F0;border-radius:12px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06)">
-    <span style="font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.6px;margin-right:2px">Exportar</span>
-    <button onclick="exportPDF()" style="${_btnBase} #0F766E;background:#0F766E;color:white">📄 PDF</button>
-    <div style="width:1px;height:22px;background:#E2E8F0;margin:0 4px"></div>
-    <span style="font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.6px;margin-right:2px">Compartilhar</span>
-    <button onclick="shareLinkedIn()" style="${_btnBase} #0A66C2;background:#0A66C2;color:white">LinkedIn</button>
-    <button onclick="shareFacebook()" style="${_btnBase} #1877F2;background:#1877F2;color:white">Facebook</button>
-    <button onclick="shareInstagram()" style="${_btnBase} #E1306C;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border-color:#E1306C;color:white">📷 Instagram</button>
-    <button onclick="shareEmail()" style="${_btnBase} #475569;background:#F1F5F9;color:#475569">✉ E-mail</button>
+  
+  html += `<div style="margin-top:24px;padding:32px 24px;background:#F8FAFC;border:2px dashed #CBD5E1;border-radius:16px;text-align:center">
+    <h3 style="color:#0F766E;margin-bottom:8px;font-size:20px;font-weight:800">Compartilhe a decis&atilde;o realizada com a ajuda desta ferramenta!</h3>
+    <p style="font-size:14px;color:#64748B;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto">Exporte o relat&oacute;rio completo em PDF com as tabelas e a sua escolha de melhor desempenho, ou compartilhe nas redes sociais.</p>
+    
+    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;align-items:center">
+      <button onclick="exportPDF()" style="${_btnBase} #0F766E;background:#0F766E;color:white;font-size:14px;padding:12px 24px;box-shadow:0 4px 12px rgba(15,118,110,.3);transition:transform 0.15s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">📄 Exportar PDF</button>
+      
+      <div style="width:1px;height:40px;background:#CBD5E1;margin:0 8px"></div>
+      
+      <button onclick="shareLinkedIn()" style="${_btnBase} #0A66C2;background:#0A66C2;color:white">LinkedIn</button>
+      <button onclick="shareFacebook()" style="${_btnBase} #1877F2;background:#1877F2;color:white">Facebook</button>
+      <button onclick="shareInstagram()" style="${_btnBase} #E1306C;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border-color:#E1306C;color:white">📷 Instagram</button>
+      <button onclick="shareEmail()" style="${_btnBase} #475569;background:#F1F5F9;color:#475569">✉ E-mail</button>
+    </div>
   </div>`;
 
   el.innerHTML = html;
