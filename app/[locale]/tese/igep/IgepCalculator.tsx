@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
@@ -73,12 +73,32 @@ function getFactors(s: CState): number[] {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
+type IgepRequest = { projectId: string; projectName: string }
+
 export function IgepCalculator() {
   const t = useTranslations('Igep')
   const [s, setS] = useState<CState>(DEFAULTS)
+  const [request, setRequest] = useState<IgepRequest | null>(null)
+  const [sent, setSent] = useState(false)
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem('igep_request')
+      if (raw) {
+        const r = JSON.parse(raw) as IgepRequest
+        if (r?.projectId) setRequest(r)
+      }
+    } catch {}
+  }, [])
 
   const factors = getFactors(s)
   const igep = factors.reduce((p, f) => p * (1 + f), 1)
+
+  function sendResult() {
+    if (!request) return
+    localStorage.setItem('igep_result', JSON.stringify({ projectId: request.projectId, value: igep }))
+    setSent(true)
+  }
 
   function set(k: keyof CState) {
     return (v: string) => setS(prev => ({ ...prev, [k]: v }))
@@ -134,6 +154,18 @@ export function IgepCalculator() {
           {t('intro')}
         </p>
       </div>
+
+      {/* Ferramenta request banner */}
+      {request && (
+        <div className="mb-6 px-4 py-3 bg-teal-50 border border-teal-200 rounded-xl flex items-center justify-between gap-4">
+          <p className="text-sm text-teal-800 font-medium">
+            🧮 Calculando IGEP para: <strong>{request.projectName}</strong>
+          </p>
+          {sent && (
+            <span className="text-xs text-teal-600 font-semibold">✓ Enviado</span>
+          )}
+        </div>
+      )}
 
       {/* Main grid */}
       <div className="grid lg:grid-cols-[1fr_260px] gap-5 items-start">
@@ -326,6 +358,17 @@ export function IgepCalculator() {
               </p>
             </div>
           </Group>
+
+          {request && (
+            <Button
+              size="sm"
+              className="w-full gap-1.5 text-xs bg-teal-600 hover:bg-teal-700 text-white"
+              onClick={sendResult}
+              disabled={sent}
+            >
+              {sent ? '✓ Enviado' : `Enviar para Ferramenta`}
+            </Button>
+          )}
 
           <Button
             variant="outline"

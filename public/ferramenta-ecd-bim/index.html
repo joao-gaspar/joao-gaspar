@@ -20,7 +20,9 @@ h1,h2,h3,h4{font-family:'Geist',system-ui,-apple-system,Arial,sans-serif;font-we
 .topbar p{font-size:11px;opacity:.75;margin-top:1px}
 .topbar-back{display:inline-flex;align-items:center;gap:6px;color:white;font-size:13px;font-weight:600;text-decoration:none;padding:7px 14px;border-radius:8px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);transition:background .15s;white-space:nowrap;flex-shrink:0}
 .topbar-back:hover{background:rgba(255,255,255,.25)}
-.body{display:flex;flex:1;overflow:hidden}
+.body{display:flex;flex:1;overflow:hidden;position:relative}
+#consult-overlay{display:none;position:absolute;top:0;left:240px;right:0;bottom:0;z-index:50;background:transparent;cursor:default}
+body.consult-mode #consult-overlay{display:block}
 
 /* ─── SIDEBAR ─────────────────────────────────────────────────────────── */
 aside{width:240px;background:#0F172A;overflow-y:auto;flex-shrink:0;padding:16px 0}
@@ -157,6 +159,9 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
 .part-card ul{list-style:none;font-size:12.5px;color:#475569}
 .part-card ul li{padding:4px 0 4px 16px;position:relative}
 .part-card ul li::before{content:'→';position:absolute;left:0;color:#0D9488;font-weight:700}
+/* ─── IGEP BUTTON ──────────────────────────────────────────────────────── */
+.igep-btn{font-size:9px;color:#0D9488;cursor:pointer;border:none;background:rgba(13,148,136,.12);border-radius:3px;padding:2px 6px;margin-top:2px;display:inline-flex;align-items:center;gap:2px;font-family:inherit;font-weight:600;transition:background .15s;white-space:nowrap}
+.igep-btn:hover{background:rgba(13,148,136,.28)}
 /* ─── CONSULT MODE ─────────────────────────────────────────────────────── */
 #consult-banner{display:none;background:#92400E;color:white;padding:10px 20px;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;border-bottom:2px solid #B45309;box-shadow:0 2px 8px rgba(0,0,0,.2);flex-shrink:0}
 body.consult-mode input,body.consult-mode select,body.consult-mode textarea{pointer-events:none!important;opacity:.7!important;cursor:not-allowed!important}
@@ -179,30 +184,30 @@ body.consult-mode .no-consult-edit{display:none!important}
     <p>Tese de Doutorado · João Alberto da Motta Gaspar · FAUUSP · 2026</p>
   </div>
   <div style="flex-shrink:0;display:flex;gap:8px;align-items:center">
-    <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadExample()">📂 Exemplo da Tese (leitura e edição)</button>
     <button class="btn btn-ghost btn-sm" style="color:#FCD34D;border-color:rgba(252,211,77,.5)" onclick="enterConsultMode()">📖 Exemplo da Tese (apenas leitura)</button>
+    <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadExample()">📂 Exemplo da Tese (leitura e edição)</button>
     <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadHypotheticalExample()">📂 Exemplo Hipotético (leitura e edição)</button>
     <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="clearData()">🗑 Limpar</button>
   </div>
 </div>
 
 <div id="consult-banner">
-  <span>📖 MODO CONSULTA — Exemplo da Tese (somente leitura). Navegue livremente para comparar com o seu trabalho.</span>
-  <button onclick="exitConsultMode()" style="flex-shrink:0;padding:5px 14px;border-radius:6px;border:1.5px solid rgba(255,255,255,.6);background:transparent;color:white;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">← Voltar ao meu trabalho</button>
+  <span>📖 MODO CONSULTA — Exemplo da Tese (somente leitura).</span>
 </div>
 
 <div class="body">
+<div id="consult-overlay"></div>
 
 <!-- SIDEBAR -->
 <aside>
   <div class="nav-section">
     <div class="nav-group">Início</div>
     <div class="nav-item active" onclick="nav('home')" id="nav-home">
-      <span class="num">🏠</span> Sobre a Ferramenta
+      <span class="num">🏠</span> Início da Ferramenta
     </div>
-    <a href="/tese/guia" style="display:flex;align-items:center;gap:10px;padding:9px 16px;color:#94A3B8;font-size:12.5px;text-decoration:none;border-left:3px solid transparent;transition:all .15s" onmouseover="this.style.color='#F1F5F9';this.style.background='#1E293B'" onmouseout="this.style.color='#94A3B8';this.style.background='transparent'">
+    <a href="#" onclick="event.preventDefault();window.open('/'+getLocale()+'/tese/guia','_blank')" style="display:flex;align-items:center;gap:10px;padding:9px 16px;color:#94A3B8;font-size:12.5px;text-decoration:none;border-left:3px solid transparent;transition:all .15s" onmouseover="this.style.color='#F1F5F9';this.style.background='#1E293B'" onmouseout="this.style.color='#94A3B8';this.style.background='transparent'">
       <span style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">📖</span>
-      Guia (Apêndice A)
+      Guia "Como usar a Ferramenta"
     </a>
   </div>
 
@@ -373,7 +378,7 @@ body.consult-mode .no-consult-edit{display:none!important}
       Desenvolvido nesta pesquisa com base em Andrade et al. (2024, 2025). Quantifica o grau de complexidade/esforço projetual de cada projeto. A diferença absoluta entre dois projetos indica o quão similares eles são em termos de esforço projetual.
     </div>
     <div style="margin-top:12px">
-      <a href="/pt/tese/igep" target="_blank" style="display:inline-flex;align-items:center;font-size:12px;background:#0D9488;color:white;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:700;letter-spacing:0.3px">Abrir Calculadora IGEP ↗</a>
+      <a href="#" onclick="event.preventDefault();window.open('/'+getLocale()+'/tese/igep','_blank')" style="display:inline-flex;align-items:center;font-size:12px;background:#0D9488;color:white;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:700;letter-spacing:0.3px">Abrir Calculadora IGEP ↗</a>
     </div>
   </div>
 
@@ -454,6 +459,17 @@ body.consult-mode .no-consult-edit{display:none!important}
 </div><!-- /app -->
 
 <script>
+// ─────────────────────────────────────────────────────────────────────────────
+// LOCALE DETECTION
+// ─────────────────────────────────────────────────────────────────────────────
+function getLocale() {
+  try {
+    const m = document.cookie.match(/(?:^|;\s*)NEXT_LOCALE=([^;]+)/);
+    const val = m ? m[1] : '';
+    return ['pt','en','es'].includes(val) ? val : 'pt';
+  } catch(e) { return 'pt'; }
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // GLOBALS / STYLES
 // ─────────────────────────────────────────────────────────────────────────────
@@ -869,18 +885,26 @@ function renderSec14() {
   // Row 3: ECD GEP inputs
   h += `<tr>`;
   S.ecd.forEach(e => {
-    h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${S.igep[e.id]||''}" placeholder="IGEP"
-      style="width:76px;background:rgba(255,255,255,0.7);border:1px solid rgba(13,148,136,0.3);border-radius:4px;outline:none;text-align:center;font-size:12px;font-weight:700;color:#0D9488;padding:4px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.05);transition:all 0.2s"
-      oninput="updateIgep('${e.id}',this.value,false)"></td>`;
+    h += `<td style="${BLUE};padding:4px 3px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <input type="number" step="0.0001" value="${S.igep[e.id]||''}" placeholder="IGEP"
+          style="width:76px;background:rgba(255,255,255,0.7);border:1px solid rgba(13,148,136,0.3);border-radius:4px;outline:none;text-align:center;font-size:12px;font-weight:700;color:#0D9488;padding:4px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.05);transition:all 0.2s"
+          oninput="updateIgep('${e.id}',this.value,false)">
+        <button class="igep-btn no-consult-edit" onclick="openIgepCalc('${e.id}','${e.name}')">🧮 Calcular</button>
+      </div></td>`;
   });
   h += '</tr></thead><tbody>';
   // BIM rows
   S.bim.forEach((b, bi) => {
     const bVal = S.igep[b.id] || 0;
     h += `<tr><td style="${B};background:#F3F4F6;padding:4px 8px;font-weight:700;font-size:12px;white-space:nowrap">${b.name}</td>`;
-    h += `<td style="${BLUE}"><input type="number" step="0.0001" value="${bVal||''}" placeholder="IGEP"
-      style="width:76px;background:rgba(255,255,255,0.7);border:1px solid rgba(13,148,136,0.3);border-radius:4px;outline:none;text-align:center;font-size:12px;font-weight:700;color:#0D9488;padding:4px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.05);transition:all 0.2s"
-      oninput="updateIgep('${b.id}',this.value,true)"></td>`;
+    h += `<td style="${BLUE};padding:4px 3px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <input type="number" step="0.0001" value="${bVal||''}" placeholder="IGEP"
+          style="width:76px;background:rgba(255,255,255,0.7);border:1px solid rgba(13,148,136,0.3);border-radius:4px;outline:none;text-align:center;font-size:12px;font-weight:700;color:#0D9488;padding:4px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.05);transition:all 0.2s"
+          oninput="updateIgep('${b.id}',this.value,true)">
+        <button class="igep-btn no-consult-edit" onclick="openIgepCalc('${b.id}','${b.name}')">🧮 Calcular</button>
+      </div></td>`;
     S.ecd.forEach((e, ei) => {
       const eVal = S.igep[e.id] || 0;
       const d = (bVal && eVal) ? Math.abs(bVal - eVal) : null;
@@ -945,7 +969,7 @@ function renderRanking() {
     const rowBg = r.sel ? 'background:#FFFDE7;' : '';
     const selCs = r.sel ? `${B};background:#FFD700;color:#374151;text-align:center;font-weight:700;cursor:pointer;padding:6px 10px` : `${B};text-align:center;cursor:pointer;color:#94A3B8;padding:6px 10px`;
     h += `<tr style="${rowBg}">`;
-    h += `<td style="${B};padding:6px 10px;font-size:12px;${r.sel?'font-weight:700;':''}">${r.b.name} X ${r.e.name}</td>`;
+    h += `<td style="${B};padding:6px 10px;font-size:12px;white-space:nowrap;${r.sel?'font-weight:700;':''}">${r.b.name} X ${r.e.name}</td>`;
     h += `<td style="${B};${c11Color(r.d11)};text-align:center;font-size:12px;font-weight:700;padding:6px">${r.d11 !== null ? r.d11.toFixed(2) : '—'}</td>`;
     h += `<td style="${B};${scoreColor12(r.s12)};text-align:center;font-size:12px;font-weight:700;padding:6px">${r.s12 ? r.s12.toFixed(2) : '—'}</td>`;
     h += `<td style="${B};${c13Color(r.s13)};text-align:center;font-size:12px;font-weight:700;padding:6px">${r.s13 ? r.s13.toFixed(2) : '—'}</td>`;
@@ -1024,8 +1048,8 @@ function getP2SelectedProjects() {
     if (ecd) ecdIds.add(ecd.id);
     if (bim) bimIds.add(bim.id);
   });
-  return S.ecd.filter(p => ecdIds.has(p.id)).map(p => ({ type:'ecd', id:p.id, name:p.name }))
-    .concat(S.bim.filter(p => bimIds.has(p.id)).map(p => ({ type:'bim', id:p.id, name:p.name })));
+  return S.bim.filter(p => bimIds.has(p.id)).map(p => ({ type:'bim', id:p.id, name:p.name }))
+    .concat(S.ecd.filter(p => ecdIds.has(p.id)).map(p => ({ type:'ecd', id:p.id, name:p.name })));
 }
 
 function getProjectEixo(project) {
@@ -1605,7 +1629,7 @@ function renderSynthesis() {
   // Action bar (export/share)
   const _btnBase = 'display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid';
   
-  html += `<div style="margin-top:24px;padding:32px 24px;background:#F8FAFC;border:2px dashed #CBD5E1;border-radius:16px;text-align:center">
+  html += `<div class="pdf-no-print" style="margin-top:24px;padding:32px 24px;background:#F8FAFC;border:2px dashed #CBD5E1;border-radius:16px;text-align:center">
     <h3 style="color:#0F766E;margin-bottom:8px;font-size:20px;font-weight:800">Compartilhe a decis&atilde;o realizada com a ajuda desta ferramenta!</h3>
     <p style="font-size:14px;color:#64748B;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto">Exporte o relat&oacute;rio completo em PDF com as tabelas e a sua escolha de melhor desempenho, ou compartilhe nas redes sociais.</p>
     
@@ -1691,6 +1715,9 @@ function buildReportHTML(exportName, exportEmail, exportCompany) {
     // Create a temporary clone to manipulate
     const clone = el.cloneNode(true);
     
+    // Remove PDF-excluded elements
+    clone.querySelectorAll('.pdf-no-print').forEach(el => el.remove());
+
     // Replace inputs with their values
     const inputs = clone.querySelectorAll('input');
     inputs.forEach(inp => {
@@ -1698,6 +1725,8 @@ function buildReportHTML(exportName, exportEmail, exportCompany) {
       span.textContent = inp.value || '—';
       span.style.fontWeight = '700';
       span.style.color = '#0F172A';
+      span.style.display = 'block';
+      span.style.textAlign = 'center';
       inp.parentNode.replaceChild(span, inp);
     });
     
@@ -2025,6 +2054,26 @@ function enterConsultMode() {
   document.getElementById('consult-banner').style.display = 'flex';
   nav('p1-sec11');
 }
+
+function openIgepCalc(projectId, projectName) {
+  if (consultMode) return;
+  localStorage.setItem('igep_request', JSON.stringify({ projectId, projectName }));
+  window.open('/'+getLocale()+'/tese/igep', '_blank');
+}
+
+window.addEventListener('storage', function(e) {
+  if (e.key === 'igep_result' && e.newValue) {
+    try {
+      const r = JSON.parse(e.newValue);
+      if (r && r.projectId && r.value != null) {
+        S.igep[r.projectId] = r.value;
+        save();
+        renderSec14();
+        localStorage.removeItem('igep_result');
+      }
+    } catch(err) {}
+  }
+});
 
 function exitConsultMode() {
   S.bim = _savedState.bim;
