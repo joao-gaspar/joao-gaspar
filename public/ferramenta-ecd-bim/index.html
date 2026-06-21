@@ -531,9 +531,15 @@ function renderSec11() {
 
   const BTN = 'font-size:10px;padding:2px 8px;border-radius:5px;cursor:pointer;font-weight:600;white-space:nowrap';
 
-  // Row 1 — "Projetos ECD" spanning + add button
+  // Row 1 — "Projetos BIM" (rowspan 3) | "Ano" (rowspan 3) | "Projetos ECD" (colspan)
   h += '<tr>';
-  h += `<th colspan="2" style="${B};background:#F9FAFB"></th>`;
+  h += `<th rowspan="3" style="${B};background:#F3F4F6;padding:6px 10px;vertical-align:middle">
+    <div style="display:flex;align-items:center;gap:6px;white-space:nowrap">
+      <span style="font-size:12px">Projetos BIM</span>
+      <button onclick="addProjectInline('bim')" style="${BTN};background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:#0F766E">+ Adicionar</button>
+    </div>
+  </th>`;
+  h += `<th rowspan="3" style="${B};background:#F3F4F6;padding:6px;text-align:center;font-size:12px;vertical-align:middle">Ano</th>`;
   const ecdCols = ecds.length || 1;
   h += `<th colspan="${ecdCols}" style="${B};background:#CCFBF1;text-align:center;padding:6px">
     <div style="display:flex;align-items:center;justify-content:center;gap:8px">
@@ -543,15 +549,8 @@ function renderSec11() {
   </th>`;
   h += '</tr>';
 
-  // Row 2 — "Projetos BIM" + add button | "Ano" | ECD names (editable)
+  // Row 2 — ECD names (editable)
   h += '<tr>';
-  h += `<th style="${B};background:#F3F4F6;padding:6px 10px">
-    <div style="display:flex;align-items:center;gap:6px;white-space:nowrap">
-      <span style="font-size:12px">Projetos BIM</span>
-      <button onclick="addProjectInline('bim')" style="${BTN};background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:#0F766E">+ Adicionar</button>
-    </div>
-  </th>`;
-  h += `<th style="${B};background:#F3F4F6;padding:6px;text-align:center;font-size:12px">Ano</th>`;
   ecds.forEach(e => {
     h += `<th style="${B};background:#F3F4F6;padding:4px 6px;min-width:120px;text-align:center">
       <div style="display:flex;align-items:center;justify-content:center;gap:4px">
@@ -563,10 +562,8 @@ function renderSec11() {
   });
   h += '</tr>';
 
-  // Row 3 — empty | "Ano" label | ECD year inputs (blue)
+  // Row 3 — ECD year inputs (blue)
   h += '<tr>';
-  h += `<td style="${B};background:#F9FAFB"></td>`;
-  h += `<td style="${B};background:#F9FAFB;text-align:center;font-size:11px;color:#94A3B8;padding:4px">Ano</td>`;
   ecds.forEach(e => {
     h += `<td ${BLUE}>
       <input type="number" value="${e.year}" min="2000" max="2035" style="${YR}"
