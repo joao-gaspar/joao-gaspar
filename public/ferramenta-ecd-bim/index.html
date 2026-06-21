@@ -2112,6 +2112,23 @@ function clearData() {
 // ─────────────────────────────────────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────────────────────────────────────
+// Forward wheel/touch events through the consult overlay so the user can scroll
+(function() {
+  const overlay = document.getElementById('consult-overlay');
+  const mainEl = document.querySelector('main');
+  if (overlay && mainEl) {
+    overlay.addEventListener('wheel', function(e) {
+      mainEl.scrollBy({ top: e.deltaY, left: e.deltaX });
+    }, { passive: true });
+    overlay.addEventListener('touchstart', function(e) {
+      mainEl.dispatchEvent(new TouchEvent('touchstart', e));
+    }, { passive: true });
+    overlay.addEventListener('touchmove', function(e) {
+      mainEl.dispatchEvent(new TouchEvent('touchmove', e));
+    }, { passive: true });
+  }
+})();
+
 renderProjects();
 </script>
 </body>
