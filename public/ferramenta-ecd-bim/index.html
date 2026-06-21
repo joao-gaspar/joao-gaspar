@@ -1223,7 +1223,7 @@ function renderP24Table(projects) {
         ${projects.map(p => {
           const d = getProjectEixo(p);
           syncDocsFromTypes(d);
-          return `<td style="${TD};background:${p.type === 'bim' ? '#A9D08E' : '#F8696B'}"><input type="number" min="0" value="${d.docs || ''}" style="${IN}"
+          return `<td style="${TD};background:${p.type === 'bim' ? COLORS.greenLight : COLORS.redLight}"><input type="number" min="0" value="${d.docs || ''}" style="${IN}"
             oninput="setProjectEixoVal('${p.type}','${p.name}','docs',this.value); refreshP24Results(); if(typeof refreshP23Results !== 'undefined') refreshP23Results();"></td>`;
         }).join('')}
       </tr>
@@ -1231,16 +1231,16 @@ function renderP24Table(projects) {
         <td style="${TD};text-align:left;background:#D9D9D9">Quantidade de documentos que consolidam a entrega de cada eixo</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
-          return `<td style="${TD};background:${p.type === 'bim' ? '#A9D08E' : '#F8696B'}"><input type="number" min="0" value="${d.docsCons || ''}" style="${IN}"
+          return `<td style="${TD};background:${p.type === 'bim' ? COLORS.greenLight : COLORS.redLight}"><input type="number" min="0" value="${d.docsCons || ''}" style="${IN}"
             oninput="setProjectEixoVal('${p.type}','${p.name}','docsCons',this.value);refreshP24Results()"></td>`;
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};text-align:left;background:#FFFF00;font-weight:700">Quantidade de documentos entregues em rela&ccedil;&atilde;o &agrave; quantidade de documentos que consolidam a entrega</td>
+        <td style="${TD};text-align:left;background:${COLORS.yellow};color:${COLORS.text};font-weight:700">Quantidade de documentos entregues em rela&ccedil;&atilde;o &agrave; quantidade de documentos que consolidam a entrega</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           const result = d.docsCons ? d.docs / d.docsCons : 0;
-          return `<td id="p24_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F4A582'};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
+          return `<td id="p24_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? COLORS.green : COLORS.red};color:#fff;font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
         }).join('')}
       </tr>
     </tbody></table></div>
@@ -1291,11 +1291,11 @@ function renderP25Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};text-align:left;background:#FFFF00;font-weight:700">M&eacute;dia de vers&otilde;es de documentos enviados para cada pacote de entrega</td>
+        <td style="${TD};text-align:left;background:${COLORS.yellow};color:${COLORS.text};font-weight:700">M&eacute;dia de vers&otilde;es de documentos enviados para cada pacote de entrega</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           const result = d.packages ? d.totalVersions / d.packages : 0;
-          return `<td id="p25_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? (result <= 3 ? '#F8696B' : '#F4C27A') : '#A9D08E'};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
+          return `<td id="p25_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? (result <= 3 ? COLORS.red : COLORS.yellow) : COLORS.greenLight};color:${p.type === 'bim' && result <= 3 ? '#fff' : COLORS.text};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
         }).join('')}
       </tr>
     </tbody></table></div>
@@ -1346,11 +1346,11 @@ function renderP26Table(projects) {
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};text-align:left;background:#FFFF00;font-weight:700">M&eacute;dia de documentos revisados para cada documento aprovado</td>
+        <td style="${TD};text-align:left;background:${COLORS.yellow};color:${COLORS.text};font-weight:700">M&eacute;dia de documentos revisados para cada documento aprovado</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           const result = d.docsApproved ? d.docsReturned / d.docsApproved : 0;
-          return `<td id="p26_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F8696B'};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
+          return `<td id="p26_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? COLORS.green : COLORS.red};color:#fff;font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
         }).join('')}
       </tr>
     </tbody></table></div>
@@ -1389,7 +1389,7 @@ function renderP23Table(projects) {
         ${projects.map(p => {
           const d = getProjectEixo(p);
           syncDocsFromTypes(d);
-          return `<td style="${TD};background:${p.type === 'bim' ? '#A9D08E' : '#F8696B'}"><input type="number" min="0" value="${d.docs || ''}" style="${IN}"
+          return `<td style="${TD};background:${p.type === 'bim' ? COLORS.greenLight : COLORS.redLight}"><input type="number" min="0" value="${d.docs || ''}" style="${IN}"
             oninput="setProjectEixoVal('${p.type}','${p.name}','docs',this.value); refreshP23Results(); if(typeof refreshP24Results !== 'undefined') refreshP24Results();"></td>`;
         }).join('')}
       </tr>
@@ -1397,16 +1397,16 @@ function renderP23Table(projects) {
         <td style="${TD};text-align:left;background:#D9D9D9">Se&ccedil;&atilde;o 2.2 Tempo de entrega em meses</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
-          return `<td style="${TD};background:${p.type === 'bim' ? '#A9D08E' : '#F4A582'}"><input type="number" min="0" value="${d.months || ''}" style="${IN}"
+          return `<td style="${TD};background:${p.type === 'bim' ? COLORS.greenLight : COLORS.orangeLight}"><input type="number" min="0" value="${d.months || ''}" style="${IN}"
             oninput="setProjectEixoVal('${p.type}','${p.name}','months',this.value); refreshP23Results();"></td>`;
         }).join('')}
       </tr>
       <tr>
-        <td style="${TD};text-align:left;background:#FFFF00;font-weight:700">Quantidade m&eacute;dia de documentos entregues por m&ecirc;s</td>
+        <td style="${TD};text-align:left;background:${COLORS.yellow};color:${COLORS.text};font-weight:700">Quantidade m&eacute;dia de documentos entregues por m&ecirc;s</td>
         ${projects.map(p => {
           const d = getProjectEixo(p);
           const result = d.months ? d.docs / d.months : 0;
-          return `<td id="p23_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? '#63BE7B' : '#F8696B'};font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
+          return `<td id="p23_result_${p.type}_${p.id}" style="${TD};background:${p.type === 'bim' ? COLORS.green : COLORS.red};color:#fff;font-weight:700">${result ? formatOneDecimalBR(result) : ''}</td>`;
         }).join('')}
       </tr>
     </tbody></table></div>
