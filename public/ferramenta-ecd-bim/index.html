@@ -1632,6 +1632,11 @@ function renderSynthesis() {
 // EXPORT PDF
 // ─────────────────────────────────────────────────────────────────────────────
 function exportPDF() {
+  // Capture user-entered values BEFORE re-rendering (which wipes the inputs)
+  const pdfName = document.getElementById('pdf-export-name')?.value.trim() || '';
+  const pdfEmail = document.getElementById('pdf-export-email')?.value.trim() || '';
+  const pdfCompany = document.getElementById('pdf-export-company')?.value.trim() || '';
+
   // Render all sections to ensure the DOM is populated before extracting the HTML
   renderSec11();
   renderMatrix12();
@@ -1644,17 +1649,18 @@ function exportPDF() {
 
   const win = window.open('', '_blank', 'width=960,height=720');
   if (!win) { alert('Permita popups neste navegador para exportar o PDF.'); return; }
-  win.document.write(buildReportHTML());
+  win.document.write(buildReportHTML(pdfName, pdfEmail, pdfCompany));
   win.document.close();
   win.focus();
 }
 
-function buildReportHTML() {
+function buildReportHTML(exportName, exportEmail, exportCompany) {
   const now = new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
   
-  const exportName = document.getElementById('pdf-export-name')?.value.trim() || '';
-  const exportEmail = document.getElementById('pdf-export-email')?.value.trim() || '';
-  const exportCompany = document.getElementById('pdf-export-company')?.value.trim() || '';
+  // Use parameters passed from exportPDF (fallback to DOM for direct calls)
+  exportName = exportName || document.getElementById('pdf-export-name')?.value.trim() || '';
+  exportEmail = exportEmail || document.getElementById('pdf-export-email')?.value.trim() || '';
+  exportCompany = exportCompany || document.getElementById('pdf-export-company')?.value.trim() || '';
 
   let authorHtml = '';
   if (exportName || exportEmail || exportCompany) {
