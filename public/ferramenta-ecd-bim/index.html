@@ -1921,6 +1921,8 @@ function loadExample() {
     bim:{ docs:4889, months:33, docTypes:docsThesisBIM, docsCons:699, totalVersions:1521, packages:463, docsReturned:1150, docsApproved:464 }
   };
 
+  S.rankings = { 'bim_OUCAE_G3-F1_Área_06': '1', 'ecd_Jd_Colombo_A1': '2' };
+
   save();
   nav('p1-sec11');
   setTimeout(() => alert('✅ Dados de exemplo da tese carregados!\n\nUse a navegação para explorar os resultados. Vá direto para "2.7 Síntese" para ver o comparativo completo.'), 100);
@@ -2089,7 +2091,7 @@ function enterConsultMode() {
   S.igep = JSON.parse(JSON.stringify(THESIS_DATA.igep));
   S.selectedPairs = JSON.parse(JSON.stringify(THESIS_DATA.selectedPairs));
   S.eixos = JSON.parse(JSON.stringify(THESIS_DATA.eixos));
-  S.rankings = {};
+  S.rankings = { 'bim_OUCAE_G3-F1_Área_06': '1', 'ecd_Jd_Colombo_A1': '2' };
   consultMode = true;
   document.body.classList.add('consult-mode');
   document.getElementById('consult-banner').style.display = 'flex';

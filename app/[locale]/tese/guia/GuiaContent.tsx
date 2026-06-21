@@ -35,7 +35,7 @@ export function GuiaContent() {
             {t('back')}
           </Link>
           <a
-            href="/ferramenta-ecd-bim/"
+            href="/ferramenta-ecd-bim/index.html"
             className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-teal-900 dark:text-teal-400 dark:hover:text-teal-200 transition-colors"
           >
             {t('use_tool')}
