@@ -357,10 +357,11 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
       <p>Insira o valor do IGEP de cada projeto para calcular as diferenças absolutas entre pares. Menor diferença = maior semelhança de esforço projetual.</p>
     </div>
     <div class="info-box">
-      <strong>IGEP — Indicador de Grau de Esforço Projetual</strong>
-      <a href="/pt/tese/igep" target="_blank" style="display:inline-flex;align-items:center;margin-left:8px;font-size:11px;background:#0D9488;color:white;padding:3px 10px;border-radius:12px;text-decoration:none;font-weight:700;letter-spacing:0.3px">Abrir Ferramenta IGEP ↗</a>
-      <br>
+      <strong>IGEP — Indicador de Grau de Esforço Projetual</strong><br>
       Desenvolvido nesta pesquisa com base em Andrade et al. (2024, 2025). Quantifica o grau de complexidade/esforço projetual de cada projeto. A diferença absoluta entre dois projetos indica o quão similares eles são em termos de esforço projetual.
+    </div>
+    <div style="margin-top:12px">
+      <a href="/pt/tese/igep" target="_blank" style="display:inline-flex;align-items:center;font-size:12px;background:#0D9488;color:white;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:700;letter-spacing:0.3px">Abrir Calculadora IGEP ↗</a>
     </div>
   </div>
 
@@ -1487,14 +1488,14 @@ function renderSynthesis() {
       ? Math.round(value).toLocaleString('pt-BR')
       : value.toLocaleString('pt-BR', { minimumFractionDigits:1, maximumFractionDigits:1 });
   }
-  function cellBg(p, rowKey) {
-    if (rowKey === 'docs')  return p.type === 'bim' ? '#63BE7B' : '#F8696B';
-    if (rowKey === 'months') return p.type === 'bim' ? '#A9D08E' : '#F4A582';
-    if (rowKey === 'ind23') return p.type === 'bim' ? '#63BE7B' : '#F8696B';
-    if (rowKey === 'ind24') return p.type === 'bim' ? '#63BE7B' : '#F8696B';
-    if (rowKey === 'ind25') return p.type === 'bim' ? '#63BE7B' : '#F4C27A';
-    if (rowKey === 'ind26') return p.type === 'bim' ? '#63BE7B' : '#F8696B';
-    return '#F9FAFB';
+  function cellStyle(p, rowKey) {
+    if (rowKey === 'docs')  return p.type === 'bim' ? `background:${COLORS.green};color:#fff` : `background:${COLORS.red};color:#fff`;
+    if (rowKey === 'months') return p.type === 'bim' ? `background:${COLORS.greenLight};color:${COLORS.text}` : `background:${COLORS.orange};color:#fff`;
+    if (rowKey === 'ind23') return p.type === 'bim' ? `background:${COLORS.green};color:#fff` : `background:${COLORS.red};color:#fff`;
+    if (rowKey === 'ind24') return p.type === 'bim' ? `background:${COLORS.green};color:#fff` : `background:${COLORS.red};color:#fff`;
+    if (rowKey === 'ind25') return p.type === 'bim' ? `background:${COLORS.green};color:#fff` : `background:${COLORS.yellow};color:${COLORS.text}`;
+    if (rowKey === 'ind26') return p.type === 'bim' ? `background:${COLORS.green};color:#fff` : `background:${COLORS.red};color:#fff`;
+    return `background:${COLORS.grayLight};color:${COLORS.text}`;
   }
 
   const rows = [
@@ -1535,8 +1536,8 @@ function renderSynthesis() {
     
     rows.forEach(row => {
       const value = getP27Value(d, row.key);
-      const bg = cellBg(p, row.key);
-      html += `<td style="${TD};background:${bg};font-weight:700">${fmtP27(value, row.decimals)}</td>`;
+      const styleStr = cellStyle(p, row.key);
+      html += `<td style="${TD};${styleStr};font-weight:700">${fmtP27(value, row.decimals)}</td>`;
     });
     
     const currRank = S.rankings[p.id] || "";
