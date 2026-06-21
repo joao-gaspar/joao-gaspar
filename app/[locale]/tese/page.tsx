@@ -49,7 +49,7 @@ export default async function Tese() {
               {t('section_label')}
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
+            <div className="flex flex-col gap-6 mb-16 max-w-4xl">
               <h1 className="text-3xl font-bold text-foreground text-balance">
                 {t('heading')}
               </h1>
@@ -65,7 +65,7 @@ export default async function Tese() {
                   ? { target: '_blank' as const, rel: 'noopener noreferrer' }
                   : {}
                 const cardEl = (
-                  <Card className={`bg-card border-border transition-colors group ${ready ? 'hover:border-primary/50 cursor-pointer' : ''}`}>
+                  <Card className={`bg-card border-border transition-colors group h-full flex flex-col ${ready ? 'hover:border-primary/50 cursor-pointer' : ''}`}>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -97,11 +97,11 @@ export default async function Tese() {
                   </Card>
                 )
                 return ready ? (
-                  <Link key={i} href={card.href} {...linkProps} className="block">
+                  <Link key={i} href={card.href} {...linkProps} className="block h-full">
                     {cardEl}
                   </Link>
                 ) : (
-                  <div key={i}>{cardEl}</div>
+                  <div key={i} className="h-full">{cardEl}</div>
                 )
               })}
             </div>
