@@ -1415,8 +1415,18 @@ function updateSynthesisRanking(id, val) {
   if (val === "") {
     delete S.rankings[id];
   } else {
-    // optional: remove the rank from another project if we want unique ranks, but letting the user do whatever is fine
+    const currentOwnerId = Object.keys(S.rankings).find(k => S.rankings[k] === val);
+    const oldVal = S.rankings[id];
+    
     S.rankings[id] = val;
+    
+    if (currentOwnerId && currentOwnerId !== id) {
+      if (oldVal) {
+        S.rankings[currentOwnerId] = oldVal; // Swap
+      } else {
+        delete S.rankings[currentOwnerId]; // Clear
+      }
+    }
   }
   save();
   renderSynthesis();
