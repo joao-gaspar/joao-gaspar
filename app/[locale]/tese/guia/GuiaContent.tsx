@@ -25,14 +25,23 @@ export function GuiaContent() {
     <div className="py-12">
       <div className="mx-auto max-w-4xl px-6">
 
-        {/* Back navigation */}
-        <Link
-          href={`/${locale}/tese`}
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          {t('back')}
-        </Link>
+        {/* Navigation row */}
+        <div className="flex items-center justify-between mb-8">
+          <Link
+            href={`/${locale}/tese`}
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {t('back')}
+          </Link>
+          <a
+            href="/ferramenta-ecd-bim/"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-teal-900 dark:text-teal-400 dark:hover:text-teal-200 transition-colors"
+          >
+            {t('use_tool')}
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
 
         {/* Thesis identification */}
         <div className="mb-8 space-y-2 border-l-4 border-blue-600 pl-4 py-1">
