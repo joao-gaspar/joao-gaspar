@@ -28,14 +28,6 @@ export default async function Tese() {
       external: false,
     },
     {
-      icon: <BarChart3 className="h-5 w-5 text-primary" />,
-      title: t('igep_title'),
-      desc: t('igep_desc'),
-      btn: t('igep_btn'),
-      href: `/${locale}/tese/igep`,
-      external: false,
-    },
-    {
       icon: <GitCompare className="h-5 w-5 text-primary" />,
       title: t('ecd_title'),
       desc: t('ecd_desc'),
