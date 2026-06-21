@@ -1548,7 +1548,7 @@ function renderSynthesis() {
           const rankVal = String(i+1);
           const isUsedByOther = Object.keys(S.rankings).some(id => id !== p.id && S.rankings[id] === rankVal);
           if (isUsedByOther) return '';
-          return \`<option value="\${rankVal}" \${currRank === rankVal ? 'selected' : ''}>\${rankVal}&ordm; Lugar</option>\`;
+          return `<option value="${rankVal}" ${currRank === rankVal ? 'selected' : ''}>${rankVal}&ordm; Lugar</option>`;
         }).join('')}
       </select>
     </td></tr>`;
