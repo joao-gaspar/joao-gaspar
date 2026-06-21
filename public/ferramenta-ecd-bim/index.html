@@ -464,9 +464,20 @@ body.consult-mode .no-consult-edit{display:none!important}
 // ─────────────────────────────────────────────────────────────────────────────
 function getLocale() {
   try {
+    // URL param takes highest priority (e.g. ?lang=pt from a referring link)
+    const urlLang = new URLSearchParams(location.search).get('lang');
+    if (['pt','en','es'].includes(urlLang)) {
+      sessionStorage.setItem('ferramenta_locale', urlLang);
+      return urlLang;
+    }
+    // sessionStorage is per-tab, so cross-tab cookie changes don't affect this tab
+    const ss = sessionStorage.getItem('ferramenta_locale');
+    if (['pt','en','es'].includes(ss)) return ss;
+    // First visit in this tab: seed from cookie (reflects the locale the user came from)
     const m = document.cookie.match(/(?:^|;\s*)NEXT_LOCALE=([^;]+)/);
-    const val = m ? m[1] : '';
-    return ['pt','en','es'].includes(val) ? val : 'pt';
+    const cookieVal = m && ['pt','en','es'].includes(m[1]) ? m[1] : 'pt';
+    sessionStorage.setItem('ferramenta_locale', cookieVal);
+    return cookieVal;
   } catch(e) { return 'pt'; }
 }
 
@@ -890,7 +901,7 @@ function renderSec14() {
         <input type="number" step="0.0001" value="${S.igep[e.id]||''}" placeholder="IGEP"
           style="width:76px;background:rgba(255,255,255,0.7);border:1px solid rgba(13,148,136,0.3);border-radius:4px;outline:none;text-align:center;font-size:12px;font-weight:700;color:#0D9488;padding:4px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.05);transition:all 0.2s"
           oninput="updateIgep('${e.id}',this.value,false)">
-        <button class="igep-btn no-consult-edit" onclick="openIgepCalc('${e.id}','${e.name}')">🧮 Calcular</button>
+        <button class="igep-btn no-consult-edit pdf-no-print" onclick="openIgepCalc('${e.id}','${e.name}')">🧮 Calcular</button>
       </div></td>`;
   });
   h += '</tr></thead><tbody>';
@@ -1894,10 +1905,20 @@ function loadExample() {
   // Selected pair: OUCAE G3-F1 Área 06 × Jd Colombo A1
   const selKey = 'bim_OUCAE_G3-F1_Área_06_ecd_Jd_Colombo_A1';
   S.selectedPairs = [selKey];
+  const docsThesisECD = {
+    'Laudos':9,'Pareceres':3,'Relatorios':4,'Modelos 3D':0,'Modelos de Revit':9,
+    'Modelos BIM':2,'Memoriais quantitativos':28,'Memorias de calculo':76,
+    'Memoriais descritivos':138,'Pranchas com desenhos tecnicos':1015
+  };
+  const docsThesisBIM = {
+    'Laudos':0,'Pareceres':0,'Relatorios':242,'Modelos 3D':5,'Modelos de Revit':252,
+    'Modelos BIM':380,'Memoriais quantitativos':0,'Memorias de calculo':131,
+    'Memoriais descritivos':15,'Pranchas com desenhos tecnicos':3864
+  };
   S.eixos[selKey] = {
     bimName:'OUCAE G3-F1 Área 06 (BIM)', ecdName:'Jd Colombo A1 (ECD)',
-    ecd:{ docs:1284, months:26, docsCons:243, totalVersions:900, packages:129, docsReturned:846, docsApproved:129 },
-    bim:{ docs:4889, months:33, docsCons:699, totalVersions:1521, packages:463, docsReturned:1150, docsApproved:464 }
+    ecd:{ docs:1284, months:26, docTypes:docsThesisECD, docsCons:243, totalVersions:900, packages:129, docsReturned:846, docsApproved:129 },
+    bim:{ docs:4889, months:33, docTypes:docsThesisBIM, docsCons:699, totalVersions:1521, packages:463, docsReturned:1150, docsApproved:464 }
   };
 
   save();
@@ -2030,10 +2051,20 @@ const THESIS_DATA = (function() {
   const selKey = 'bim_OUCAE_G3-F1_Área_06_ecd_Jd_Colombo_A1';
   const selectedPairs = [selKey];
   const eixos = {};
+  const thesisDocsECD = {
+    'Laudos':9,'Pareceres':3,'Relatorios':4,'Modelos 3D':0,'Modelos de Revit':9,
+    'Modelos BIM':2,'Memoriais quantitativos':28,'Memorias de calculo':76,
+    'Memoriais descritivos':138,'Pranchas com desenhos tecnicos':1015
+  };
+  const thesisDocsBIM = {
+    'Laudos':0,'Pareceres':0,'Relatorios':242,'Modelos 3D':5,'Modelos de Revit':252,
+    'Modelos BIM':380,'Memoriais quantitativos':0,'Memorias de calculo':131,
+    'Memoriais descritivos':15,'Pranchas com desenhos tecnicos':3864
+  };
   eixos[selKey] = {
     bimName:'OUCAE G3-F1 Área 06 (BIM)', ecdName:'Jd Colombo A1 (ECD)',
-    ecd:{ docs:1284, months:26, docsCons:243, totalVersions:900, packages:129, docsReturned:846, docsApproved:129 },
-    bim:{ docs:4889, months:33, docsCons:699, totalVersions:1521, packages:463, docsReturned:1150, docsApproved:464 }
+    ecd:{ docs:1284, months:26, docTypes:thesisDocsECD, docsCons:243, totalVersions:900, packages:129, docsReturned:846, docsApproved:129 },
+    bim:{ docs:4889, months:33, docTypes:thesisDocsBIM, docsCons:699, totalVersions:1521, packages:463, docsReturned:1150, docsApproved:464 }
   };
   return { bim, ecd, scores12, scores13, igep, selectedPairs, eixos, rankings:{}, indicators:{} };
 })();
