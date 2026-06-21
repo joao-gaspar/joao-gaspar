@@ -1543,7 +1543,12 @@ function renderSynthesis() {
     html += `<td style="${TD};background:#F3F4F6">
       <select onchange="updateSynthesisRanking('${p.id}', this.value)" style="width:100%;padding:4px;border-radius:4px;border:1px solid #D1D5DB;font-size:12px;outline:none;cursor:pointer;font-weight:700">
         <option value="">-</option>
-        ${projects.map((_, i) => `<option value="${i+1}" ${currRank == (i+1) ? 'selected' : ''}>${i+1}&ordm; Lugar</option>`).join('')}
+        ${projects.map((_, i) => {
+          const rankVal = String(i+1);
+          const isUsedByOther = Object.keys(S.rankings).some(id => id !== p.id && S.rankings[id] === rankVal);
+          if (isUsedByOther) return '';
+          return \`<option value="\${rankVal}" \${currRank === rankVal ? 'selected' : ''}>\${rankVal}&ordm; Lugar</option>\`;
+        }).join('')}
       </select>
     </td></tr>`;
   });
