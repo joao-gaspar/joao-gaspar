@@ -2164,7 +2164,24 @@ function clearData() {
   }
 })();
 
-renderProjects();
+load();
+// Apply any pending igep_result (e.g. redirected back from IGEP calculator tab)
+try {
+  var _pending = localStorage.getItem('igep_result');
+  if (_pending) {
+    var _pr = JSON.parse(_pending);
+    if (_pr && _pr.projectId && _pr.value != null) {
+      S.igep[_pr.projectId] = _pr.value;
+      save();
+      localStorage.removeItem('igep_result');
+    }
+  }
+} catch(e){}
+if (location.hash === '#sec14') {
+  nav('p1-sec14');
+} else {
+  renderProjects();
+}
 </script>
 </body>
 </html>

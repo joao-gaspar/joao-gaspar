@@ -96,8 +96,10 @@ export function IgepCalculator() {
 
   function sendResult() {
     if (!request) return
-    localStorage.setItem('igep_result', JSON.stringify({ projectId: request.projectId, value: igep }))
+    const value = parseFloat(igep.toFixed(2))
+    localStorage.setItem('igep_result', JSON.stringify({ projectId: request.projectId, value }))
     setSent(true)
+    window.location.href = '/ferramenta-ecd-bim/index.html#sec14'
   }
 
   function set(k: keyof CState) {
@@ -354,7 +356,7 @@ export function IgepCalculator() {
                 {t('igep_label')}
               </p>
               <p className="text-5xl font-black tracking-tighter text-foreground leading-none">
-                {igep.toFixed(3).replace('.', ',')}
+                {igep.toFixed(2).replace('.', ',')}
               </p>
             </div>
           </Group>
