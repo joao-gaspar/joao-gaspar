@@ -222,7 +222,7 @@ body.consult-mode .no-consult-edit{display:none!important}
       <span class="num">4</span> 1.4 IGEP
     </div>
     <div class="nav-item" onclick="nav('p1-sec15')" id="nav-p1-sec15">
-      <span class="num">5</span> 1.5 Seleção Final
+      <span class="num">5</span> 1.5 Seleção para Verificação e Comparação
     </div>
   </div>
 
@@ -935,7 +935,7 @@ function renderRanking() {
   let h = `<div class="tbl-wrap"><table style="border-collapse:collapse;width:100%"><thead><tr>`;
   h += `<th style="${B};background:#F3F4F6;padding:7px 10px;font-size:11px;font-weight:700;text-align:left;width:20%">Cruzamentos</th>`;
   h += `<th ${TH}>1.1 Projetos + Contemp.</th><th ${TH}>1.2 Contrata&ccedil;&otilde;es</th>`;
-  h += `<th ${TH}>1.3 Equipes</th><th ${TH}>1.4 IGEP</th><th ${TH}>1.5 Sele&ccedil;&atilde;o Final</th>`;
+  h += `<th ${TH}>1.3 Equipes</th><th ${TH}>1.4 IGEP</th><th ${TH}>1.5 Sele&ccedil;&atilde;o para Verifica&ccedil;&atilde;o e Compara&ccedil;&atilde;o</th>`;
   h += '</tr></thead><tbody>';
 
   const c11Color = d => d === null ? '' : d === 0 ? `background:${COLORS.green};color:#fff` : d === 1 ? `background:${COLORS.yellow};color:${COLORS.text}` : d <= 2 ? `background:${COLORS.orange};color:#fff` : `background:${COLORS.red};color:#fff`;
@@ -1724,7 +1724,7 @@ function buildReportHTML(exportName, exportEmail, exportCompany) {
     ${getSec('matrix-12', 'Seção 1.2 — Modalidades de Contratação')}
     ${getSec('matrix-13', 'Seção 1.3 — Equipes')}
     ${getSec('sec14-matrix', 'Seção 1.4 — IGEP')}
-    ${getSec('ranking-list', 'Seção 1.5 — Seleção Final (Pares)')}
+    ${getSec('ranking-list', 'Seção 1.5 — Seleção para Verificação e Comparação')}
     <div class="pb"></div>
     ${getSec('p2-eixos-form', 'Seções 2.1 e 2.2 — Quantidades e Tempo')}
     ${getSec('p2-indicators-form', 'Seções 2.3 a 2.6 — Indicadores de Desempenho')}
