@@ -199,10 +199,6 @@ export function IgepCalculator() {
         <p className="text-sm font-medium text-foreground leading-tight">{label}</p>
         <p className="text-xs text-muted-foreground leading-snug">{desc}</p>
         {children}
-        <div className="flex items-center gap-1.5 pt-0.5">
-          <span className="text-[11px] text-muted-foreground">{t('factor_label')}:</span>
-          <FactorChip f={factor} />
-        </div>
       </div>
     </div>
   )
