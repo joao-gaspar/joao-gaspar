@@ -914,7 +914,7 @@ function renderSec14() {
         <input type="number" step="0.0001" value="${bVal||''}" placeholder="IGEP"
           style="width:76px;background:rgba(255,255,255,0.7);border:1px solid rgba(13,148,136,0.3);border-radius:4px;outline:none;text-align:center;font-size:12px;font-weight:700;color:#0D9488;padding:4px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.05);transition:all 0.2s"
           oninput="updateIgep('${b.id}',this.value,true)">
-        <button class="igep-btn no-consult-edit" onclick="openIgepCalc('${b.id}','${b.name}')">🧮 Calcular</button>
+        <button class="igep-btn no-consult-edit pdf-no-print" onclick="openIgepCalc('${b.id}','${b.name}')">🧮 Calcular</button>
       </div></td>`;
     S.ecd.forEach((e, ei) => {
       const eVal = S.igep[e.id] || 0;
