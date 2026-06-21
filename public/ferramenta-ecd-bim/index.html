@@ -464,20 +464,11 @@ body.consult-mode .no-consult-edit{display:none!important}
 // ─────────────────────────────────────────────────────────────────────────────
 function getLocale() {
   try {
-    // URL param takes highest priority (e.g. ?lang=pt from a referring link)
     const urlLang = new URLSearchParams(location.search).get('lang');
-    if (['pt','en','es'].includes(urlLang)) {
-      sessionStorage.setItem('ferramenta_locale', urlLang);
-      return urlLang;
-    }
-    // sessionStorage is per-tab, so cross-tab cookie changes don't affect this tab
-    const ss = sessionStorage.getItem('ferramenta_locale');
-    if (['pt','en','es'].includes(ss)) return ss;
-    // First visit in this tab: seed from cookie (reflects the locale the user came from)
+    if (['pt','en','es'].includes(urlLang)) return urlLang;
     const m = document.cookie.match(/(?:^|;\s*)NEXT_LOCALE=([^;]+)/);
-    const cookieVal = m && ['pt','en','es'].includes(m[1]) ? m[1] : 'pt';
-    sessionStorage.setItem('ferramenta_locale', cookieVal);
-    return cookieVal;
+    if (m && ['pt','en','es'].includes(m[1])) return m[1];
+    return 'pt';
   } catch(e) { return 'pt'; }
 }
 
