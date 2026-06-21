@@ -1617,6 +1617,16 @@ function renderSynthesis() {
 // EXPORT PDF
 // ─────────────────────────────────────────────────────────────────────────────
 function exportPDF() {
+  // Render all sections to ensure the DOM is populated before extracting the HTML
+  renderSec11();
+  renderMatrix12();
+  renderMatrix13();
+  renderTable14();
+  renderRanking();
+  renderP2Data();
+  renderP2Indicators();
+  renderSynthesis();
+
   const win = window.open('', '_blank', 'width=960,height=720');
   if (!win) { alert('Permita popups neste navegador para exportar o PDF.'); return; }
   win.document.write(buildReportHTML());
@@ -1664,9 +1674,9 @@ function buildReportHTML() {
   };
 
   const sectionsHtml = `
-    ${getSec('sec11-matrix', 'Seção 1.1 — Projetos e Contemporaneidade')}
-    ${getSec('sec12-matrix', 'Seção 1.2 — Modalidades de Contratação')}
-    ${getSec('sec13-matrix', 'Seção 1.3 — Equipes')}
+    ${getSec('table-11', 'Seção 1.1 — Projetos e Contemporaneidade')}
+    ${getSec('matrix-12', 'Seção 1.2 — Modalidades de Contratação')}
+    ${getSec('matrix-13', 'Seção 1.3 — Equipes')}
     ${getSec('sec14-matrix', 'Seção 1.4 — IGEP')}
     ${getSec('ranking-list', 'Seção 1.5 — Seleção Final (Pares)')}
     <div class="pb"></div>
