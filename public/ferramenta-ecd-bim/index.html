@@ -1517,46 +1517,26 @@ function renderSynthesis() {
 
   html += '</tbody></table></div></div>';
 
-  // Highlight Cards for all ranked places
-  const rankedIds = Object.keys(S.rankings).sort((a, b) => parseInt(S.rankings[a]) - parseInt(S.rankings[b]));
+  // Highlight Card for 1st place only
+  const firstPlaceId = Object.keys(S.rankings).find(k => S.rankings[k] === "1");
   
-  if (rankedIds.length > 0) {
-    html += `<div style="margin-top:24px;display:flex;flex-direction:column;gap:16px;">`;
-    
-    rankedIds.forEach(id => {
-      const p = projects.find(proj => proj.id === id);
-      if (!p) return;
-      const rank = S.rankings[id];
+  if (firstPlaceId) {
+    const p = projects.find(proj => proj.id === firstPlaceId);
+    if (p) {
       const d = getProjectEixo(p);
+      html += `<div style="margin-top:24px;display:flex;flex-direction:column;gap:16px;">`;
       
-      let badge = "🏅";
-      let borderColor = "#94A3B8"; 
-      let bgColor = "#F8FAFC";
-      let titleColor = "#475569";
-      
-      if (rank === "1") {
-        badge = "🏆";
-        borderColor = "#0D9488";
-        bgColor = "#F0FDF4";
-        titleColor = "#0D9488";
-      } else if (rank === "2") {
-        badge = "🥈";
-        borderColor = "#64748B"; // Prata/Cinza
-        bgColor = "#F1F5F9";
-        titleColor = "#475569";
-      } else if (rank === "3") {
-        badge = "🥉";
-        borderColor = "#B45309"; // Bronze
-        bgColor = "#FFFBEB";
-        titleColor = "#92400E";
-      }
+      const badge = "🏆";
+      const borderColor = "#0D9488";
+      const bgColor = "#F0FDF4";
+      const titleColor = "#0D9488";
       
       const typeBg = p.type === 'bim' ? '#0D9488' : '#B45309';
       const typeTag = `<span style="background:${typeBg};color:white;font-size:11px;padding:2px 8px;border-radius:12px;font-weight:800;letter-spacing:0.5px">${p.type.toUpperCase()}</span>`;
       
       html += `<div class="card" style="border:2px solid ${borderColor};background:${bgColor}">
         <h3 style="color:${titleColor};display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap">
-          <span style="font-size:24px">${badge}</span> ${rank}&ordm; Lugar: ${p.name} ${typeTag}
+          <span style="font-size:24px">${badge}</span> 1&ordm; Lugar: ${p.name} ${typeTag}
         </h3>
         <p style="font-size:13px;color:#475569;margin-bottom:16px">Resumo dos dados e indicadores desta modalidade de contrata&ccedil;&atilde;o.</p>
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:12px">`;
@@ -1568,10 +1548,8 @@ function renderSynthesis() {
           <div style="font-size:22px;font-weight:800;color:${titleColor}">${fmtP27(val, row.decimals)}</div>
         </div>`;
       });
-      html += `</div></div>`;
-    });
-    
-    html += `</div>`;
+      html += `</div></div></div>`;
+    }
   }
 
   // Action bar (export/share)
