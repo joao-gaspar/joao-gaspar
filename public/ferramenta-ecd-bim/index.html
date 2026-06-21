@@ -157,6 +157,10 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
 .part-card ul{list-style:none;font-size:12.5px;color:#475569}
 .part-card ul li{padding:4px 0 4px 16px;position:relative}
 .part-card ul li::before{content:'→';position:absolute;left:0;color:#0D9488;font-weight:700}
+/* ─── CONSULT MODE ─────────────────────────────────────────────────────── */
+#consult-banner{display:none;background:#92400E;color:white;padding:10px 20px;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;border-bottom:2px solid #B45309;box-shadow:0 2px 8px rgba(0,0,0,.2);flex-shrink:0}
+body.consult-mode input,body.consult-mode select,body.consult-mode textarea{pointer-events:none!important;opacity:.7!important;cursor:not-allowed!important}
+body.consult-mode .no-consult-edit{display:none!important}
 </style>
 </head>
 <body>
@@ -176,9 +180,15 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
   </div>
   <div style="flex-shrink:0;display:flex;gap:8px;align-items:center">
     <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadExample()">📂 Exemplo da Tese</button>
+    <button class="btn btn-ghost btn-sm" style="color:#FCD34D;border-color:rgba(252,211,77,.5)" onclick="enterConsultMode()">📖 Consultar Tese</button>
     <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadHypotheticalExample()">📂 Exemplo Hipotético</button>
     <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="clearData()">🗑 Limpar</button>
   </div>
+</div>
+
+<div id="consult-banner">
+  <span>📖 MODO CONSULTA — Exemplo da Tese (somente leitura). Navegue livremente para comparar com o seu trabalho.</span>
+  <button onclick="exitConsultMode()" style="flex-shrink:0;padding:5px 14px;border-radius:6px;border:1.5px solid rgba(255,255,255,.6);background:transparent;color:white;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">← Voltar ao meu trabalho</button>
 </div>
 
 <div class="body">
@@ -190,6 +200,10 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
     <div class="nav-item active" onclick="nav('home')" id="nav-home">
       <span class="num">🏠</span> Sobre a Ferramenta
     </div>
+    <a href="/tese/guia" style="display:flex;align-items:center;gap:10px;padding:9px 16px;color:#94A3B8;font-size:12.5px;text-decoration:none;border-left:3px solid transparent;transition:all .15s" onmouseover="this.style.color='#F1F5F9';this.style.background='#1E293B'" onmouseout="this.style.color='#94A3B8';this.style.background='transparent'">
+      <span style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">📖</span>
+      Guia (Apêndice A)
+    </a>
   </div>
 
   <div class="nav-divider"></div>
@@ -238,6 +252,7 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
     <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
       <button class="btn btn-primary" style="background:white;color:#0F766E" onclick="nav('p1-sec11')">Começar Parte 1 →</button>
       <button class="btn btn-ghost" style="color:white;border-color:rgba(255,255,255,.4)" onclick="loadExample()">Ver Exemplo da Tese</button>
+      <button class="btn btn-ghost" style="color:#FCD34D;border-color:rgba(252,211,77,.5)" onclick="enterConsultMode()">📖 Consultar Tese (leitura)</button>
       <button class="btn btn-ghost" style="color:white;border-color:rgba(255,255,255,.4)" onclick="loadHypotheticalExample()">Ver Exemplo Hipotético</button>
     </div>
   </div>
@@ -269,9 +284,6 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
     </div>
   </div>
 
-  <div class="info-box">
-    <strong>Como usar:</strong> Preencha os dados dos projetos ECD e BIM nos formulários da Parte 1 para identificar os pares mais semelhantes. Em seguida, use a Parte 2 para registrar os dados de entrega e calcular os indicadores de desempenho. Clique em <strong>📂 Carregar Exemplo</strong> para ver os dados reais da pesquisa.
-  </div>
 </div>
 
 <!-- ═══════ 1.1 PROJETOS + CONTEMPORANEIDADE ══════════════════════════ -->
@@ -1816,10 +1828,10 @@ function shareEmail() {
 // ─────────────────────────────────────────────────────────────────────────────
 function loadExample() {
   const bimProjects = [
-    { name:'Área 09', year:2021 }, { name:'Área 37', year:2021 }, { name:'Área 38', year:2021 },
-    { name:'Área 39', year:2021 }, { name:'Área 11', year:2021 }, { name:'Área 12', year:2021 },
-    { name:'Área 36', year:2021 }, { name:'Área 06', year:2021 }, { name:'Área 10', year:2021 },
-    { name:'Área 26', year:2021 }
+    { name:'OUCAE G3-F1 Área 09', year:2021 }, { name:'OUCAE G3-F1 Área 37', year:2021 }, { name:'OUCAE G3-F1 Área 38', year:2021 },
+    { name:'OUCAE G3-F1 Área 39', year:2021 }, { name:'OUCAE G3-F1 Área 11', year:2021 }, { name:'OUCAE G3-F1 Área 12', year:2021 },
+    { name:'OUCAE G3-F1 Área 36', year:2021 }, { name:'OUCAE G3-F1 Área 06', year:2021 }, { name:'OUCAE G3-F1 Área 10', year:2021 },
+    { name:'OUCAE G3-F1 Área 26', year:2021 }
   ];
   const ecdProjects = [
     { name:'Jd Colombo A1', year:2022 }, { name:'Jd Colombo A4', year:2022 }
@@ -1844,24 +1856,24 @@ function loadExample() {
 
   // IGEP values (from thesis — computed from area data)
   const igepData = {
-    'bim_Área_09':1.4380,'bim_Área_37':2.0280,'bim_Área_38':1.4631,'bim_Área_39':1.4497,
-    'bim_Área_11':1.3458,'bim_Área_12':1.3578,'bim_Área_36':1.6046,'bim_Área_06':1.2824,
-    'bim_Área_10':1.7174,'bim_Área_26':1.7436,'ecd_Jd_Colombo_A1':1.2472,'ecd_Jd_Colombo_A4':1.0900
+    'bim_OUCAE_G3-F1_Área_09':1.4380,'bim_OUCAE_G3-F1_Área_37':2.0280,'bim_OUCAE_G3-F1_Área_38':1.4631,'bim_OUCAE_G3-F1_Área_39':1.4497,
+    'bim_OUCAE_G3-F1_Área_11':1.3458,'bim_OUCAE_G3-F1_Área_12':1.3578,'bim_OUCAE_G3-F1_Área_36':1.6046,'bim_OUCAE_G3-F1_Área_06':1.2824,
+    'bim_OUCAE_G3-F1_Área_10':1.7174,'bim_OUCAE_G3-F1_Área_26':1.7436,'ecd_Jd_Colombo_A1':1.2472,'ecd_Jd_Colombo_A4':1.0900
   };
   S.igep = igepData;
 
-  // Selected pair: Área 06 × Jd Colombo A1
-  const selKey = 'bim_Área_06_ecd_Jd_Colombo_A1';
+  // Selected pair: OUCAE G3-F1 Área 06 × Jd Colombo A1
+  const selKey = 'bim_OUCAE_G3-F1_Área_06_ecd_Jd_Colombo_A1';
   S.selectedPairs = [selKey];
   S.eixos[selKey] = {
-    bimName:'Área 06 (BIM)', ecdName:'Jd Colombo A1 (ECD)',
+    bimName:'OUCAE G3-F1 Área 06 (BIM)', ecdName:'Jd Colombo A1 (ECD)',
     ecd:{ docs:1284, months:26, docsCons:243, totalVersions:900, packages:129, docsReturned:846, docsApproved:129 },
     bim:{ docs:4889, months:33, docsCons:699, totalVersions:1521, packages:463, docsReturned:1150, docsApproved:464 }
   };
 
   save();
   nav('p1-sec11');
-  setTimeout(() => alert('✅ Dados de exemplo da tese carregados!\n\nUse a navegação para explorar os resultados. Vá direto para "2.7 Síntese Final" para ver o comparativo completo.'), 100);
+  setTimeout(() => alert('✅ Dados de exemplo da tese carregados!\n\nUse a navegação para explorar os resultados. Vá direto para "2.7 Síntese" para ver o comparativo completo.'), 100);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1957,7 +1969,78 @@ function loadHypotheticalExample() {
 
   save();
   nav('p1-sec11');
-  setTimeout(() => alert('Exemplo hipotetico carregado!\n\nDois pares selecionados:\n- BIM 05 x ECD 01\n- BIM 04 x ECD 02\n\nVa para "2.7 Sintese Final" para ver o comparativo completo.'), 100);
+  setTimeout(() => alert('Exemplo hipotetico carregado!\n\nDois pares selecionados:\n- BIM 05 x ECD 01\n- BIM 04 x ECD 02\n\nVa para "2.7 Síntese" para ver o comparativo completo.'), 100);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONSULT MODE — frozen read-only copy of thesis example
+// ─────────────────────────────────────────────────────────────────────────────
+const THESIS_DATA = (function() {
+  const bimPs = [
+    { name:'OUCAE G3-F1 Área 09', year:2021 }, { name:'OUCAE G3-F1 Área 37', year:2021 },
+    { name:'OUCAE G3-F1 Área 38', year:2021 }, { name:'OUCAE G3-F1 Área 39', year:2021 },
+    { name:'OUCAE G3-F1 Área 11', year:2021 }, { name:'OUCAE G3-F1 Área 12', year:2021 },
+    { name:'OUCAE G3-F1 Área 36', year:2021 }, { name:'OUCAE G3-F1 Área 06', year:2021 },
+    { name:'OUCAE G3-F1 Área 10', year:2021 }, { name:'OUCAE G3-F1 Área 26', year:2021 }
+  ];
+  const ecdPs = [
+    { name:'Jd Colombo A1', year:2022 }, { name:'Jd Colombo A4', year:2022 }
+  ];
+  const bim = bimPs.map(p => ({ ...p, id:'bim_'+p.name.replace(/\s/g,'_') }));
+  const ecd = ecdPs.map(p => ({ ...p, id:'ecd_'+p.name.replace(/\s/g,'_') }));
+  const scores12 = {};
+  bim.forEach(b => { scores12[b.id] = {}; ecd.forEach(e => { scores12[b.id][e.id] = 5; }); });
+  const scores13 = {};
+  bim.forEach(b => { ecd.forEach(e => { const k = b.id+'_'+e.id; scores13[k] = { Projetistas:2, Gerenciadora:4, Prefeitura:4 }; }); });
+  const igep = {
+    'bim_OUCAE_G3-F1_Área_09':1.4380,'bim_OUCAE_G3-F1_Área_37':2.0280,'bim_OUCAE_G3-F1_Área_38':1.4631,'bim_OUCAE_G3-F1_Área_39':1.4497,
+    'bim_OUCAE_G3-F1_Área_11':1.3458,'bim_OUCAE_G3-F1_Área_12':1.3578,'bim_OUCAE_G3-F1_Área_36':1.6046,'bim_OUCAE_G3-F1_Área_06':1.2824,
+    'bim_OUCAE_G3-F1_Área_10':1.7174,'bim_OUCAE_G3-F1_Área_26':1.7436,'ecd_Jd_Colombo_A1':1.2472,'ecd_Jd_Colombo_A4':1.0900
+  };
+  const selKey = 'bim_OUCAE_G3-F1_Área_06_ecd_Jd_Colombo_A1';
+  const selectedPairs = [selKey];
+  const eixos = {};
+  eixos[selKey] = {
+    bimName:'OUCAE G3-F1 Área 06 (BIM)', ecdName:'Jd Colombo A1 (ECD)',
+    ecd:{ docs:1284, months:26, docsCons:243, totalVersions:900, packages:129, docsReturned:846, docsApproved:129 },
+    bim:{ docs:4889, months:33, docsCons:699, totalVersions:1521, packages:463, docsReturned:1150, docsApproved:464 }
+  };
+  return { bim, ecd, scores12, scores13, igep, selectedPairs, eixos, rankings:{}, indicators:{} };
+})();
+
+let consultMode = false;
+let _savedState = null;
+
+function enterConsultMode() {
+  _savedState = JSON.parse(JSON.stringify(S));
+  S.bim = JSON.parse(JSON.stringify(THESIS_DATA.bim));
+  S.ecd = JSON.parse(JSON.stringify(THESIS_DATA.ecd));
+  S.scores12 = JSON.parse(JSON.stringify(THESIS_DATA.scores12));
+  S.scores13 = JSON.parse(JSON.stringify(THESIS_DATA.scores13));
+  S.igep = JSON.parse(JSON.stringify(THESIS_DATA.igep));
+  S.selectedPairs = JSON.parse(JSON.stringify(THESIS_DATA.selectedPairs));
+  S.eixos = JSON.parse(JSON.stringify(THESIS_DATA.eixos));
+  S.rankings = {};
+  consultMode = true;
+  document.body.classList.add('consult-mode');
+  document.getElementById('consult-banner').style.display = 'flex';
+  nav('p1-sec11');
+}
+
+function exitConsultMode() {
+  S.bim = _savedState.bim;
+  S.ecd = _savedState.ecd;
+  S.scores12 = _savedState.scores12;
+  S.scores13 = _savedState.scores13;
+  S.igep = _savedState.igep;
+  S.selectedPairs = _savedState.selectedPairs;
+  S.eixos = _savedState.eixos;
+  if (_savedState.rankings) S.rankings = _savedState.rankings;
+  _savedState = null;
+  consultMode = false;
+  document.body.classList.remove('consult-mode');
+  document.getElementById('consult-banner').style.display = 'none';
+  nav('p1-sec11');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

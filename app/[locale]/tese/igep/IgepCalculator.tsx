@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { ArrowLeft, RotateCcw } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
@@ -72,85 +71,6 @@ function getFactors(s: CState): number[] {
   ]
 }
 
-// ── Sub-components ────────────────────────────────────────────────────────────
-
-function FactorChip({ f }: { f: number }) {
-  const fmt = (f >= 0 ? '+' : '') + f.toFixed(3)
-  if (f > 0.0005)
-    return <span className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-green-100 text-green-700 dark:bg-green-950/60 dark:text-green-300">{fmt}</span>
-  if (f < -0.0005)
-    return <span className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-red-100 text-red-700 dark:bg-red-950/60 dark:text-red-300">{fmt}</span>
-  return <span className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">{fmt}</span>
-}
-
-function IgepGauge({ value }: { value: number }) {
-  const MIN = 0.10, MAX = 2.70
-  const W = 210, H = 224
-  const trackX = 34, trackW = 16
-  const padTop = 14, padBot = 30
-  const trackH = H - padTop - padBot
-  const ZONES = [
-    { from: 0.10, to: 0.60, color: '#2563EB' },
-    { from: 0.60, to: 1.20, color: '#CA8A04' },
-    { from: 1.20, to: 2.70, color: '#DC2626' },
-  ]
-  const ticks = [0.5, 1.0, 1.5, 2.0, 2.5]
-
-  function toY(v: number) {
-    return padTop + trackH - ((Math.min(Math.max(v, MIN), MAX) - MIN) / (MAX - MIN)) * trackH
-  }
-
-  const iy = toY(value)
-
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ maxWidth: 200 }}>
-      {ZONES.map(z => {
-        const y1 = toY(Math.min(z.to, MAX))
-        const y2 = toY(Math.max(z.from, MIN))
-        return (
-          <g key={z.from}>
-            <rect x={trackX} y={y1} width={trackW} height={y2 - y1}
-              fill={z.color} fillOpacity="0.13" />
-            <rect x={trackX} y={y1} width={3} height={y2 - y1}
-              fill={z.color} fillOpacity="0.75" />
-          </g>
-        )
-      })}
-      <rect x={trackX} y={padTop} width={trackW} height={trackH}
-        fill="none" stroke="currentColor" strokeOpacity="0.15" strokeWidth="1" />
-      <line x1={trackX - 4} y1={toY(1.0)} x2={trackX + trackW + 32} y2={toY(1.0)}
-        stroke="currentColor" strokeOpacity="0.28" strokeWidth="1" strokeDasharray="3,3" />
-      <text x={trackX + trackW + 5} y={toY(1.0) + 3.5}
-        fontSize="8.5" fill="currentColor" fillOpacity="0.4">ref</text>
-      {ticks.map(tick => (
-        <g key={tick}>
-          <line x1={trackX - 3} y1={toY(tick)} x2={trackX} y2={toY(tick)}
-            stroke="currentColor" strokeOpacity="0.2" strokeWidth="0.5" />
-          <text x={trackX - 5} y={toY(tick) + 3.5}
-            fontSize="9" fill="currentColor" fillOpacity="0.45" textAnchor="end">
-            {tick.toFixed(1).replace('.', ',')}
-          </text>
-        </g>
-      ))}
-      {/* Indicator */}
-      <circle cx={trackX + trackW / 2} cy={iy} r={7}
-        style={{ fill: 'var(--primary)' }} fillOpacity="0.15" />
-      <circle cx={trackX + trackW / 2} cy={iy} r={4.5}
-        style={{ fill: 'var(--primary)' }} />
-      <circle cx={trackX + trackW / 2} cy={iy} r={2}
-        fill="white" />
-      <polygon
-        points={`${trackX + trackW + 2},${iy} ${trackX + trackW + 11},${iy - 5.5} ${trackX + trackW + 11},${iy + 5.5}`}
-        style={{ fill: 'var(--primary)' }} fillOpacity="0.85" />
-      <text x={trackX + trackW + 14} y={iy + 4}
-        fontSize="11" fontWeight="700"
-        style={{ fill: 'var(--primary)' }}>
-        {value.toFixed(3).replace('.', ',')}
-      </text>
-    </svg>
-  )
-}
-
 // ── Main component ────────────────────────────────────────────────────────────
 
 export function IgepCalculator() {
@@ -164,15 +84,6 @@ export function IgepCalculator() {
     return (v: string) => setS(prev => ({ ...prev, [k]: v }))
   }
 
-  const zoneLabel =
-    igep < 0.6 ? t('zone_low') :
-    igep < 1.2 ? t('zone_mid') :
-    t('zone_high')
-
-  const zoneCls =
-    igep < 0.6 ? 'bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300' :
-    igep < 1.2 ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300' :
-    'bg-red-100 text-red-700 dark:bg-red-950/60 dark:text-red-300'
 
   const GroupHeader = ({ label }: { label: string }) => (
     <div className="px-4 py-2 bg-muted/60 border-b border-border">
@@ -183,12 +94,11 @@ export function IgepCalculator() {
   )
 
   const CrRow = ({
-    num, label, desc, factor, children,
+    num, label, desc, children,
   }: {
     num: number
     label: string
-    desc: string
-    factor: number
+    desc?: string
     children: React.ReactNode
   }) => (
     <div className="grid grid-cols-[20px_1fr] gap-3 px-4 py-3 border-b border-border last:border-b-0">
@@ -197,7 +107,7 @@ export function IgepCalculator() {
       </div>
       <div className="space-y-1.5">
         <p className="text-sm font-medium text-foreground leading-tight">{label}</p>
-        <p className="text-xs text-muted-foreground leading-snug">{desc}</p>
+        {desc && <p className="text-xs text-muted-foreground leading-snug">{desc}</p>}
         {children}
       </div>
     </div>
@@ -217,9 +127,6 @@ export function IgepCalculator() {
 
       {/* Hero */}
       <div className="mb-8">
-        <Badge variant="secondary" className="mb-3 text-xs tracking-widest uppercase">
-          {t('badge')}
-        </Badge>
         <h1 className="text-3xl font-bold text-foreground tracking-tight mb-2">
           {t('heading')}
         </h1>
@@ -237,7 +144,7 @@ export function IgepCalculator() {
           {/* Group 1 */}
           <Group>
             <GroupHeader label={t('group_terrain')} />
-            <CrRow num={1} label={t('c1_label')} desc={t('c1_desc')} factor={factors[0]}>
+            <CrRow num={1} label={t('c1_label')} desc={t('c1_desc')}>
               <Select value={s.c1} onValueChange={set('c1')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -251,7 +158,7 @@ export function IgepCalculator() {
                 </SelectContent>
               </Select>
             </CrRow>
-            <CrRow num={2} label={t('c2_label')} desc={t('c2_desc')} factor={factors[1]}>
+            <CrRow num={2} label={t('c2_label')} desc={t('c2_desc')}>
               <Select value={s.c2} onValueChange={set('c2')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -272,7 +179,7 @@ export function IgepCalculator() {
           {/* Group 2 */}
           <Group>
             <GroupHeader label={t('group_structure')} />
-            <CrRow num={3} label={t('c3_label')} desc={t('c3_desc')} factor={factors[2]}>
+            <CrRow num={3} label={t('c3_label')} desc={t('c3_desc')}>
               <Select value={s.c3} onValueChange={set('c3')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -283,7 +190,7 @@ export function IgepCalculator() {
                 </SelectContent>
               </Select>
             </CrRow>
-            <CrRow num={4} label={t('c4_label')} desc={t('c4_desc')} factor={factors[3]}>
+            <CrRow num={4} label={t('c4_label')} desc={t('c4_desc')}>
               <Select value={s.c4} onValueChange={set('c4')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -298,7 +205,7 @@ export function IgepCalculator() {
                 </SelectContent>
               </Select>
             </CrRow>
-            <CrRow num={9} label={t('c9_label')} desc={t('c9_desc')} factor={factors[8]}>
+            <CrRow num={9} label={t('c9_label')} desc={t('c9_desc')}>
               <Select value={s.c9} onValueChange={set('c9')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -312,7 +219,7 @@ export function IgepCalculator() {
           {/* Group 3 */}
           <Group>
             <GroupHeader label={t('group_area')} />
-            <CrRow num={5} label={t('c5_label')} desc={t('c5_desc')} factor={factors[4]}>
+            <CrRow num={5} label={t('c5_label')} desc={t('c5_desc')}>
               <div className="relative">
                 <Input
                   type="number"
@@ -327,7 +234,7 @@ export function IgepCalculator() {
                 </span>
               </div>
             </CrRow>
-            <CrRow num={6} label={t('c6_label')} desc={t('c6_desc')} factor={factors[5]}>
+            <CrRow num={6} label={t('c6_label')} desc={t('c6_desc')}>
               <Select value={s.c6} onValueChange={set('c6')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -342,7 +249,7 @@ export function IgepCalculator() {
           {/* Group 4 */}
           <Group>
             <GroupHeader label={t('group_facade')} />
-            <CrRow num={7} label={t('c7_label')} desc={t('c7_desc')} factor={factors[6]}>
+            <CrRow num={7} label={t('c7_label')} desc={t('c7_desc')}>
               <Select value={s.c7} onValueChange={set('c7')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -359,7 +266,7 @@ export function IgepCalculator() {
                 </SelectContent>
               </Select>
             </CrRow>
-            <CrRow num={8} label={t('c8_label')} desc={t('c8_desc')} factor={factors[7]}>
+            <CrRow num={8} label={t('c8_label')} desc={t('c8_desc')}>
               <Select value={s.c8} onValueChange={set('c8')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -375,7 +282,7 @@ export function IgepCalculator() {
           {/* Group 5 */}
           <Group>
             <GroupHeader label={t('group_stairs')} />
-            <CrRow num={10} label={t('c10_label')} desc={t('c10_desc')} factor={factors[9]}>
+            <CrRow num={10} label={t('c10_label')} desc={t('c10_desc')}>
               <Select value={s.c10} onValueChange={set('c10')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -386,7 +293,7 @@ export function IgepCalculator() {
                 </SelectContent>
               </Select>
             </CrRow>
-            <CrRow num={11} label={t('c11_label')} desc={t('c11_desc')} factor={factors[10]}>
+            <CrRow num={11} label={t('c11_label')} desc={t('c11_desc')}>
               <Select value={s.c11} onValueChange={set('c11')}>
                 <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
                 <SelectContent>
@@ -410,47 +317,12 @@ export function IgepCalculator() {
             </div>
 
             {/* IGEP value */}
-            <div className="px-4 pt-4 pb-3 border-b border-border">
+            <div className="px-4 pt-4 pb-4">
               <p className="text-[11px] text-muted-foreground uppercase tracking-widest mb-1">
                 {t('igep_label')}
               </p>
-              <p className="text-5xl font-black tracking-tighter text-foreground leading-none mb-2">
+              <p className="text-5xl font-black tracking-tighter text-foreground leading-none">
                 {igep.toFixed(3).replace('.', ',')}
-              </p>
-              <Badge className={`text-[11px] font-semibold border-0 ${zoneCls}`}>
-                {t('complexity')} {zoneLabel}
-              </Badge>
-            </div>
-
-            {/* Scale */}
-            <div className="px-4 py-3 border-b border-border">
-              <p className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-2">
-                {t('scale_title')}
-              </p>
-              <IgepGauge value={igep} />
-              {/* Zone legend */}
-              <div className="mt-2 space-y-1">
-                {[
-                  { label: t('zone_low'),  range: '0,1 – 0,6', color: '#2563EB' },
-                  { label: t('zone_mid'),  range: '0,6 – 1,2', color: '#CA8A04' },
-                  { label: t('zone_high'), range: '1,2 – 2,7', color: '#DC2626' },
-                ].map(z => (
-                  <div key={z.label} className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span className="w-2 h-2 rounded-full shrink-0" style={{ background: z.color }} />
-                    <span className="font-medium text-foreground">{z.label}</span>
-                    <span className="font-mono ml-auto">{z.range}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Formula note */}
-            <div className="px-4 py-3">
-              <p className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-1">
-                {t('formula_title')}
-              </p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                {t('formula_body')}
               </p>
             </div>
           </Group>
