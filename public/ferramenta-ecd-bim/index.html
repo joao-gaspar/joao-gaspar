@@ -1855,6 +1855,7 @@ function shareEmail() {
 // EXAMPLE DATA (from thesis)
 // ─────────────────────────────────────────────────────────────────────────────
 function loadExample() {
+  _leaveConsultUI();
   const bimProjects = [
     { name:'OUCAE G3-F1 Área 09', year:2021 }, { name:'OUCAE G3-F1 Área 37', year:2021 }, { name:'OUCAE G3-F1 Área 38', year:2021 },
     { name:'OUCAE G3-F1 Área 39', year:2021 }, { name:'OUCAE G3-F1 Área 11', year:2021 }, { name:'OUCAE G3-F1 Área 12', year:2021 },
@@ -1908,6 +1909,7 @@ function loadExample() {
 // EXAMPLE DATA (hypothetical guide)
 // ─────────────────────────────────────────────────────────────────────────────
 function loadHypotheticalExample() {
+  _leaveConsultUI();
   const bimProjects = [
     { name:'BIM 01', year:2024 }, { name:'BIM 02', year:2024 }, { name:'BIM 03', year:2024 },
     { name:'BIM 04', year:2023 }, { name:'BIM 05', year:2023 }
@@ -2039,6 +2041,14 @@ const THESIS_DATA = (function() {
 let consultMode = false;
 let _savedState = null;
 
+function _leaveConsultUI() {
+  if (!consultMode) return;
+  consultMode = false;
+  _savedState = null;
+  document.body.classList.remove('consult-mode');
+  document.getElementById('consult-banner').style.display = 'none';
+}
+
 function enterConsultMode() {
   _savedState = JSON.parse(JSON.stringify(S));
   S.bim = JSON.parse(JSON.stringify(THESIS_DATA.bim));
@@ -2103,6 +2113,7 @@ function load() {
 }
 
 function clearData() {
+  _leaveConsultUI();
   if (!confirm('Limpar todos os dados? Esta ação não pode ser desfeita.')) return;
   localStorage.removeItem('ecd_bim_state');
   S = { ecd:[], bim:[], scores12:{}, scores13:{}, igep:{}, selectedPairs:[], eixos:{} };
