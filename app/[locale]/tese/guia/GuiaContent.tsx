@@ -40,17 +40,17 @@ export function GuiaContent() {
         {/* Thesis identification */}
         <div className="mb-8 space-y-1.5">
           <p className="text-sm font-medium text-foreground leading-snug max-w-3xl">
-            ProposiÃ§Ã£o de ferramenta para comparar o desempenho de entregas de projetos de HIS baseadas em desenhos ou em BIM em contrataÃ§Ãµes pÃºblicas no Brasil
+            Proposi&ccedil;&atilde;o de ferramenta para comparar o desempenho de entregas de projetos de HIS baseadas em desenhos ou em BIM em contrata&ccedil;&otilde;es p&uacute;blicas no Brasil
           </p>
           <p className="text-xs text-muted-foreground">
-            JoÃ£o Alberto da Motta Gaspar Â· Orientador: Prof. Dr. Gil Garcia de Barros Â· FAUUSP Â· 2026
+            Jo&atilde;o Alberto da Motta Gaspar &middot; Orientador: Prof. Dr. Gil Garcia de Barros &middot; FAUUSP &middot; 2026
           </p>
           <p className="text-xs text-muted-foreground">
-            ApÃªndice A â€” Ferramenta para ComparaÃ§Ã£o do Desempenho de Entrega de Projetos ECD e BIM em HIS
+            Ap&ecirc;ndice A &mdash; Ferramenta para Compara&ccedil;&atilde;o do Desempenho de Entrega de Projetos ECD e BIM em HIS
           </p>
         </div>
 
-        {/* â”€â”€ Cover document block â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* --- Cover document block ---------------------------------- */}
         <div className="rounded-xl overflow-hidden border border-blue-200 dark:border-blue-900 shadow-lg mb-8">
           {/* Cover body */}
           <div className="bg-white dark:bg-slate-950 px-8 py-8 border-b-4 border-blue-900">
@@ -65,10 +65,10 @@ export function GuiaContent() {
           </div>
         </div>
 
-        {/* â”€â”€ Content sections â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* --- Content sections -------------------------------------- */}
         <div className="space-y-5">
 
-          {/* INTRODUÃ‡ÃƒO */}
+          {/* INTRODUÇÃO */}
           <section className="bg-card border border-border rounded-xl p-7">
             <SectionLabel label={t('sec_intro')} />
             <div className="space-y-4 text-sm leading-relaxed text-foreground">
@@ -113,7 +113,7 @@ export function GuiaContent() {
             </div>
           </section>
 
-          {/* DEFINIÃ‡Ã•ES */}
+          {/* DEFINIÇÕES */}
           <section className="bg-card border border-border rounded-xl p-7">
             <SectionLabel label={t('sec_defs')} />
             <p className="text-sm leading-relaxed text-foreground mb-6">{t('defs_p1')}</p>
@@ -167,7 +167,7 @@ export function GuiaContent() {
             </div>
           </section>
 
-          {/* INFORMAÃ‡Ã•ES */}
+          {/* INFORMAÇÕES */}
           <section className="bg-card border border-border rounded-xl p-7">
             <SectionLabel label={t('sec_info')} />
             <div className="space-y-3 text-sm leading-relaxed text-foreground mb-7">
@@ -211,20 +211,20 @@ export function GuiaContent() {
             </div>
           </section>
 
-          {/* COMO COMEÃ‡AR */}
+          {/* COMO COMEÇAR */}
           <section className="bg-card border border-border rounded-xl p-7">
             <SectionLabel label={t('sec_howto')} />
             <div className="mt-4 p-6 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 flex flex-col sm:flex-row items-center justify-between gap-6">
               <p className="text-base font-medium text-blue-900 dark:text-blue-100">
                 {t('howto_text')}...
               </p>
-              <Link
-                href="/ferramenta-ecd-bim/"
+              <a
+                href="/ferramenta-ecd-bim/index.html"
                 className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:shadow-blue-500/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 active:scale-95"
               >
                 {t('howto_link_label')}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </a>
             </div>
           </section>
 
