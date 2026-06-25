@@ -23,7 +23,7 @@ h1,h2,h3,h4{font-family:'Geist',system-ui,-apple-system,Arial,sans-serif;font-we
 .topbar-back:hover{background:rgba(255,255,255,.25)}
 .body{display:flex;flex:1;overflow:hidden;position:relative}
 #consult-overlay{display:none;position:absolute;top:0;left:240px;right:0;bottom:0;z-index:50;background:transparent;cursor:default}
-body.consult-mode #consult-overlay{display:block}
+body.consult-mode #consult-overlay{display:block;pointer-events:none}
 
 /* ─── SIDEBAR ─────────────────────────────────────────────────────────── */
 aside{width:240px;background:#0F172A;overflow-y:auto;flex-shrink:0;padding:16px 0}
@@ -167,6 +167,34 @@ input:focus,select:focus,textarea:focus{border-color:#0D9488;box-shadow:0 0 0 3p
 #consult-banner{display:none;background:#92400E;color:white;padding:10px 20px;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;border-bottom:2px solid #B45309;box-shadow:0 2px 8px rgba(0,0,0,.2);flex-shrink:0}
 body.consult-mode input,body.consult-mode select,body.consult-mode textarea{pointer-events:none!important;opacity:.7!important;cursor:not-allowed!important}
 body.consult-mode .no-consult-edit{display:none!important}
+body.consult-mode .share-section input,body.consult-mode .share-section select,body.consult-mode .share-section textarea{pointer-events:auto!important;opacity:1!important;cursor:text!important}
+body.consult-mode .share-section button{pointer-events:auto!important;cursor:pointer!important}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────── */
+#sidebar-toggle-btn{display:none;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:white;border-radius:8px;padding:6px 11px;font-size:17px;cursor:pointer;line-height:1;flex-shrink:0}
+#sidebar-backdrop{display:none;position:absolute;inset:0;z-index:99;background:rgba(0,0,0,.45)}
+#sidebar-backdrop.active{display:block}
+/* topbar h1 nunca quebra linha — trunca com reticências se faltar espaço */
+.topbar-title h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:1380px){
+  .topbar p{display:none}
+  .topbar h1{font-size:13px}
+  .tb-text{display:none}
+  .topbar>div:first-child{width:auto!important}
+}
+@media(max-width:860px){
+  #sidebar-toggle-btn{display:inline-flex;align-items:center}
+  aside{position:absolute;top:0;left:0;bottom:0;z-index:100;transform:translateX(-240px);transition:transform .25s ease}
+  aside.open{transform:translateX(0);box-shadow:4px 0 24px rgba(0,0,0,.35)}
+  #consult-overlay{left:0!important}
+  main{padding:0 16px 24px}
+  .home-hero{padding:24px 16px;margin-top:16px}
+  .home-hero h2{font-size:19px}
+  .part-grid{grid-template-columns:1fr!important}
+  .form-row.cols-2,.form-row.cols-3,.form-row.cols-4{grid-template-columns:1fr!important}
+  .metric-grid{grid-template-columns:1fr!important}
+  .bar-cell{width:auto;min-width:100px}
+}
 </style>
 </head>
 <body>
@@ -176,19 +204,20 @@ body.consult-mode .no-consult-edit{display:none!important}
 <div class="topbar">
   <!-- Zona esquerda: 248px = alinha h1 com o conteúdo abaixo (sidebar 240 + padding 32 − topbar-padding 24) -->
   <div style="width:248px;flex-shrink:0;display:flex;align-items:center;gap:12px">
+    <button id="sidebar-toggle-btn" onclick="toggleSidebar()" title="Menu" aria-label="Abrir menu">☰</button>
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="rgba(255,255,255,.15)"/><path d="M6 20L11 14l4 5 4-7 3 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <a href="/tese" class="topbar-back">← Tese de Doutorado</a>
+    <a href="/tese" class="topbar-back">← <span class="tb-text">Tese de Doutorado</span></a>
   </div>
   <!-- Título: começa em 272px, alinhado com os headers do conteúdo -->
-  <div style="flex:1;min-width:0">
+  <div class="topbar-title" style="flex:1;min-width:0;overflow:hidden">
     <h1>Ferramenta de Comparação ECD / BIM — HIS</h1>
     <p>Tese de Doutorado · João Alberto da Motta Gaspar · FAUUSP · 2026</p>
   </div>
   <div style="flex-shrink:0;display:flex;gap:8px;align-items:center">
-    <button class="btn btn-ghost btn-sm" style="color:#FCD34D;border-color:rgba(252,211,77,.5)" onclick="enterConsultMode()">📖 Exemplo da Tese (apenas leitura)</button>
-    <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadExample()">📂 Exemplo da Tese (leitura e edição)</button>
-    <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadHypotheticalExample()">📂 Exemplo Hipotético (leitura e edição)</button>
-    <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="clearData()">🗑 Limpar</button>
+    <button class="btn btn-ghost btn-sm" style="color:#FCD34D;border-color:rgba(252,211,77,.5)" onclick="enterConsultMode()" title="Exemplo da Tese (apenas leitura)">📖 <span class="tb-text">Exemplo da Tese (apenas leitura)</span></button>
+    <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadExample()" title="Exemplo da Tese (leitura e edição)">📂 <span class="tb-text">Exemplo da Tese (leitura e edição)</span></button>
+    <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="loadHypotheticalExample()" title="Exemplo Hipotético (leitura e edição)">📂 <span class="tb-text">Exemplo Hipotético (leitura e edição)</span></button>
+    <button class="btn btn-ghost btn-sm" style="color:white;border-color:rgba(255,255,255,.3)" onclick="clearData()" title="Limpar dados">🗑 <span class="tb-text">Limpar</span></button>
   </div>
 </div>
 
@@ -198,6 +227,7 @@ body.consult-mode .no-consult-edit{display:none!important}
 
 <div class="body">
 <div id="consult-overlay"></div>
+<div id="sidebar-backdrop" onclick="closeSidebar()"></div>
 
 <!-- SIDEBAR -->
 <aside>
@@ -525,6 +555,15 @@ function nav(id) {
   if (id === 'p2-indicators') renderP2Indicators();
   if (id === 'p2-synthesis') renderSynthesis();
   save();
+  if (window.innerWidth <= 860) closeSidebar();
+}
+function toggleSidebar() {
+  document.querySelector('aside').classList.toggle('open');
+  document.getElementById('sidebar-backdrop').classList.toggle('active');
+}
+function closeSidebar() {
+  document.querySelector('aside').classList.remove('open');
+  document.getElementById('sidebar-backdrop').classList.remove('active');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1642,7 +1681,7 @@ function renderSynthesis() {
   // Action bar (export/share)
   const _btnBase = 'display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid';
   
-  html += `<div class="pdf-no-print" style="margin-top:24px;padding:32px 24px;background:#F8FAFC;border:2px dashed #CBD5E1;border-radius:16px;text-align:center;position:relative;z-index:51">
+  html += `<div class="pdf-no-print share-section" style="margin-top:24px;padding:32px 24px;background:#F8FAFC;border:2px dashed #CBD5E1;border-radius:16px;text-align:center;position:relative;z-index:51">
     <h3 style="color:#0F766E;margin-bottom:8px;font-size:20px;font-weight:800">Compartilhe a decis&atilde;o realizada com a ajuda desta ferramenta!</h3>
     <p style="font-size:14px;color:#64748B;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto">Exporte o relat&oacute;rio completo em PDF com as tabelas e a sua escolha de melhor desempenho, ou compartilhe nas redes sociais.</p>
     
