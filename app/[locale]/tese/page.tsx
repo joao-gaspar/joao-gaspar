@@ -40,8 +40,8 @@ export default async function Tese() {
       title: t('banca_title'),
       desc: t('banca_desc'),
       btn: t('banca_btn'),
-      href: "#",
-      external: false,
+      href: "/apresentacao-banca.pdf",
+      external: true,
     },
     {
       icon: <BookOpen className="h-5 w-5 text-primary" />,
