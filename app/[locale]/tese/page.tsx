@@ -1,6 +1,6 @@
 import { getTranslations, getLocale } from "next-intl/server"
 import Link from "next/link"
-import { Presentation, BookOpen, BarChart3, GitCompare, ExternalLink } from "lucide-react"
+import { Presentation, BookOpen, GitCompare, ExternalLink } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
@@ -22,10 +22,13 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
+      images: [{ url: '/og-tese.png', width: 1200, height: 630 }],
     },
     twitter: {
+      card: 'summary_large_image',
       title,
       description,
+      images: ['/og-tese.png'],
     },
   }
 }
